@@ -114,7 +114,7 @@ const BUSINESS_JSON_LD = {
   "url": "https://jankstailoring.com",
   "logo": "https://jankstailoring.com/janks-logo.webp",
   "image": "https://jankstailoring.com/og-image.jpg",
-  "telephone": "+447828338172",
+  "telephone": "+447565533096",
   "email": "jankstailoring@gmail.com",
   "description": "Private, appointment-only tailoring. JANKS Tailoring has no shop. Consultations are by appointment only — we travel to you. Every order is delivered. The address is the registered office, not a place to visit.",
   "address": {

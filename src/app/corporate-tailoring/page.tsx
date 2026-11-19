@@ -87,7 +87,7 @@ export default function CorporateTailoringPage() {
             Book a private consultation — we travel to you, at home or in the office. Nothing is committed at the conversation. If you have a date to work to, tell us then and we will be straight about whether four to six weeks is enough.
           </p>
           <p className="text-cream/50 text-sm leading-relaxed">
-            Registered office: 3rd Floor, 86-90 Paul Street, London EC2A 4NE. This is our registered business address, not a shop. Phone +44 7828 338172. Email jankstailoring@gmail.com.
+            Registered office: 3rd Floor, 86-90 Paul Street, London EC2A 4NE. This is our registered business address, not a shop. Phone +44 7565 533096. Email jankstailoring@gmail.com.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row gap-4">
             <Link

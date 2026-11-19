@@ -93,7 +93,7 @@ export async function POST(req: NextRequest) {
             <p style="font-size: 13px; color: #777; line-height: 1.6; margin: 0;">${message.replace(/\n/g, "<br/>")}</p>
           </div>` : ""}
           <p style="font-size: 13px; color: #777; line-height: 1.6;">
-            If you have any further questions, please reply to this email or call us on <a href="tel:+447828338172" style="color: #C9A962;">+44 7828 338172</a>.
+            If you have any further questions, please reply to this email or call us on <a href="tel:+447565533096" style="color: #C9A962;">+44 7565 533096</a>.
           </p>
           <div style="border-top: 1px solid #333; margin-top: 32px; padding-top: 20px;">
             <p style="font-size: 12px; color: #555; margin: 0;">JANKS Tailoring · London · jankstailoring@gmail.com</p>

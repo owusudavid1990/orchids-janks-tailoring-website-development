@@ -104,7 +104,7 @@ w('page.contact.json', { sections: { main: { type: 'janks-page-contact', ...bloc
   ['social', { network: 'youtube', label: 'YouTube', url: 'https://youtube.com/@jankstailoring?si=FEwqqKDFy-IdMElm' }],
   ['social', { network: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/@janks.tailoring' }],
   ['social', { network: 'pinterest', label: 'Pinterest', url: 'https://www.pinterest.com/JanksTailoring/' }]]),
-  settings: { eyebrow: 'Get in Touch', heading: 'Contact Us', founder_name: 'Kwaku Acheampong', founder_role: 'Master Tailor & Founder', email: 'jankstailoring@gmail.com', phone: '+44 7828 338172', address: '3rd Floor, 86-90 Paul Street\nLondon, EC2A 4NE', form_heading: 'Send a Message', form_text: 'We typically respond within 24 hours.' } } }, order: ['main'] });
+  settings: { eyebrow: 'Get in Touch', heading: 'Contact Us', founder_name: 'Kwaku Acheampong', founder_role: 'Master Tailor & Founder', email: 'jankstailoring@gmail.com', phone: '+44 7565 533096', address: '3rd Floor, 86-90 Paul Street\nLondon, EC2A 4NE', form_heading: 'Send a Message', form_text: 'We typically respond within 24 hours.' } } }, order: ['main'] });
 // ── Fit Guide (template only; assign it to a "Fit Guide" page when one is created) ──
 const chart = (title, note, columns, rows) => ['size_chart', { title, note, columns, rows: rows.map((r) => r.join(' | ')).join('\n') }];
 w('page.fit-guide.json', { sections: { main: { type: 'janks-page-fit-guide', ...blocks([
