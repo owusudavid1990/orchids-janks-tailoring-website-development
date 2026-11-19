@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-page-default",
+      "settings": {
+        "eyebrow": "JANKS Tailoring"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

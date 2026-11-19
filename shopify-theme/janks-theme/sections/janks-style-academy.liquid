@@ -1,0 +1,81 @@
+{%- comment -%} "Style Academy" — four essay cards (reference: HomeClient style academy). Cards are blocks so they can link anywhere. {%- endcomment -%}
+{%- liquid
+  assign cards = section.blocks | where: 'type', 'essay'
+  assign all_url = section.settings.link_url | default: 'https://jankstailoring.com/style-guide'
+-%}
+<section class="jt jt:bg-white jt:py-16 jt:lg:py-24">
+  <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+
+    <div class="jt:mb-12 jt:flex jt:items-end jt:justify-between">
+      <div>
+        <span class="jt:mb-2 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.eyebrow }}</span>
+        <h2 class="jt:font-cinzel jt:text-3xl jt:leading-tight jt:text-charcoal jt:lg:text-5xl">{%- assign heading_parts = section.settings.heading | newline_to_br | split: '<br />' -%}
+          {{ heading_parts[0] }}{% if heading_parts.size > 1 %}<br class="jt:hidden jt:lg:block"> {{ heading_parts[1] | strip }}{% endif %}</h2>
+      </div>
+      <a href="{{ all_url }}" class="jt:hidden jt:items-center jt:gap-2 jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40 jt:transition-colors jt:hover:text-charcoal jt:lg:inline-flex">
+        {{ section.settings.link_label }} {% render 'jt-icon', name: 'arrow-right', size: 12 %}
+      </a>
+    </div>
+
+    <div class="jt:grid jt:gap-6 jt:sm:grid-cols-2 jt:lg:grid-cols-4 jt:lg:gap-8">
+      {%- for block in cards -%}
+        {%- liquid
+          case forloop.index
+            when 1
+              assign fb = 'jt-suits-collection.webp'
+            when 2
+              assign fb = 'jt-hero-suit-1.webp'
+            when 3
+              assign fb = 'jt-hero-suit-3.webp'
+            else
+              assign fb = 'jt-hero-suit-4.jpeg'
+          endcase
+        -%}
+        <div class="jt-reveal" style="--jt-delay: {{ forloop.index0 | times: 0.08 }}s" {{ block.shopify_attributes }}>
+          <a href="{{ block.settings.url | default: all_url }}" class="jt:group jt:block jt:h-full">
+            <div class="jt:relative jt:mb-4 jt:aspect-[4/5] jt:overflow-hidden jt:bg-charcoal">
+              {%- render 'jt-img', image: block.settings.image, fallback: fb, alt: block.settings.title, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:brightness-90 jt:transition-all jt:duration-700 jt:group-hover:scale-105 jt:group-hover:brightness-100', sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw' -%}
+              <span class="jt:absolute jt:top-3 jt:left-3 jt:bg-gold jt:px-2 jt:py-0.5 jt:text-[8px] jt:uppercase jt:tracking-[0.15em] jt:text-charcoal">{{ block.settings.category }}</span>
+            </div>
+            <p class="jt:mb-1.5 jt:text-[10px] jt:text-charcoal/35">{{ block.settings.read_time }}</p>
+            <h3 class="jt:mb-2 jt:font-cinzel jt:text-[15px] jt:leading-snug jt:text-charcoal jt:transition-colors jt:duration-300 jt:group-hover:text-gold">{{ block.settings.title }}</h3>
+            <p class="jt:text-xs jt:leading-relaxed jt:text-charcoal/50">{{ block.settings.excerpt }}</p>
+          </a>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <a href="{{ all_url }}" class="jt:mt-10 jt:flex jt:items-center jt:justify-center jt:gap-2 jt:border jt:border-charcoal/15 jt:py-3.5 jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/50 jt:transition-all jt:duration-300 jt:hover:border-gold jt:hover:text-gold jt:lg:hidden">
+      {{ section.settings.link_label }} {% render 'jt-icon', name: 'arrow-right', size: 11 %}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JANKS Style Academy",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Style Academy" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Learn to Dress\nwith Intention." },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "All Essays" },
+    { "type": "url", "id": "link_url", "label": "Link", "info": "Leave empty to use https://jankstailoring.com/style-guide" }
+  ],
+  "blocks": [
+    {
+      "type": "essay",
+      "name": "Essay card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the built-in reference photo for this position." },
+        { "type": "text", "id": "category", "label": "Category", "default": "Style Essay" },
+        { "type": "text", "id": "read_time", "label": "Read time", "default": "5 min read" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "excerpt", "label": "Excerpt" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "JANKS Style Academy", "blocks": [{ "type": "essay" }, { "type": "essay" }, { "type": "essay" }, { "type": "essay" }] }]
+}
+{% endschema %}

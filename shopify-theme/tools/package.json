@@ -1,0 +1,13 @@
+{
+  "name": "janks-theme-tools",
+  "private": true,
+  "description": "Build tooling for the JANKS Shopify theme (compiles the prefixed Tailwind utility stylesheet). Not uploaded to Shopify.",
+  "scripts": {
+    "build:css": "node build-css.mjs",
+    "watch:css": "node build-css.mjs --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}

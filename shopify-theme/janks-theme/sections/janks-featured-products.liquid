@@ -1,0 +1,52 @@
+{%- comment -%} "Featured Pieces" — products from a Shopify collection (reference: homepage shop section + ShopifyProductGrid). {%- endcomment -%}
+{%- liquid
+  assign coll = section.settings.collection
+  assign all_url = section.settings.link_url | default: routes.collections_url
+-%}
+<section class="jt jt:bg-cream jt:py-16 jt:lg:py-24">
+  <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+    <div class="jt:mb-10 jt:flex jt:items-end jt:justify-between">
+      <div>
+        <span class="jt:mb-2 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.eyebrow }}</span>
+        <h2 class="jt:font-cinzel jt:text-3xl jt:leading-tight jt:text-charcoal jt:lg:text-5xl">{{ section.settings.heading }}</h2>
+        <p class="jt:mt-3 jt:max-w-md jt:text-sm jt:text-charcoal/50">{{ section.settings.subheading }}</p>
+      </div>
+      <a href="{{ all_url }}" class="jt:hidden jt:items-center jt:gap-2 jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40 jt:transition-colors jt:duration-300 jt:hover:text-charcoal jt:lg:inline-flex">
+        {{ section.settings.link_label }} {% render 'jt-icon', name: 'arrow-right', size: 12 %}
+      </a>
+    </div>
+
+    {%- if coll != blank and coll.products_count > 0 -%}
+      <div class="jt:grid jt:grid-cols-2 jt:gap-5 jt:md:grid-cols-3 jt:lg:gap-8">
+        {%- for product in coll.products limit: section.settings.limit -%}
+          {%- render 'jt-product-card', product: product, index: forloop.index0 -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="jt:flex jt:items-center jt:justify-center jt:py-32"><p class="jt:text-sm jt:text-charcoal/50">{% if coll == blank %}Choose a collection in the Theme Editor.{% else %}No products in this collection yet.{% endif %}</p></div>
+    {%- endif -%}
+
+    <div class="jt:mt-10 jt:lg:hidden">
+      <a href="{{ all_url }}" class="jt:inline-flex jt:items-center jt:gap-3 jt:border jt:border-charcoal/20 jt:px-7 jt:py-3.5 jt:text-[11px] jt:uppercase jt:tracking-[0.25em] jt:text-charcoal jt:transition-all jt:duration-300 jt:hover:border-gold jt:hover:text-gold">
+        {{ section.settings.link_label }} {% render 'jt-icon', name: 'arrow-right', size: 12 %}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JANKS Featured Products",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Featured Pieces" },
+    { "type": "text", "id": "subheading", "label": "Sub-heading", "default": "Handcrafted silk ties, ready to ship." },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "limit", "min": 2, "max": 12, "step": 1, "default": 6, "label": "Products to show" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop All" },
+    { "type": "url", "id": "link_url", "label": "Link" }
+  ],
+  "presets": [{ "name": "JANKS Featured Products" }]
+}
+{% endschema %}

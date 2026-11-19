@@ -1,0 +1,9 @@
+{%- comment -%} Bag icon + gold count badge, shared by the header and the cart-icon-bubble section (so the count refreshes when the cart changes). {%- endcomment -%}
+{% render 'jt-icon', name: 'bag', size: 16, class: 'jt:text-charcoal jt:group-hover:text-cream jt:transition-colors' %}
+<span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+{%- if cart.item_count > 0 -%}
+  <span class="jt:absolute jt:-top-0.5 jt:-right-0.5 jt:flex jt:h-4 jt:w-4 jt:items-center jt:justify-center jt:rounded-full jt:bg-gold jt:text-[9px] jt:font-medium jt:text-charcoal">
+    <span aria-hidden="true">{{ cart.item_count }}</span>
+    <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+  </span>
+{%- endif -%}

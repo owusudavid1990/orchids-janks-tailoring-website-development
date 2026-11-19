@@ -1,0 +1,41 @@
+{%- comment -%} "Our Story" — full-bleed split: photo left, copy over a darkened texture right (reference: HomeClient about split). {%- endcomment -%}
+<section class="jt jt:grid jt:min-h-[560px] jt:lg:grid-cols-2">
+  <div class="jt:relative jt:min-h-[320px] jt:lg:min-h-0">
+    {%- render 'jt-img', image: section.settings.image, fallback: 'jt-service-heritage-hero.webp', alt: section.settings.image_alt, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '(max-width: 1024px) 100vw, 50vw' -%}
+    <div class="jt:absolute jt:inset-0 jt:bg-charcoal/20"></div>
+  </div>
+  <div class="jt:relative jt:flex jt:items-center jt:overflow-hidden jt:px-8 jt:py-16 jt:lg:px-16 jt:lg:py-20">
+    {%- render 'jt-img', image: section.settings.background, fallback: 'jt-our-story-bg.png', alt: '', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:object-center', sizes: '50vw' -%}
+    <div class="jt:absolute jt:inset-0 jt:bg-charcoal/75"></div>
+    <div class="jt-reveal jt-reveal--right jt:relative jt:z-10 jt:max-w-md">
+      <span class="jt:mb-5 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.eyebrow }}</span>
+      <h2 class="jt:mb-6 jt:font-cinzel jt:text-3xl jt:leading-tight jt:text-cream jt:lg:text-4xl">{{ section.settings.heading | newline_to_br }}</h2>
+      <p class="jt:mb-4 jt:text-sm jt:leading-relaxed jt:text-cream/50">{{ section.settings.paragraph_1 }}</p>
+      <p class="jt:mb-8 jt:text-sm jt:leading-relaxed jt:text-cream/50">{{ section.settings.paragraph_2 }}</p>
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_url | default: '/pages/about-us' }}" class="jt:inline-flex jt:items-center jt:gap-3 jt:border jt:border-cream/20 jt:px-6 jt:py-3.5 jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-cream jt:transition-all jt:duration-300 jt:hover:bg-cream jt:hover:text-charcoal">
+          {{ section.settings.button_label }} {% render 'jt-icon', name: 'arrow-right', size: 12 %}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JANKS Our Story",
+  "class": "jt-section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "text", "id": "image_alt", "label": "Photo description", "default": "The JANKS atelier" },
+    { "type": "image_picker", "id": "background", "label": "Text panel background texture" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Story" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Founded on craft.\nBuilt on fit." },
+    { "type": "textarea", "id": "paragraph_1", "label": "Paragraph 1", "default": "Founded by Kwaku Acheampong, JANKS Tailoring brings together traditional British cutting technique and a contemporary eye for silhouette." },
+    { "type": "textarea", "id": "paragraph_2", "label": "Paragraph 2", "default": "Every garment we create begins with listening — to who you are, how you move, and how you want to be seen. Based in the heart of London, we believe clothing should be a tool of confidence, not an afterthought." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Meet Kwaku" },
+    { "type": "url", "id": "button_url", "label": "Button link" }
+  ],
+  "presets": [{ "name": "JANKS Our Story" }]
+}
+{% endschema %}

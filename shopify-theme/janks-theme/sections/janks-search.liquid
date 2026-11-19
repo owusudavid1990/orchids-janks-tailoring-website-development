@@ -1,0 +1,69 @@
+{%- comment -%} Search results page in the JANKS style (product cards + page/article links). {%- endcomment -%}
+{%- paginate search.results by 24 -%}
+<div class="jt">
+  <section class="jt:bg-charcoal jt:pt-32 jt:pb-16 jt:lg:pt-40 jt:lg:pb-20">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      <span class="jt:mb-4 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-cream/40">{{ section.settings.eyebrow }}</span>
+      <h1 class="jt:mb-8 jt:font-cinzel jt:text-4xl jt:leading-tight jt:text-cream jt:lg:text-6xl">{% if search.performed %}“{{ search.terms | escape }}”{% else %}{{ section.settings.heading }}{% endif %}</h1>
+      <form action="{{ routes.search_url }}" method="get" role="search" class="jt:relative jt:max-w-xl">
+        <input type="hidden" name="options[prefix]" value="last">
+        <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search pages and products..." aria-label="Search" class="jt:w-full jt:border jt:border-cream/20 jt:bg-transparent jt:py-4 jt:pr-14 jt:pl-5 jt:text-sm jt:text-cream jt:transition-colors jt:placeholder:text-cream/40 jt:focus:border-gold jt:focus:outline-none">
+        <button type="submit" aria-label="Search" class="jt:absolute jt:top-1/2 jt:right-4 jt:-translate-y-1/2 jt:text-cream/60 jt:transition-colors jt:hover:text-gold">{% render 'jt-icon', name: 'search', size: 18 %}</button>
+      </form>
+      {%- if search.performed -%}
+        <p class="jt:mt-6 jt:text-xs jt:tracking-wide jt:text-cream/40">{{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %}</p>
+      {%- endif -%}
+    </div>
+  </section>
+
+  <section class="jt:py-16 jt:lg:py-24">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      {%- if search.performed and search.results_count > 0 -%}
+        {%- assign products = search.results | where: 'object_type', 'product' -%}
+        {%- if products.size > 0 -%}
+          <div class="jt:grid jt:grid-cols-2 jt:gap-5 jt:md:grid-cols-3 jt:lg:grid-cols-4 jt:lg:gap-8">
+            {%- for item in search.results -%}
+              {%- if item.object_type == 'product' -%}{%- render 'jt-product-card', product: item, index: forloop.index0 -%}{%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+        {%- for item in search.results -%}
+          {%- if item.object_type != 'product' -%}
+            <a href="{{ item.url }}" class="jt:group jt:mt-4 jt:flex jt:items-center jt:justify-between jt:border-b jt:border-charcoal/10 jt:py-5">
+              <div>
+                <span class="jt:mb-1 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-gold">{{ item.object_type | capitalize }}</span>
+                <span class="jt:font-cinzel jt:text-lg jt:text-charcoal jt:transition-colors jt:group-hover:text-gold">{{ item.title }}</span>
+              </div>
+              {% render 'jt-icon', name: 'arrow-right', size: 14, class: 'jt:text-charcoal/30 jt:transition-colors jt:group-hover:text-gold' %}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if paginate.pages > 1 -%}
+          <nav class="jt:mt-14 jt:flex jt:items-center jt:justify-center jt:gap-3 jt:text-[11px] jt:uppercase jt:tracking-[0.2em]" aria-label="Pagination">
+            {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" class="jt:border jt:border-charcoal/20 jt:px-4 jt:py-2.5 jt:text-charcoal/60 jt:transition-all jt:hover:border-charcoal jt:hover:text-charcoal">Prev</a>{%- endif -%}
+            {%- if paginate.next -%}<a href="{{ paginate.next.url }}" class="jt:border jt:border-charcoal/20 jt:px-4 jt:py-2.5 jt:text-charcoal/60 jt:transition-all jt:hover:border-charcoal jt:hover:text-charcoal">Next</a>{%- endif -%}
+          </nav>
+        {%- endif -%}
+      {%- elsif search.performed -%}
+        <div class="jt:py-20 jt:text-center">
+          <p class="jt:mb-6 jt:text-sm jt:text-charcoal/60">No results found for “{{ search.terms | escape }}”. Try a different word, or browse the collection.</p>
+          <a href="{{ routes.collections_url }}" class="jt:inline-flex jt:items-center jt:gap-3 jt:border jt:border-charcoal/20 jt:px-7 jt:py-3.5 jt:text-[11px] jt:uppercase jt:tracking-[0.25em] jt:text-charcoal jt:transition-all jt:duration-300 jt:hover:border-gold jt:hover:text-gold">Shop All {% render 'jt-icon', name: 'arrow-right', size: 12 %}</a>
+        </div>
+      {%- else -%}
+        <p class="jt:py-20 jt:text-center jt:text-sm jt:text-charcoal/50">Type something above to search our products and pages.</p>
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "JANKS Search",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Search" },
+    { "type": "text", "id": "heading", "label": "Heading (before a search)", "default": "Find something" }
+  ]
+}
+{% endschema %}

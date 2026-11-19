@@ -1,0 +1,193 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-page-services",
+      "blocks": {
+        "approach_1": {
+          "type": "approach",
+          "settings": {
+            "title": "Heritage",
+            "subtitle": "Traditional Craftsmanship",
+            "lead": "Made the way it was made before shortcuts existed.",
+            "description": "A canvas laid inside the chest so the jacket takes on your posture over years, rather than losing its shape in months. Buttonholes worked by hand. Cloth chosen for how it wears in, not how it photographs on the first day.",
+            "features": "Hand-stitched buttonholes\nTraditional canvas construction\nHeritage cloth selection\nClassic silhouettes"
+          }
+        },
+        "approach_2": {
+          "type": "approach",
+          "settings": {
+            "title": "Confidence",
+            "subtitle": "Power Dressing",
+            "lead": "For the rooms where you're read before you speak.",
+            "description": "A structured shoulder and a clean line through the chest. Cut close enough to look deliberate, generous enough to work a full day in. Quiet cloth, considered proportion — presence without anything that shouts.",
+            "features": "Structured shoulder construction\nConsidered proportion\nPremium wool and silk blends\nExecutive styling"
+          }
+        },
+        "approach_3": {
+          "type": "approach",
+          "settings": {
+            "title": "Sartorial",
+            "subtitle": "Occasion & Celebration",
+            "lead": "Cloth that speaks first.",
+            "description": "Brocades, jacquards and velvets cut on a clean modern line, so the cloth carries the interest and the tailoring stays quiet beneath it. For the occasions where turning up in plain navy isn't the point.",
+            "features": "Brocade, jacquard and velvet\nContemporary cuts\nContrast lapels and detailing\nWeddings and occasion wear"
+          }
+        },
+        "offering_4": {
+          "type": "offering",
+          "settings": {
+            "name": "Consultation",
+            "price": "By appointment",
+            "meta": "30 minutes",
+            "description": "A conversation before any commitment. Talk through the occasion, the cloth and what you already own. Nothing is measured or ordered unless you want it to be."
+          }
+        },
+        "offering_5": {
+          "type": "offering",
+          "settings": {
+            "name": "Bespoke Suit",
+            "price": "From £1,200",
+            "meta": "Allow 4–6 weeks",
+            "description": "A pattern drafted for you alone, cut and constructed from scratch. Multiple fittings, and every detail — cloth, lining, buttons, pockets — decided by you."
+          }
+        },
+        "offering_6": {
+          "type": "offering",
+          "settings": {
+            "name": "Made-to-Measure",
+            "price": "From £650",
+            "meta": "Allow 4–6 weeks",
+            "description": "An existing block adjusted to your measurements. Much of the character of bespoke, at a lower cost and with fewer fittings."
+          }
+        },
+        "offering_7": {
+          "type": "offering",
+          "settings": {
+            "name": "Custom Shirt",
+            "price": "From £75",
+            "meta": "Collar, cuff and cloth to your specification",
+            "description": "Collar shape, cuff, placket and cloth chosen and cut to your measurements. Worth doing in pairs — the difference against off-the-peg is most obvious on a shirt."
+          }
+        },
+        "offering_8": {
+          "type": "offering",
+          "settings": {
+            "name": "Alterations",
+            "price": "From £50",
+            "meta": "Garments you already own",
+            "description": "Sleeves shortened, waists taken in, jackets rebalanced. Bring us something that never quite fitted and we'll tell you honestly whether it can be saved."
+          }
+        },
+        "step_9": {
+          "type": "step",
+          "settings": {
+            "title": "Consultation",
+            "text": "We talk through the occasion, your wardrobe and what you want the garment to do. At our studio, or at your home or office. You're under no obligation to proceed."
+          }
+        },
+        "step_10": {
+          "type": "step",
+          "settings": {
+            "title": "Measure & Cloth",
+            "text": "Measurements are taken and the cloth, lining and details are chosen together. A 70% deposit is taken before work begins."
+          }
+        },
+        "step_11": {
+          "type": "step",
+          "settings": {
+            "title": "Fittings",
+            "text": "The garment is fitted on you and adjusted — on your body, not a mannequin. Private fittings can be arranged at your home or office."
+          }
+        },
+        "step_12": {
+          "type": "step",
+          "settings": {
+            "title": "Collection",
+            "text": "Collect in person, or have it sent by DHL. Allow four to six weeks from the first measurement."
+          }
+        },
+        "faq_13": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does a commission take?",
+            "answer": "Allow four to six weeks from your first measurement. If you have a date to work to — a wedding, an event — tell us at the consultation and we'll be straight with you about whether it's achievable."
+          }
+        },
+        "faq_14": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your payment structure?",
+            "answer": "A 70% deposit is taken before any work begins, with the balance due on completion. You'll be given a firm figure at the consultation, so nothing about the cost comes as a surprise later."
+          }
+        },
+        "faq_15": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the cancellation process?",
+            "answer": "Consultations can be cancelled or rearranged at any time — reply to your confirmation email and we'll sort it. Once cutting has started, bespoke and made-to-measure garments cannot be refunded: the cloth has been cut to your pattern and can't be used for anyone else."
+          }
+        },
+        "faq_16": {
+          "type": "faq",
+          "settings": {
+            "question": "Where do fittings take place?",
+            "answer": "Private fittings can be arranged at your home or your office anywhere in London, as well as at our studio — whichever suits you."
+          }
+        },
+        "faq_17": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you deliver outside London?",
+            "answer": "Yes. Finished garments are sent by DHL, with tracking. UK delivery is typically three to four working days, and we ship internationally."
+          }
+        },
+        "faq_18": {
+          "type": "faq",
+          "settings": {
+            "question": "I'm not sure which service I need.",
+            "answer": "Then book the consultation. That's what it's for — describing what you want in plain language and letting us tell you what it takes."
+          }
+        }
+      },
+      "block_order": [
+        "approach_1",
+        "approach_2",
+        "approach_3",
+        "offering_4",
+        "offering_5",
+        "offering_6",
+        "offering_7",
+        "offering_8",
+        "step_9",
+        "step_10",
+        "step_11",
+        "step_12",
+        "faq_13",
+        "faq_14",
+        "faq_15",
+        "faq_16",
+        "faq_17",
+        "faq_18"
+      ],
+      "settings": {
+        "hero_eyebrow": "Our Expertise",
+        "hero_heading": "Services",
+        "hero_text": "Three approaches to the same intention — a garment that fits you, made in London, by people who will tell you the truth about what suits you.",
+        "approach_button": "Book a Consultation",
+        "offerings_eyebrow": "What We Make",
+        "offerings_heading": "Book Appointment",
+        "offerings_note": "Prices are starting points — the cloth you choose is the largest variable. You'll be given a firm figure at the consultation, before anything is committed to.",
+        "process_eyebrow": "The Process",
+        "process_heading": "From conversation to collection",
+        "faq_eyebrow": "Before You Book",
+        "faq_heading": "Questions worth asking",
+        "closing_eyebrow": "Confidence In Gentility",
+        "closing_heading": "Start with a conversation",
+        "closing_text": "A conversation first, with nothing committed. Come with an occasion in mind, or just a suit that has never fitted properly."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

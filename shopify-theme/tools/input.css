@@ -1,0 +1,65 @@
+/* JANKS utility stylesheet — compiled to ../janks-theme/assets/janks-tw.css (see build-css.mjs).
+   Utilities are prefixed `jt:` and !important so they always win over Shopify's base rules.
+   Tokens below are copied 1:1 from the reference site (src/app/globals.css). */
+@import "tailwindcss/theme.css" prefix(jt);
+@import "tailwindcss/utilities.css" prefix(jt) important;
+
+@source "../janks-theme/sections";
+@source "../janks-theme/snippets";
+@source "../janks-theme/layout";
+@source "../janks-theme/templates";
+
+@theme {
+  /* brand colours */
+  --color-gold: #C9A962;
+  --color-gold-light: #D4BC7E;
+  --color-navy: #1A2A3A;
+  --color-charcoal: #2D2D2D;
+  --color-cream: #FAF9F7;
+  /* semantic colours (light mode) */
+  --color-background: #FAF9F7;
+  --color-foreground: #1C1C1C;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1C1C1C;
+  --color-popover: #FFFFFF;
+  --color-primary: #1C1C1C;
+  --color-primary-foreground: #FAF9F7;
+  --color-secondary: #F5F3EF;
+  --color-secondary-foreground: #1C1C1C;
+  --color-muted: #F5F3EF;
+  --color-muted-foreground: #6B6B6B;
+  --color-accent: #C9A962;
+  --color-accent-foreground: #1C1C1C;
+  --color-destructive: #B91C1C;
+  --color-border: #E5E2DC;
+  --color-input: #E5E2DC;
+  --color-ring: #C9A962;
+  /* type scale (reference :root --text-*) */
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+  --text-5xl: 4rem;
+  /* line heights + tracking (reference :root overrides Tailwind's defaults) */
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.06em;
+  --tracking-widest: 0.2em;
+  /* font families */
+  --font-sans: var(--jt-font-libre);
+  --font-serif: var(--jt-font-cormorant);
+  --font-ui: var(--jt-font-outfit);
+  --font-minimal: var(--jt-font-outfit);
+  --font-base: var(--jt-font-libre);
+  --font-cinzel: var(--jt-font-times);
+  --font-display: var(--jt-font-times);
+  --font-playfair: var(--jt-font-playfair);
+}

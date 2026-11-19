@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-search",
+      "settings": {
+        "eyebrow": "Search",
+        "heading": "Find something"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

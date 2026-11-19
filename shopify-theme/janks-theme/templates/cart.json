@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-cart-page",
+      "settings": {
+        "eyebrow": "Shopping Bag",
+        "heading": "Your Cart"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

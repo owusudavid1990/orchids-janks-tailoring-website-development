@@ -1,0 +1,225 @@
+/* JANKS base layer.
+   Reproduces what the reference site (jankstailoring.com) gets from Tailwind's preflight plus its own
+   globals.css base rules, scoped to `.jt` so Shopify's native components (cart drawer, product forms,
+   customer accounts) are left alone. Every JANKS section root carries the `.jt` class. */
+
+:root {
+  --jt-font-libre: 'Libre Franklin', -apple-system, BlinkMacSystemFont, sans-serif;
+  --jt-font-outfit: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --jt-font-times: 'Times New Roman', Times, serif;
+  --jt-font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --jt-font-playfair: 'Playfair Display', Georgia, serif;
+  --jt-gold: #C9A962;
+  --jt-cream: #FAF9F7;
+  --jt-charcoal: #2D2D2D;
+}
+
+html { scroll-behavior: smooth; overflow-x: clip; }
+
+body.janks {
+  display: block;
+  margin: 0;
+  background-color: #FAF9F7;
+  color: #2D2D2D;
+  font-family: var(--jt-font-libre);
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+body.janks main { display: block; }
+
+/* ── preflight (scoped) ───────────────────────────────────────────── */
+.jt, .jt *, .jt *::before, .jt *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid #E5E2DC;
+}
+.jt *::before, .jt *::after { --tw-content: ''; }
+.jt { -webkit-text-size-adjust: 100%; tab-size: 4; }
+.jt h1, .jt h2, .jt h3, .jt h4, .jt h5, .jt h6 { font-size: inherit; font-weight: inherit; }
+.jt a { color: inherit; -webkit-text-decoration: inherit; text-decoration: inherit; }
+.jt b, .jt strong { font-weight: bolder; }
+.jt small { font-size: 80%; }
+.jt img, .jt svg, .jt video, .jt canvas, .jt iframe { display: block; vertical-align: middle; }
+.jt img, .jt video { max-width: 100%; height: auto; }
+.jt ol, .jt ul, .jt menu { list-style: none; }
+.jt table { border-collapse: collapse; text-indent: 0; border-color: inherit; }
+.jt button, .jt input, .jt select, .jt optgroup, .jt textarea {
+  font: inherit; letter-spacing: inherit; color: inherit; border-radius: 0; background-color: transparent; opacity: 1;
+}
+.jt ::placeholder { opacity: 1; color: color-mix(in oklab, currentColor 50%, transparent); }
+.jt textarea { resize: vertical; }
+.jt button, .jt [type='button'], .jt [type='submit'] { appearance: button; }
+.jt summary { display: list-item; }
+.jt [hidden]:where(:not([hidden='until-found'])) { display: none !important; }
+.jt address { font-style: normal; }
+
+/* ── reference base rules (globals.css @layer base) ───────────────── */
+.jt h1 { font-family: var(--jt-font-times); font-size: 48px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 400; }
+.jt h2 { font-family: var(--jt-font-times); font-size: 36px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 400; }
+.jt h3 { font-family: var(--jt-font-times); font-size: 28px; line-height: 1.25; letter-spacing: -0.02em; font-weight: 400; }
+.jt h4 { font-family: var(--jt-font-outfit); font-size: 22px; line-height: 1.25; letter-spacing: 0; font-weight: 500; }
+.jt h5, .jt h6 { font-family: var(--jt-font-outfit); font-size: 18px; line-height: 1.5; letter-spacing: 0; font-weight: 500; }
+.jt p { font-family: var(--jt-font-libre); font-size: 15px; line-height: 1.7; }
+.jt button, .jt input, .jt select, .jt textarea, .jt label, .jt a, .jt nav { font-family: var(--jt-font-outfit); }
+.jt button:not(:disabled), .jt a, .jt [role='button'], .jt label[for], .jt select, .jt summary { cursor: pointer; }
+.jt button, .jt a, .jt [role='button'], .jt input, .jt select, .jt textarea, .jt label {
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.jt input:focus, .jt textarea:focus, .jt select:focus { outline: none; }
+.jt :focus-visible { outline: 2px solid rgba(201, 169, 98, 0.5); outline-offset: 2px; }
+.jt select { appearance: none; -webkit-appearance: none; }
+
+/* Scroll-reveal (replaces framer-motion whileInView). Elements start hidden only when JS is running. */
+.js .jt-reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease-out, transform .6s ease-out; transition-delay: var(--jt-delay, 0s); }
+.js .jt-reveal--left { transform: translateX(-24px); }
+.js .jt-reveal--right { transform: translateX(24px); }
+.js .jt-reveal--zoom { transform: scale(1.03); transition-duration: .9s; }
+.js .jt-reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .js .jt-reveal { opacity: 1; transform: none; transition: none; } }
+
+/* Hero slideshow */
+.jt-slide { opacity: 0; transition: opacity 1.2s ease-in-out; }
+.jt-slide.is-active { opacity: 1; }
+.jt-slide img { transform: scale(1.04); transition: transform 1.6s ease-out; }
+.jt-slide.is-active img { transform: scale(1); }
+@keyframes jt-bounce { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
+.jt-scroll-cue { animation: jt-bounce 2s infinite; }
+
+/* ── Header ───────────────────────────────────────────────────────── */
+.jt-nav__bar { height: 80px; transition: height .5s ease-out; }
+.jt .jt-nav__logo { height: 56px; }
+.jt-nav[data-scrolled='true'] .jt-nav__bar { height: 72px; }
+.jt .jt-nav[data-scrolled='true'] .jt-nav__logo { height: 44px; }
+@media (min-width: 1280px) {
+  .jt-nav__bar { height: 112px; }
+  .jt .jt-nav__logo { height: 88px; }
+  .jt-nav[data-scrolled='true'] .jt-nav__bar { height: 80px; }
+  .jt .jt-nav[data-scrolled='true'] .jt-nav__logo { height: 56px; }
+}
+.jt-mnav { transform: translateX(100%); transition: transform .45s cubic-bezier(.22, 1, .36, 1); visibility: hidden; }
+.jt-mnav.is-open { transform: none; visibility: visible; }
+.jt-mnav__link { opacity: 0; transform: translateX(24px); transition: opacity .4s ease, transform .4s ease; }
+.jt-mnav.is-open .jt-mnav__link { opacity: 1; transform: none; transition-delay: calc(.05s + var(--i, 0) * .07s); }
+.jt-mnav-backdrop { opacity: 0; transition: opacity .3s ease; }
+.jt-mnav-backdrop.is-open { opacity: 1; }
+html.jt-lock { overflow: hidden; }
+
+/* Hero copy swap + testimonial rotation */
+.jt-hero-copy { transition: opacity .7s ease .3s, transform .7s ease .3s; }
+.jt-hero-copy.is-out { opacity: 0; transform: translateY(-10px); transition: opacity .35s ease, transform .35s ease; }
+.jt-slide.is-active { z-index: 1; }
+.jt-quote { display: none; }
+.jt-quote.is-active { display: block; animation: jt-fade-up .5s ease both; }
+@keyframes jt-fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.jt .jt-dot { height: 1px; width: 16px; background: rgba(250, 249, 247, .3); transition: all .5s; }
+.jt .jt-dot.is-active { width: 40px; background: #FAF9F7; }
+.jt .jt-tdot { width: 8px; height: 8px; border-radius: 9999px; background: rgba(45, 45, 45, .2); transition: all .3s; }
+.jt .jt-tdot.is-active { background: #2D2D2D; }
+
+/* Dawn hides every empty a/div/p/... (`div:empty { display: none }`); our overlays, dividers and spacers are intentionally empty. */
+.jt :is(a, ul, dl, div, section, article, p, h1, h2, h3, h4, h5, h6):empty { display: revert; }
+
+/* Welcome popup */
+.jt-popup { display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .3s ease; }
+.jt-popup[hidden] { display: none; }
+.jt-popup.is-open { opacity: 1; }
+.jt-popup__card { transform: translateY(16px) scale(.96); transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
+.jt-popup.is-open .jt-popup__card { transform: none; }
+
+/* Product page */
+.jt-gallery__slide { opacity: 0; transition: opacity .3s ease; pointer-events: none; }
+.jt-gallery__slide.is-active { opacity: 1; pointer-events: auto; z-index: 1; }
+.jt .jt-gdot { width: 6px; height: 6px; border-radius: 9999px; background: rgba(45, 45, 45, .3); transition: all .2s; }
+.jt .jt-gdot.is-active { width: 16px; background: #C9A962; }
+.jt .jt-gthumb { border: 2px solid transparent; opacity: .6; transition: all .2s; }
+.jt .jt-gthumb:hover { opacity: 1; }
+.jt .jt-gthumb.is-active { border-color: #C9A962; opacity: 1; }
+.jt .jt-variant { display: inline-block; padding: 8px 12px; font-family: var(--jt-font-outfit); font-size: 10px; line-height: 1.7; letter-spacing: .1em; text-transform: uppercase; border: 1px solid rgba(45, 45, 45, .2); color: #2D2D2D; cursor: pointer; transition: all .2s; }
+.jt .jt-variant:hover { border-color: #2D2D2D; }
+.jt .jt-variant:has(input:checked) { border-color: #2D2D2D; background: #2D2D2D; color: #FAF9F7; }
+.jt .jt-variant:has(input:focus-visible) { outline: 2px solid rgba(201, 169, 98, .6); outline-offset: 2px; }
+.jt .jt-variant.is-soldout { border-color: rgba(45, 45, 45, .1); color: rgba(45, 45, 45, .3); text-decoration: line-through; cursor: not-allowed; }
+.jt .jt-qty { border: 0; background: transparent; -moz-appearance: textfield; appearance: textfield; }
+.jt .jt-qty::-webkit-inner-spin-button, .jt .jt-qty::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.jt-compare { margin-right: 8px; font-size: 16px; color: rgba(45, 45, 45, .4); text-decoration: line-through; }
+.jt-add:disabled { opacity: .5; cursor: not-allowed; }
+.jt-add .loading__spinner { width: 16px; height: 16px; }
+.jt-add .loading__spinner svg { width: 100%; height: 100%; }
+
+/* Cart drawer */
+.jt-cdrawer { position: fixed; inset: 0; z-index: 60; visibility: hidden; pointer-events: none; }
+.jt-cdrawer.is-open { visibility: visible; pointer-events: auto; }
+.jt-cdrawer__overlay { opacity: 0; transition: opacity .25s ease; }
+.jt-cdrawer.is-open .jt-cdrawer__overlay { opacity: 1; }
+.jt-cdrawer__panel { transform: translateX(100%); transition: transform .45s cubic-bezier(.22, 1, .36, 1); outline: none; }
+.jt-cdrawer.is-open .jt-cdrawer__panel { transform: none; }
+[data-jt-cart-mount].is-loading { opacity: .55; pointer-events: none; transition: opacity .2s; }
+.jt .jt-cdrawer__panel:focus-visible { outline: none; }
+
+/* Process page tabs */
+.jt-pslide { opacity: 0; transition: opacity .6s ease; }
+.jt-pslide.is-active { opacity: 1; z-index: 1; }
+.jt .jt-ptab { color: rgba(250, 249, 247, .4); }
+.jt .jt-ptab:hover { color: rgba(250, 249, 247, .6); }
+.jt .jt-ptab.is-active { color: #FAF9F7; }
+.jt-ptab__bar { opacity: 0; transition: opacity .3s; }
+.jt .jt-ptab.is-active .jt-ptab__bar { opacity: 1; }
+[data-jt-ppanel][hidden] { display: none; }
+
+/* Gallery */
+.jt .jt-gfilter { border-color: rgba(45, 45, 45, .2); color: rgba(45, 45, 45, .6); }
+.jt .jt-gfilter:hover { border-color: rgba(45, 45, 45, .4); }
+.jt .jt-gfilter.is-active { background: #2D2D2D; color: #FAF9F7; border-color: #2D2D2D; }
+.jt-scrollless { scrollbar-width: none; }
+.jt-scrollless::-webkit-scrollbar { display: none; }
+.jt-lightbox:not([hidden]) { display: flex; }
+[data-jt-gitem][hidden] { display: none; }
+
+/* Long-form body copy (policies, blog articles, rich text pages) */
+.jt .jt-prose { font-size: 14px; line-height: 1.7; color: rgba(45, 45, 45, .7); }
+.jt .jt-prose > * + * { margin-top: 1rem; }
+.jt .jt-prose h1, .jt .jt-prose h2 { font-family: var(--jt-font-times); font-size: 24px; line-height: 1.25; color: #2D2D2D; margin-top: 3rem; letter-spacing: -0.02em; }
+.jt .jt-prose h3, .jt .jt-prose h4 { font-family: var(--jt-font-times); font-size: 18px; line-height: 1.3; color: #2D2D2D; margin-top: 2rem; font-weight: 400; }
+.jt .jt-prose p, .jt .jt-prose li { font-size: 14px; line-height: 1.7; }
+.jt .jt-prose ul { list-style: none; padding-left: 0; }
+.jt .jt-prose ul li { position: relative; padding-left: 1.25rem; margin-top: .5rem; }
+.jt .jt-prose ul li::before { content: '•'; position: absolute; left: 0; color: #C9A962; }
+.jt .jt-prose ol { list-style: decimal; padding-left: 1.25rem; }
+.jt .jt-prose ol li { margin-top: .5rem; padding-left: .25rem; }
+.jt .jt-prose strong { color: #2D2D2D; font-weight: 500; }
+.jt .jt-prose a { color: #C9A962; text-decoration: underline; text-underline-offset: 3px; }
+.jt .jt-prose a:hover { color: #2D2D2D; }
+.jt .jt-prose img { max-width: 100%; height: auto; }
+.jt .jt-prose table { width: 100%; font-size: 13px; }
+.jt .jt-prose th, .jt .jt-prose td { border: 1px solid rgba(45, 45, 45, .1); padding: .5rem .75rem; text-align: left; }
+
+/* Shopify-generated legal pages (/policies/*): the platform renders these itself, so the JANKS look is applied with CSS */
+body.janks .shopify-policy__container { max-width: 896px; width: 100%; margin: 0 auto; padding: 0 24px 96px; }
+body.janks .shopify-policy__title { margin: 0 0 64px; padding: 128px 0 64px; text-align: left; background: #2D2D2D; box-shadow: 0 0 0 100vmax #2D2D2D; clip-path: inset(0 -100vmax); }
+body.janks .shopify-policy__title::before { content: 'Legal'; display: block; margin-bottom: 16px; font-family: var(--jt-font-outfit); font-size: 11px; line-height: 1.7; letter-spacing: .3em; text-transform: uppercase; color: rgba(250, 249, 247, .4); }
+body.janks .shopify-policy__title h1 { margin: 0; font-family: var(--jt-font-times); font-size: 36px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 400; color: #FAF9F7; }
+@media (min-width: 1024px) { body.janks .shopify-policy__title { padding-top: 160px; padding-bottom: 80px; } body.janks .shopify-policy__title h1 { font-size: 60px; } }
+body.janks .shopify-policy__body { font-family: var(--jt-font-libre); font-size: 14px; line-height: 1.7; color: rgba(45, 45, 45, .7); }
+body.janks .shopify-policy__body .rte > * + * { margin-top: 1rem; }
+body.janks .shopify-policy__body h1, body.janks .shopify-policy__body h2 { font-family: var(--jt-font-times); font-size: 24px; line-height: 1.25; letter-spacing: -0.02em; font-weight: 400; color: #2D2D2D; margin-top: 3rem; }
+body.janks .shopify-policy__body h3, body.janks .shopify-policy__body h4 { font-family: var(--jt-font-times); font-size: 18px; line-height: 1.3; font-weight: 400; color: #2D2D2D; margin-top: 2rem; }
+body.janks .shopify-policy__body p, body.janks .shopify-policy__body li { font-size: 14px; line-height: 1.7; }
+body.janks .shopify-policy__body strong { color: #2D2D2D; font-weight: 500; }
+body.janks .shopify-policy__body a { color: #C9A962; text-decoration: underline; text-underline-offset: 3px; }
+body.janks .shopify-policy__body ul { list-style: none; padding-left: 0; }
+body.janks .shopify-policy__body ul li { position: relative; padding-left: 1.25rem; margin-top: .5rem; }
+body.janks .shopify-policy__body ul li::before { content: '•'; position: absolute; left: 0; color: #C9A962; }
+
+/* Fit guide */
+.jt .jt-fittab { color: rgba(45, 45, 45, .4); }
+.jt .jt-fittab:hover { color: rgba(45, 45, 45, .6); }
+.jt .jt-fittab.is-active { color: #2D2D2D; }
+.jt-fittab__bar { opacity: 0; }
+.jt-fittab.is-active .jt-fittab__bar { opacity: 1; }
+.jt .jt-fititem:hover { background: #fffbeb; border-color: #fde68a; }
+[data-jt-fit-panel][hidden] { display: none; }

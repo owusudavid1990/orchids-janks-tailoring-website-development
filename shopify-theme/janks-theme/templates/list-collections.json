@@ -1,0 +1,73 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-categories",
+      "blocks": {
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "title": "Suits",
+            "description": "Impeccably tailored suits for every occasion",
+            "url": "https://jankstailoring.com/book"
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "title": "Shirts",
+            "description": "Premium dress shirts crafted to perfection",
+            "url": "https://jankstailoring.com/book"
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "title": "Trousers",
+            "description": "Classic and contemporary trouser styles",
+            "url": "https://jankstailoring.com/book"
+          }
+        },
+        "tile_4": {
+          "type": "tile",
+          "settings": {
+            "title": "Neck Ties",
+            "description": "Handcrafted silk ties in classic and contemporary patterns",
+            "url": "/collections/neckties"
+          }
+        },
+        "tile_5": {
+          "type": "tile",
+          "settings": {
+            "title": "Cufflinks",
+            "description": "Refined cufflinks for the discerning gentleman",
+            "url": "/collections/mother-of-pearl-cufflinks-copy-1"
+          }
+        },
+        "tile_6": {
+          "type": "tile",
+          "settings": {
+            "title": "Pocket Squares",
+            "description": "The finest finishing touch to every ensemble",
+            "url": "/collections/pocket-square"
+          }
+        }
+      },
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3",
+        "tile_4",
+        "tile_5",
+        "tile_6"
+      ],
+      "settings": {
+        "eyebrow": "Shop Collection",
+        "heading": "Categories",
+        "text": "Browse our curated collection and shop directly from our Shopify store. Each piece reflects our commitment to exceptional craftsmanship."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

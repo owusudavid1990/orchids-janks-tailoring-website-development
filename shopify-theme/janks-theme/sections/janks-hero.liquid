@@ -1,0 +1,95 @@
+{%- comment -%} Homepage hero — image slideshow with headline, sub-line, slide dots and a "Book a Fitting" button (reference: HomeClient hero). {%- endcomment -%}
+{%- liquid
+  assign slides = section.blocks | where: 'type', 'slide'
+  assign first = slides.first
+  assign btn_url = section.settings.button_url
+  if btn_url == blank
+    assign btn_url = 'https://jankstailoring.com/book'
+  endif
+-%}
+<section class="jt jt:relative jt:h-screen jt:min-h-[600px] jt:overflow-hidden" data-jt-hero>
+
+  {%- for block in slides -%}
+    {%- liquid
+      assign fb = 'jt-hero-groomsmen-garden.jpg'
+      assign alt_text = block.settings.headline | newline_to_br | replace: '<br />', ' '
+      if forloop.first
+        assign img_loading = 'eager'
+        assign img_priority = 'high'
+      else
+        assign img_loading = 'lazy'
+        assign img_priority = nil
+      endif
+      if forloop.index == 2
+        assign fb = 'jt-hero-groom-bar.jpg'
+      elsif forloop.index >= 3
+        assign fb = 'jt-hero-jacquard-lapel-bw.jpg'
+      endif
+    -%}
+    <div class="jt-slide jt:absolute jt:inset-0{% if forloop.first %} is-active{% endif %}" data-jt-slide data-headline="{{ block.settings.headline | escape }}" data-sub="{{ block.settings.subhead | escape }}" {{ block.shopify_attributes }}>
+      {%- render 'jt-img', image: block.settings.image, fallback: fb, alt: alt_text, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '100vw', loading: img_loading, priority: img_priority, max: 2400 -%}
+    </div>
+  {%- endfor -%}
+
+  <div class="jt:absolute jt:inset-0 jt:z-10 jt:bg-gradient-to-b jt:from-black/30 jt:via-black/35 jt:to-black/80"></div>
+
+  <div class="jt:relative jt:z-20 jt:mx-auto jt:flex jt:h-full jt:max-w-[1800px] jt:flex-col jt:justify-end jt:px-6 jt:pb-20 jt:lg:px-16 jt:lg:pb-28">
+    <div class="jt-hero-copy" data-jt-hero-copy>
+      <h1 class="jt:font-cinzel jt:text-[clamp(3.5rem,10vw,8rem)] jt:leading-[1.0] jt:tracking-[-0.02em] jt:whitespace-pre-line jt:text-cream" data-jt-hero-h1>{{ first.settings.headline }}</h1>
+      <p class="jt:mt-4 jt:text-sm jt:tracking-wide jt:text-cream/60" data-jt-hero-sub>{{ first.settings.subhead }}</p>
+    </div>
+
+    <div class="jt:mt-10 jt:flex jt:items-center jt:justify-between">
+      <div class="jt:flex jt:gap-2">
+        {%- if slides.size > 1 -%}
+          {%- for block in slides -%}
+            <button type="button" data-jt-dot aria-label="Show slide {{ forloop.index }}"{% if forloop.first %} aria-current="true"{% endif %} class="jt-dot jt:relative jt:h-px jt:before:absolute jt:before:-inset-x-1 jt:before:-inset-y-3 jt:before:content-['']{% if forloop.first %} is-active{% endif %}"></button>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ btn_url }}" class="jt:inline-flex jt:items-center jt:gap-3 jt:bg-cream jt:px-7 jt:py-3.5 jt:text-[11px] jt:uppercase jt:tracking-[0.25em] jt:text-charcoal jt:transition-colors jt:duration-300 jt:hover:bg-gold">
+          {{ section.settings.button_label }}
+          {% render 'jt-icon', name: 'arrow-right', size: 13 %}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="jt-scroll-cue jt:absolute jt:bottom-6 jt:left-1/2 jt:z-20">
+    {% render 'jt-icon', name: 'chevron-down', size: 18, class: 'jt:text-cream/30' %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JANKS Hero",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Book a Fitting" },
+    { "type": "url", "id": "button_url", "label": "Button link", "info": "Leave empty to use https://jankstailoring.com/book" }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the built-in reference photo for this slide." },
+        { "type": "textarea", "id": "headline", "label": "Headline", "default": "Bespoke\nTailoring" },
+        { "type": "text", "id": "subhead", "label": "Sub-line", "default": "Every garment begins with you." }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "JANKS Hero",
+      "blocks": [
+        { "type": "slide", "settings": { "headline": "Bespoke\nTailoring", "subhead": "Every garment begins with you." } },
+        { "type": "slide", "settings": { "headline": "Made\nto Measure", "subhead": "Precision fit. Singular style." } },
+        { "type": "slide", "settings": { "headline": "Crafted\nfor You", "subhead": "Heritage craft. Modern silhouette." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

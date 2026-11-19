@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-404",
+      "settings": {
+        "eyebrow": "Error 404",
+        "heading": "Page not found",
+        "text": "The page you are looking for has been moved or no longer exists. Let us take you back to something well made.",
+        "button_label": "Back to Home"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,39 @@
+{%- comment -%} "Our Work" portfolio split — big photo left, editorial copy right (reference: HomeClient portfolio split). {%- endcomment -%}
+<section class="jt jt:overflow-hidden jt:bg-white">
+  <div class="jt:flex jt:min-h-[640px] jt:flex-col jt:lg:min-h-[720px] jt:lg:flex-row">
+    <div class="jt-reveal jt-reveal--zoom jt:relative jt:aspect-[4/5] jt:overflow-hidden jt:lg:aspect-auto jt:lg:w-[52%]">
+      {%- render 'jt-img', image: section.settings.image, fallback: 'jt-hero-suit-1.webp', alt: section.settings.image_alt, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:object-top', sizes: '(max-width: 1024px) 100vw, 52vw' -%}
+      <div class="jt:absolute jt:inset-0 jt:hidden jt:bg-gradient-to-r jt:from-transparent jt:via-transparent jt:to-white/20 jt:lg:block"></div>
+    </div>
+    <div class="jt-reveal jt-reveal--right jt:flex jt:flex-col jt:justify-center jt:px-8 jt:py-16 jt:lg:w-[48%] jt:lg:px-16 jt:lg:py-0 jt:xl:px-20" style="--jt-delay: .2s">
+      <span class="jt:mb-6 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.eyebrow }}</span>
+      <h2 class="jt:mb-8 jt:font-cinzel jt:text-4xl jt:leading-tight jt:text-charcoal jt:lg:text-5xl jt:xl:text-6xl">{{ section.settings.heading }}</h2>
+      <div class="jt:mb-8 jt:h-px jt:w-10 jt:bg-gold"></div>
+      <p class="jt:mb-6 jt:text-base jt:leading-relaxed jt:text-charcoal/60">{{ section.settings.paragraph_1 }}</p>
+      <p class="jt:mb-10 jt:text-sm jt:leading-relaxed jt:text-charcoal/40">{{ section.settings.paragraph_2 }}</p>
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_url | default: '/pages/gallery' }}" class="jt:inline-flex jt:items-center jt:gap-3 jt:self-start jt:border jt:border-charcoal/20 jt:px-7 jt:py-3.5 jt:text-[11px] jt:uppercase jt:tracking-[0.25em] jt:text-charcoal jt:transition-all jt:duration-300 jt:hover:border-gold jt:hover:text-gold">
+          {{ section.settings.button_label }} {% render 'jt-icon', name: 'arrow-right', size: 12 %}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JANKS Our Work",
+  "class": "jt-section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "text", "id": "image_alt", "label": "Photo description", "default": "JANKS bespoke portfolio" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Portfolio" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Our Work" },
+    { "type": "textarea", "id": "paragraph_1", "label": "Paragraph 1", "default": "Every garment that leaves the JANKS atelier is a testament to the belief that clothing is not merely worn — it is experienced. Our portfolio spans decades of commissions for executives, dignitaries, and discerning individuals who understand that true style begins with fit." },
+    { "type": "textarea", "id": "paragraph_2", "label": "Paragraph 2", "default": "From the first consultation to the final fitting, each piece is constructed by hand using the finest British and Italian cloth. No shortcuts. No compromises. Only work we are proud to put our name to." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "View Full Portfolio" },
+    { "type": "url", "id": "button_url", "label": "Button link" }
+  ],
+  "presets": [{ "name": "JANKS Our Work" }]
+}
+{% endschema %}

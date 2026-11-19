@@ -1,0 +1,104 @@
+{%- comment -%} "What We Create" — full-bleed services mosaic: one large tile plus three stacked (reference: HomeClient services tile grid). {%- endcomment -%}
+{%- liquid
+  assign tiles = section.blocks | where: 'type', 'tile'
+  assign all_url = section.settings.link_url | default: '/pages/services'
+-%}
+<section class="jt jt:bg-cream jt:pt-14 jt:pb-0 jt:lg:pt-20">
+  <div class="jt:mx-auto jt:mb-8 jt:max-w-7xl jt:px-6 jt:lg:px-12">
+    <div class="jt:flex jt:items-end jt:justify-between">
+      <div>
+        <span class="jt:mb-2 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.eyebrow }}</span>
+        <h2 class="jt:font-cinzel jt:text-3xl jt:leading-tight jt:text-charcoal jt:lg:text-5xl">{{ section.settings.heading }}</h2>
+      </div>
+      <a href="{{ all_url }}" class="jt:hidden jt:items-center jt:gap-2 jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40 jt:transition-colors jt:duration-300 jt:hover:text-charcoal jt:lg:inline-flex">
+        {{ section.settings.link_label }} {% render 'jt-icon', name: 'arrow-right', size: 12 %}
+      </a>
+    </div>
+  </div>
+
+  <div class="jt:flex jt:flex-col jt:gap-px jt:lg:flex-row" style="height: clamp(520px, 72vh, 820px)">
+    {%- for block in tiles limit: 1 -%}
+      {%- liquid
+        assign url = block.settings.url | default: '/pages/services'
+      -%}
+      <div class="jt-reveal jt-reveal--zoom jt:group jt:relative jt:h-72 jt:shrink-0 jt:cursor-pointer jt:overflow-hidden jt:lg:h-full jt:lg:w-[58%]" {{ block.shopify_attributes }}>
+        <a href="{{ url }}" class="jt:absolute jt:inset-0">
+          {%- render 'jt-img', image: block.settings.image, fallback: 'jt-suits-collection.webp', alt: block.settings.label, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:transition-transform jt:duration-1000 jt:group-hover:scale-105', sizes: '(max-width: 1024px) 100vw, 58vw' -%}
+          <div class="jt:absolute jt:inset-0 jt:bg-gradient-to-t jt:from-charcoal/85 jt:via-charcoal/20 jt:to-transparent"></div>
+          <div class="jt:absolute jt:inset-0 jt:bg-gradient-to-r jt:from-charcoal/20 jt:to-transparent"></div>
+          <div class="jt:absolute jt:top-6 jt:left-6 jt:flex jt:h-9 jt:w-9 jt:items-center jt:justify-center jt:border jt:border-gold/60">
+            <span class="jt:font-cinzel jt:text-[11px] jt:text-gold">01</span>
+          </div>
+          <div class="jt:absolute jt:right-0 jt:bottom-0 jt:left-0 jt:p-8 jt:lg:p-10">
+            <span class="jt:mb-2 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.25em] jt:text-gold">{{ block.settings.kicker }}</span>
+            <h3 class="jt:font-cinzel jt:text-3xl jt:leading-tight jt:text-cream jt:transition-colors jt:duration-500 jt:group-hover:text-gold jt:lg:text-4xl">{{ block.settings.label }}</h3>
+            <p class="jt:mt-3 jt:hidden jt:max-w-xs jt:text-sm jt:leading-relaxed jt:text-cream/55 jt:lg:block">{{ block.settings.description }}</p>
+            <div class="jt:mt-5 jt:inline-flex jt:items-center jt:gap-2 jt:border jt:border-cream/30 jt:bg-gold/0 jt:px-5 jt:py-2.5 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-cream jt:transition-all jt:duration-500 jt:group-hover:border-gold jt:group-hover:bg-gold jt:group-hover:text-charcoal">
+              Explore {% render 'jt-icon', name: 'arrow-right', size: 10 %}
+            </div>
+          </div>
+        </a>
+      </div>
+    {%- endfor -%}
+
+    <div class="jt:flex jt:h-44 jt:flex-row jt:gap-px jt:lg:h-full jt:lg:w-[42%] jt:lg:flex-col">
+      {%- for block in tiles offset: 1 -%}
+        {%- liquid
+          assign url = block.settings.url | default: '/pages/services'
+          case forloop.index
+            when 1
+              assign fb = 'jt-hero-suit-1.webp'
+            when 2
+              assign fb = 'jt-work-mtm-hero.jpeg'
+            else
+              assign fb = 'jt-work-alterations-hero.jpeg'
+          endcase
+        -%}
+        <div class="jt-reveal jt-reveal--right jt:group jt:relative jt:min-h-0 jt:flex-1 jt:cursor-pointer jt:overflow-hidden" style="--jt-delay: {{ forloop.index0 | times: 0.12 | plus: 0.1 }}s" {{ block.shopify_attributes }}>
+          <a href="{{ url }}" class="jt:absolute jt:inset-0">
+            {%- render 'jt-img', image: block.settings.image, fallback: fb, alt: block.settings.label, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:brightness-90 jt:transition-transform jt:duration-700 jt:group-hover:scale-105 jt:group-hover:brightness-100', sizes: '(max-width: 1024px) 33vw, 42vw' -%}
+            <div class="jt:absolute jt:inset-0 jt:bg-gradient-to-t jt:from-charcoal/80 jt:via-charcoal/30 jt:to-transparent"></div>
+            <div class="jt:absolute jt:top-4 jt:left-4 jt:flex jt:h-7 jt:w-7 jt:items-center jt:justify-center jt:border jt:border-gold/50 jt:opacity-0 jt:transition-opacity jt:duration-300 jt:group-hover:opacity-100">
+              <span class="jt:font-cinzel jt:text-[10px] jt:text-gold">0{{ forloop.index | plus: 1 }}</span>
+            </div>
+            <div class="jt:absolute jt:right-0 jt:bottom-0 jt:left-0 jt:flex jt:items-end jt:justify-between jt:p-4 jt:lg:p-5">
+              <div>
+                <span class="jt:mb-0.5 jt:block jt:text-[9px] jt:uppercase jt:tracking-[0.2em] jt:text-gold">{{ block.settings.kicker }}</span>
+                <h3 class="jt:font-cinzel jt:text-base jt:text-cream jt:transition-colors jt:duration-300 jt:group-hover:text-gold jt:lg:text-lg">{{ block.settings.label }}</h3>
+              </div>
+              {% render 'jt-icon', name: 'arrow-right', size: 14, class: 'jt:mb-0.5 jt:shrink-0 jt:text-cream/30 jt:transition-all jt:duration-300 jt:group-hover:translate-x-1 jt:group-hover:text-gold' %}
+            </div>
+          </a>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JANKS Services Mosaic",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Services" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What We Create" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "All Services" },
+    { "type": "url", "id": "link_url", "label": "Link" }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Service tile",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the built-in reference photo for this position." },
+        { "type": "text", "id": "label", "label": "Title", "default": "Bespoke Suit" },
+        { "type": "text", "id": "kicker", "label": "Kicker (price line)", "default": "From consultation" },
+        { "type": "textarea", "id": "description", "label": "Description (first tile only)" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "JANKS Services Mosaic", "blocks": [{ "type": "tile" }, { "type": "tile" }, { "type": "tile" }, { "type": "tile" }] }]
+}
+{% endschema %}

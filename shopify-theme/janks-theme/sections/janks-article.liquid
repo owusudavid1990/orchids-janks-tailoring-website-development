@@ -1,0 +1,38 @@
+{%- comment -%} Single Style Academy essay. {%- endcomment -%}
+<div class="jt">
+  <article>
+    <section class="jt:bg-charcoal jt:pt-32 jt:pb-16 jt:lg:pt-40 jt:lg:pb-20">
+      <div class="jt:mx-auto jt:max-w-4xl jt:px-6 jt:lg:px-12">
+        <a href="{{ blog.url }}" class="jt:mb-6 jt:inline-flex jt:items-center jt:gap-2 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-cream/40 jt:transition-colors jt:hover:text-cream">← {{ blog.title }}</a>
+        <span class="jt:mb-4 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{% if article.tags.size > 0 %}{{ article.tags.first }}{% else %}{{ blog.title }}{% endif %}</span>
+        <h1 class="jt:mb-6 jt:font-cinzel jt:text-4xl jt:leading-tight jt:text-cream jt:lg:text-5xl">{{ article.title }}</h1>
+        <p class="jt:text-xs jt:tracking-wide jt:text-cream/40">{{ article.published_at | date: '%-d %B %Y' }}{% if article.author %} · {{ article.author }}{% endif %}</p>
+      </div>
+    </section>
+    <section class="jt:py-16 jt:lg:py-24">
+      <div class="jt:mx-auto jt:max-w-3xl jt:px-6 jt:lg:px-12">
+        {%- if article.image -%}
+          <div class="jt:mb-12 jt:overflow-hidden jt:bg-charcoal/5">{{ article.image | image_url: width: 1400 | image_tag: widths: '600, 900, 1200, 1400', sizes: '(max-width: 768px) 100vw, 768px', alt: article.image.alt | default: article.title, class: 'jt:h-auto jt:w-full', loading: 'eager' }}</div>
+        {%- endif -%}
+        <div class="jt-prose">{{ article.content }}</div>
+        <div class="jt:mt-16 jt:border-t jt:border-charcoal/10 jt:pt-8 jt:text-center">
+          <a href="{{ section.settings.cta_url | default: 'https://jankstailoring.com/book' }}" class="jt:inline-flex jt:items-center jt:gap-3 jt:bg-charcoal jt:px-8 jt:py-4 jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-cream jt:transition-colors jt:hover:bg-gold jt:hover:text-charcoal">{{ section.settings.cta_label }} {% render 'jt-icon', name: 'arrow-right', size: 14 %}</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</div>
+<script type="application/ld+json">
+  {{ article | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "JANKS Article",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "cta_label", "label": "Closing button label", "default": "Book a Consultation" },
+    { "type": "url", "id": "cta_url", "label": "Closing button link", "info": "Leave empty to use https://jankstailoring.com/book" }
+  ]
+}
+{% endschema %}

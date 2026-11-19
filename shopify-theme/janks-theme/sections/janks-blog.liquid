@@ -1,0 +1,54 @@
+{%- comment -%} Blog index (Style Academy): banner + essay cards in the same style as the homepage Academy section. {%- endcomment -%}
+{%- paginate blog.articles by 12 -%}
+<div class="jt">
+  <section class="jt:bg-charcoal jt:pt-32 jt:pb-16 jt:lg:pt-40 jt:lg:pb-20">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      <span class="jt:mb-4 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-cream/40">{{ section.settings.eyebrow }}</span>
+      <h1 class="jt:mb-6 jt:font-cinzel jt:text-4xl jt:leading-tight jt:text-cream jt:lg:text-6xl">{{ blog.title }}</h1>
+      {%- if section.settings.text != blank -%}<p class="jt:max-w-2xl jt:text-sm jt:leading-relaxed jt:text-cream/50">{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+  </section>
+  <section class="jt:py-16 jt:lg:py-24">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      {%- if blog.articles.size > 0 -%}
+        <div class="jt:grid jt:gap-6 jt:sm:grid-cols-2 jt:lg:grid-cols-4 jt:lg:gap-8">
+          {%- for article in blog.articles -%}
+            <div class="jt-reveal" style="--jt-delay: {{ forloop.index0 | modulo: 4 | times: 0.08 }}s">
+              <a href="{{ article.url }}" class="jt:group jt:block jt:h-full">
+                <div class="jt:relative jt:mb-4 jt:aspect-[4/5] jt:overflow-hidden jt:bg-charcoal">
+                  {%- if article.image -%}
+                    {{ article.image | image_url: width: 800 | image_tag: widths: '300, 500, 800', sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw', alt: article.image.alt | default: article.title, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:brightness-90 jt:transition-all jt:duration-700 jt:group-hover:scale-105 jt:group-hover:brightness-100', loading: 'lazy' }}
+                  {%- endif -%}
+                  {%- if article.tags.size > 0 -%}<span class="jt:absolute jt:top-3 jt:left-3 jt:bg-gold jt:px-2 jt:py-0.5 jt:text-[8px] jt:uppercase jt:tracking-[0.15em] jt:text-charcoal">{{ article.tags.first }}</span>{%- endif -%}
+                </div>
+                <p class="jt:mb-1.5 jt:text-[10px] jt:text-charcoal/35">{{ article.published_at | date: '%-d %B %Y' }}</p>
+                <h2 class="jt:mb-2 jt:font-cinzel jt:text-[15px] jt:leading-snug jt:text-charcoal jt:transition-colors jt:duration-300 jt:group-hover:text-gold">{{ article.title }}</h2>
+                <p class="jt:text-xs jt:leading-relaxed jt:text-charcoal/50">{{ article.excerpt_or_content | strip_html | truncatewords: 22 }}</p>
+              </a>
+            </div>
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+          <nav class="jt:mt-14 jt:flex jt:items-center jt:justify-center jt:gap-3 jt:text-[11px] jt:uppercase jt:tracking-[0.2em]" aria-label="Pagination">
+            {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" class="jt:border jt:border-charcoal/20 jt:px-4 jt:py-2.5 jt:text-charcoal/60 jt:transition-all jt:hover:border-charcoal jt:hover:text-charcoal">Prev</a>{%- endif -%}
+            {%- if paginate.next -%}<a href="{{ paginate.next.url }}" class="jt:border jt:border-charcoal/20 jt:px-4 jt:py-2.5 jt:text-charcoal/60 jt:transition-all jt:hover:border-charcoal jt:hover:text-charcoal">Next</a>{%- endif -%}
+          </nav>
+        {%- endif -%}
+      {%- else -%}
+        <p class="jt:py-20 jt:text-center jt:text-sm jt:text-charcoal/50">No articles have been published here yet.</p>
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "JANKS Blog",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Style Academy" },
+    { "type": "textarea", "id": "text", "label": "Intro" }
+  ]
+}
+{% endschema %}

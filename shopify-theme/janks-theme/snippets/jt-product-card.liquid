@@ -1,0 +1,32 @@
+{%- comment -%} Product tile used by the homepage feature grid and collection pages (reference: ShopifyProductGrid). Param: product, index {%- endcomment -%}
+{%- liquid
+  assign img = product.featured_image
+  assign in_stock = product.available
+  assign img_alt = img.alt | default: product.title
+-%}
+<div class="jt-reveal jt:group{% unless in_stock %} jt:opacity-60{% endunless %}" style="--jt-delay: {{ index | default: 0 | times: 0.07 }}s">
+  <a href="{{ product.url }}" class="jt:block jt:cursor-pointer">
+    <div class="jt:relative jt:mb-4 jt:aspect-square jt:overflow-hidden jt:bg-charcoal/5">
+      {%- if img != blank -%}
+        {{ img | image_url: width: 800 | image_tag: widths: '300, 400, 600, 800', sizes: '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw', alt: img_alt, class: 'jt:h-full jt:w-full jt:object-cover jt:transition-transform jt:duration-700 jt:group-hover:scale-105', loading: 'lazy' }}
+      {%- else -%}
+        <div class="jt:flex jt:h-full jt:w-full jt:items-center jt:justify-center jt:text-xs jt:text-charcoal/20">No image</div>
+      {%- endif -%}
+
+      {%- if in_stock -%}
+        <div class="jt:absolute jt:inset-0 jt:flex jt:items-end jt:justify-center jt:bg-charcoal/0 jt:pb-6 jt:opacity-0 jt:transition-all jt:duration-500 jt:group-hover:bg-charcoal/30 jt:group-hover:opacity-100">
+          <span class="jt:bg-charcoal/80 jt:px-5 jt:py-2.5 jt:text-[10px] jt:uppercase jt:tracking-[0.25em] jt:text-cream jt:backdrop-blur-sm">View Product</span>
+        </div>
+      {%- else -%}
+        <div class="jt:absolute jt:top-3 jt:left-3">
+          <span class="jt:bg-cream/90 jt:px-2.5 jt:py-1 jt:text-[9px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal">Sold Out</span>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div>
+      <h3 class="jt:font-cinzel jt:text-sm jt:leading-snug jt:text-charcoal jt:transition-colors jt:duration-300 jt:group-hover:text-gold">{{ product.title }}</h3>
+      <p class="jt:mt-1.5 jt:text-xs jt:text-charcoal/60">{% if product.price_varies %}From {% endif %}{{ product.price | money }}</p>
+    </div>
+  </a>
+</div>

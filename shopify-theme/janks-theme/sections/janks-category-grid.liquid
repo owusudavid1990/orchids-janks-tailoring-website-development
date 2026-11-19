@@ -1,0 +1,90 @@
+{%- comment -%} "Browse the Collection" — six full-bleed category tiles (reference: HomeClient category shop grid). {%- endcomment -%}
+{%- liquid
+  assign tiles = section.blocks | where: 'type', 'tile'
+  assign all_url = section.settings.link_url | default: routes.collections_url
+-%}
+<section class="jt jt:bg-cream jt:pt-16 jt:pb-0 jt:lg:pt-24">
+  <div class="jt:mx-auto jt:mb-10 jt:max-w-7xl jt:px-6 jt:lg:px-12">
+    <div class="jt:flex jt:items-end jt:justify-between">
+      <div>
+        <span class="jt:mb-2 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.eyebrow }}</span>
+        <h2 class="jt:font-cinzel jt:text-3xl jt:leading-tight jt:text-charcoal jt:lg:text-5xl">{{ section.settings.heading }}</h2>
+        <p class="jt:mt-3 jt:max-w-sm jt:text-sm jt:tracking-wide jt:text-charcoal/50">{{ section.settings.subheading }}</p>
+      </div>
+      <a href="{{ all_url }}" class="jt:hidden jt:items-center jt:gap-2 jt:border jt:border-charcoal/20 jt:px-5 jt:py-2.5 jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/60 jt:transition-all jt:duration-300 jt:hover:border-charcoal jt:hover:text-charcoal jt:lg:inline-flex">
+        {{ section.settings.link_label }} {% render 'jt-icon', name: 'arrow-right', size: 12 %}
+      </a>
+    </div>
+  </div>
+
+  <div class="jt:grid jt:grid-cols-2 jt:gap-px jt:bg-cream/50 jt:md:grid-cols-3 jt:lg:grid-cols-6">
+    {%- for block in tiles -%}
+      {%- liquid
+        case forloop.index
+          when 1
+            assign fb = 'jt-suits-collection.webp'
+          when 2
+            assign fb = 'jt-hero-suit-3.webp'
+          when 3
+            assign fb = 'jt-trousers-collection.jpeg'
+          when 4
+            assign fb = 'jt-necktie-collection.webp'
+          when 5
+            assign fb = 'jt-cufflink-collection.webp'
+          else
+            assign fb = 'jt-pocket-square-collection.webp'
+        endcase
+      -%}
+      <div class="jt-reveal" style="--jt-delay: {{ forloop.index0 | times: 0.07 }}s" {{ block.shopify_attributes }}>
+        <a href="{{ block.settings.url | default: routes.collections_url }}" class="jt:group jt:block">
+          <div class="jt:relative jt:aspect-[2/3] jt:overflow-hidden jt:bg-charcoal/5">
+            {%- render 'jt-img', image: block.settings.image, fallback: fb, alt: block.settings.label, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:brightness-95 jt:transition-transform jt:duration-700 jt:group-hover:scale-105 jt:group-hover:brightness-100', sizes: '(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 17vw' -%}
+            <div class="jt:absolute jt:inset-0 jt:bg-gradient-to-t jt:from-charcoal/60 jt:via-charcoal/10 jt:to-transparent"></div>
+            <div class="jt:absolute jt:inset-0 jt:bg-charcoal/20 jt:opacity-0 jt:transition-opacity jt:duration-300 jt:group-hover:opacity-100"></div>
+            <div class="jt:absolute jt:inset-x-0 jt:bottom-0 jt:px-4 jt:pt-8 jt:pb-5">
+              <p class="jt:text-[11px] jt:font-semibold jt:uppercase jt:tracking-[0.2em] jt:text-cream jt:transition-colors jt:duration-300 jt:group-hover:text-gold">{{ block.settings.label }}</p>
+              <p class="jt:mt-0.5 jt:text-[9px] jt:uppercase jt:tracking-[0.1em] jt:text-cream/50">{{ block.settings.sub }}</p>
+            </div>
+            <div class="jt:absolute jt:inset-x-0 jt:top-1/2 jt:flex jt:-translate-y-1/2 jt:justify-center jt:opacity-0 jt:transition-opacity jt:duration-300 jt:group-hover:opacity-100">
+              <span class="jt:inline-flex jt:items-center jt:gap-1.5 jt:bg-cream jt:px-4 jt:py-2 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal">Shop {% render 'jt-icon', name: 'arrow-right', size: 9 %}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="jt:mt-8 jt:px-6 jt:pb-10 jt:text-center jt:lg:hidden">
+    <a href="{{ all_url }}" class="jt:inline-flex jt:items-center jt:gap-2 jt:border jt:border-charcoal/20 jt:px-6 jt:py-3 jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/60 jt:transition-all jt:duration-300 jt:hover:border-charcoal jt:hover:text-charcoal">
+      Shop All Categories {% render 'jt-icon', name: 'arrow-right', size: 12 %}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JANKS Category Grid",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Browse the Collection" },
+    { "type": "text", "id": "subheading", "label": "Sub-heading", "default": "Every category, made to order or ready to ship." },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop All" },
+    { "type": "url", "id": "link_url", "label": "Link" }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Category tile",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the built-in reference photo for this position." },
+        { "type": "text", "id": "label", "label": "Title", "default": "Suits" },
+        { "type": "text", "id": "sub", "label": "Sub-line", "default": "Bespoke & MTM" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [{ "name": "JANKS Category Grid", "blocks": [{ "type": "tile" }, { "type": "tile" }, { "type": "tile" }, { "type": "tile" }, { "type": "tile" }, { "type": "tile" }] }]
+}
+{% endschema %}

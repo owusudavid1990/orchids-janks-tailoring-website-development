@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "janks-dev",
+      "runtimeExecutable": "C:\\Users\\GLS\\OneDrive\\Documents\\JANKS-Tailoring-Website-Development-codebase\\.claude\\dev-runner.cmd",
+      "runtimeArgs": [],
+      "port": 3000
+    }
+  ]
+}

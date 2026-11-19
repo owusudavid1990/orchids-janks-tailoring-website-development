@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-blog",
+      "settings": {
+        "eyebrow": "Style Academy"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

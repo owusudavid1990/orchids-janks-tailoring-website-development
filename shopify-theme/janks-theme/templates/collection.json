@@ -1,0 +1,91 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-collection",
+      "blocks": {
+        "c1": {
+          "type": "copy",
+          "settings": {
+            "handle": "neckties",
+            "title": "Tie Collection",
+            "text": "Handcrafted ties that complete the gentleman's look. Each piece made with the finest fabrics and attention to detail."
+          }
+        },
+        "c2": {
+          "type": "copy",
+          "settings": {
+            "handle": "mother-of-pearl-cufflinks-copy-1",
+            "title": "Cufflink Collection",
+            "text": "Refined cufflinks that elevate every shirt. Crafted with precision and designed for the discerning gentleman."
+          }
+        },
+        "c3": {
+          "type": "copy",
+          "settings": {
+            "handle": "pocket-square",
+            "title": "Pocket Square Collection",
+            "text": "The finishing touch to every ensemble. Our pocket squares are crafted from the finest fabrics to add elegance and character."
+          }
+        },
+        "l1": {
+          "type": "link",
+          "settings": {
+            "label": "Ties",
+            "url": "/collections/neckties",
+            "hide_on_handle": "neckties"
+          }
+        },
+        "l2": {
+          "type": "link",
+          "settings": {
+            "label": "Cufflinks",
+            "url": "/collections/mother-of-pearl-cufflinks-copy-1",
+            "hide_on_handle": "mother-of-pearl-cufflinks-copy-1"
+          }
+        },
+        "l3": {
+          "type": "link",
+          "settings": {
+            "label": "Pocket Squares",
+            "url": "/collections/pocket-square",
+            "hide_on_handle": "pocket-square"
+          }
+        },
+        "l4": {
+          "type": "link",
+          "settings": {
+            "label": "All Categories",
+            "url": "/collections",
+            "hide_on_handle": ""
+          }
+        },
+        "l5": {
+          "type": "link",
+          "settings": {
+            "label": "Bespoke Tailoring",
+            "url": "/pages/services",
+            "hide_on_handle": ""
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "l1",
+        "l2",
+        "l3",
+        "l4",
+        "l5"
+      ],
+      "settings": {
+        "eyebrow": "Accessories",
+        "per_page": 24,
+        "show_more": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

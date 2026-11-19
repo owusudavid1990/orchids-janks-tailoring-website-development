@@ -1,0 +1,12 @@
+{%- comment -%}
+  Responsive image with a theme-asset fallback, so a section still renders its reference photo until an image is picked in the Theme Editor.
+  Params: image (Shopify image object or blank), fallback (theme asset filename), alt, class, sizes, loading ('lazy' default | 'eager'), priority ('high'), max (largest width, default 2000), w/h (intrinsic size of the fallback file, for layout stability)
+{%- endcomment -%}
+{%- assign jt_max = max | default: 2000 -%}
+{%- assign jt_loading = loading | default: 'lazy' -%}
+{%- if image != blank -%}
+  {%- assign jt_widths = '400, 640, 900, 1200, 1600, 2000, 2400' -%}
+  {{ image | image_url: width: jt_max | image_tag: widths: jt_widths, sizes: sizes, alt: alt, class: class, loading: jt_loading, fetchpriority: priority, decoding: 'async' }}
+{%- elsif fallback != blank -%}
+  <img src="{{ fallback | asset_url }}" alt="{{ alt | escape }}" class="{{ class }}" width="{{ w | default: 1600 }}" height="{{ h | default: 1200 }}" loading="{{ jt_loading }}" {% if priority %}fetchpriority="{{ priority }}"{% endif %} decoding="async">
+{%- endif -%}

@@ -1,0 +1,221 @@
+{%- comment -%}
+  JANKS header — mirrors the reference site's Navigation component.
+  Six text links split evenly either side of the logo (keep it to an even number so the logo stays centred),
+  search + cart + account icons, a "Book" button, and a slide-in panel below 1280px.
+{%- endcomment -%}
+{%- liquid
+  assign links = section.blocks | where: 'type', 'link'
+  assign half = links.size | divided_by: 2
+  assign logo = section.settings.logo | default: settings.logo
+  assign book_url = section.settings.book_url
+  if book_url == blank
+    assign book_url = 'https://jankstailoring.com/book'
+  endif
+-%}
+
+{%- capture link_class -%}jt:group jt:relative jt:whitespace-nowrap jt:px-4 jt:py-2 jt:text-[11px] jt:uppercase jt:tracking-[0.22em] jt:text-charcoal/75 jt:transition-colors jt:duration-300 jt:hover:text-charcoal{%- endcapture -%}
+{%- capture underline_class -%}jt:absolute jt:bottom-1 jt:left-1/2 jt:h-px jt:w-0 jt:-translate-x-1/2 jt:bg-gold jt:transition-all jt:duration-500 jt:ease-out jt:group-hover:w-[calc(100%-2rem)]{%- endcapture -%}
+{%- capture icon_btn -%}jt:group jt:relative jt:flex jt:h-10 jt:w-10 jt:shrink-0 jt:items-center jt:justify-center jt:rounded-full jt:bg-charcoal/5 jt:transition-all jt:duration-300 jt:hover:bg-charcoal jt:hover:text-cream{%- endcapture -%}
+
+<div class="jt" data-jt-nav-root>
+  <nav class="jt-nav jt:fixed jt:top-0 jt:right-0 jt:left-0 jt:z-50" data-scrolled="false" aria-label="Primary">
+    <div class="jt:border-b jt:border-charcoal/5 jt:bg-cream/90 jt:backdrop-blur-xl">
+      <div class="jt:mx-auto jt:max-w-[1800px]">
+        <div class="jt-nav__bar jt:grid jt:grid-cols-3 jt:items-center jt:px-6 jt:xl:grid-cols-[1fr_auto_1fr] jt:xl:px-16">
+
+          {%- comment -%} Left: search pinned to the edge, links pushed toward the logo {%- endcomment -%}
+          <div class="jt:hidden jt:items-center jt:gap-1 jt:xl:flex">
+            <button type="button" class="{{ icon_btn }} jt:mr-auto" aria-label="Search" data-jt-search-open>
+              {% render 'jt-icon', name: 'search', size: 16, class: 'jt:text-charcoal jt:group-hover:text-cream jt:transition-colors' %}
+            </button>
+            <div class="jt:mr-3 jt:h-5 jt:w-px jt:bg-charcoal/10"></div>
+            {%- for block in links limit: half -%}
+              <a href="{{ block.settings.url | default: '#' }}" class="{{ link_class }}" {{ block.shopify_attributes }}>
+                {{- block.settings.label -}}
+                <span class="{{ underline_class }}"></span>
+              </a>
+            {%- endfor -%}
+          </div>
+
+          {%- comment -%} Centre: the logo {%- endcomment -%}
+          <div class="jt:flex jt:justify-start jt:xl:justify-center jt:xl:px-12">
+            <a href="{{ routes.root_url }}" class="jt:group jt:relative" aria-label="{{ shop.name }} — home">
+              {%- if logo != blank -%}
+                {{ logo | image_url: width: 640 | image_tag: alt: shop.name, width: 320, height: 128, class: 'jt-nav__logo jt:w-auto jt:brightness-0 jt:transition-all jt:duration-500 jt:ease-out jt:group-hover:opacity-75', loading: 'eager', fetchpriority: 'high' }}
+              {%- else -%}
+                <img src="{{ 'jt-janks-logo.webp' | asset_url }}" alt="{{ shop.name }}" width="320" height="128" class="jt-nav__logo jt:w-auto jt:brightness-0 jt:transition-all jt:duration-500 jt:ease-out jt:group-hover:opacity-75" fetchpriority="high">
+              {%- endif -%}
+            </a>
+          </div>
+
+          {%- comment -%} Right: links hug the logo, actions pinned to the edge {%- endcomment -%}
+          <div class="jt:hidden jt:items-center jt:gap-1 jt:xl:flex">
+            {%- for block in links offset: half -%}
+              <a href="{{ block.settings.url | default: '#' }}" class="{{ link_class }}" {{ block.shopify_attributes }}>
+                {{- block.settings.label -}}
+                <span class="{{ underline_class }}"></span>
+              </a>
+            {%- endfor -%}
+            <div class="jt:ml-auto"></div>
+            <div class="jt:ml-3 jt:h-5 jt:w-px jt:bg-charcoal/10"></div>
+            <a href="{{ routes.cart_url }}" id="cart-icon-bubble" class="{{ icon_btn }}" aria-label="Cart">
+              {%- render 'jt-cart-icon' -%}
+            </a>
+            <a href="{{ book_url }}" class="jt:ml-3 jt:whitespace-nowrap jt:bg-charcoal jt:px-6 jt:py-3 jt:text-[11px] jt:uppercase jt:tracking-[0.22em] jt:text-cream jt:transition-all jt:duration-300 jt:hover:bg-gold jt:hover:text-charcoal">
+              {{- section.settings.book_label -}}
+            </a>
+            <a href="{{ routes.account_url }}" class="{{ icon_btn }} jt:ml-2" aria-label="{% if customer %}Your account{% else %}Sign in to your account{% endif %}" title="{% if customer %}Account{% else %}Sign in{% endif %}">
+              {% render 'jt-icon', name: 'user', size: 16, class: 'jt:text-charcoal jt:group-hover:text-cream jt:transition-colors' %}
+            </a>
+          </div>
+
+          {%- comment -%} Below xl: compact icon row {%- endcomment -%}
+          <div class="jt:col-span-2 jt:flex jt:items-center jt:justify-end jt:gap-2 jt:xl:hidden">
+            <button type="button" class="jt:flex jt:h-10 jt:w-10 jt:items-center jt:justify-center jt:rounded-full jt:bg-charcoal/5" aria-label="Search" data-jt-search-open>
+              {% render 'jt-icon', name: 'search', size: 16, class: 'jt:text-charcoal' %}
+            </button>
+            <a href="{{ routes.cart_url }}" class="jt:relative jt:flex jt:h-10 jt:w-10 jt:items-center jt:justify-center jt:rounded-full jt:bg-charcoal/5" aria-label="Cart" data-jt-cart-mobile>
+              {%- render 'jt-cart-icon' -%}
+            </a>
+            <button type="button" class="jt:flex jt:h-10 jt:w-10 jt:items-center jt:justify-center jt:rounded-full jt:bg-charcoal/5" aria-label="Toggle menu" aria-expanded="false" aria-controls="jt-mobile-menu" data-jt-menu-toggle>
+              <span data-jt-menu-icon-open>{% render 'jt-icon', name: 'menu', size: 18, class: 'jt:text-charcoal' %}</span>
+              <span data-jt-menu-icon-close hidden>{% render 'jt-icon', name: 'x', size: 18, class: 'jt:text-charcoal' %}</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  {%- comment -%} Mobile slide-in panel {%- endcomment -%}
+  <div class="jt-mnav-backdrop jt:fixed jt:inset-0 jt:z-40 jt:bg-black/60 jt:xl:hidden" data-jt-menu-close hidden></div>
+  <aside id="jt-mobile-menu" class="jt-mnav jt:fixed jt:top-0 jt:right-0 jt:bottom-0 jt:z-50 jt:flex jt:w-[85vw] jt:max-w-sm jt:flex-col jt:bg-black jt:xl:hidden" aria-label="Menu" aria-hidden="true">
+    <div class="jt:flex jt:items-center jt:justify-between jt:border-b jt:border-white/10 jt:px-8 jt:py-6">
+      {%- if logo != blank -%}
+        {{ logo | image_url: width: 320 | image_tag: alt: 'JANKS', width: 140, height: 56, class: 'jt:h-14 jt:w-auto jt:brightness-0 jt:invert jt:opacity-70', loading: 'lazy' }}
+      {%- else -%}
+        <img src="{{ 'jt-janks-logo.webp' | asset_url }}" alt="JANKS" width="140" height="56" class="jt:h-14 jt:w-auto jt:brightness-0 jt:invert jt:opacity-70" loading="lazy">
+      {%- endif -%}
+      <button type="button" class="jt:flex jt:h-9 jt:w-9 jt:items-center jt:justify-center jt:border jt:border-white/20 jt:text-white jt:transition-colors jt:hover:border-white" aria-label="Close menu" data-jt-menu-close>
+        {% render 'jt-icon', name: 'x', size: 16 %}
+      </button>
+    </div>
+
+    <div class="jt:flex-1 jt:overflow-y-auto jt:px-8 jt:py-10">
+      <nav class="jt:space-y-1" aria-label="Mobile">
+        {%- for block in links -%}
+          <a href="{{ block.settings.url | default: '#' }}" class="jt-mnav__link jt:group jt:flex jt:items-center jt:justify-between jt:border-b jt:border-white/10 jt:py-4 jt:transition-colors jt:hover:border-white/20" style="--i: {{ forloop.index0 }}">
+            <span class="jt:font-cinzel jt:text-lg jt:text-white jt:transition-colors jt:duration-300 jt:group-hover:text-gold">{{ block.settings.label }}</span>
+            <span class="jt:text-[10px] jt:tracking-[0.2em] jt:text-white/20 jt:transition-colors jt:group-hover:text-gold">0{{ forloop.index }}</span>
+          </a>
+        {%- endfor -%}
+      </nav>
+    </div>
+
+    <div class="jt:space-y-4 jt:border-t jt:border-white/10 jt:px-8 jt:py-8">
+      <a href="{{ book_url }}" class="jt:block jt:w-full jt:bg-gold jt:py-4 jt:text-center jt:text-[11px] jt:uppercase jt:tracking-[0.25em] jt:text-charcoal jt:transition-colors jt:duration-300 jt:hover:bg-cream">
+        {{- section.settings.mobile_book_label -}}
+      </a>
+      <a href="{{ routes.account_url }}" class="jt:flex jt:w-full jt:items-center jt:justify-center jt:gap-2 jt:text-[11px] jt:uppercase jt:tracking-[0.15em] jt:text-white/40 jt:transition-colors jt:hover:text-white">
+        {% render 'jt-icon', name: 'user', size: 13 %}{% if customer %}My Account{% else %}Login{% endif %}
+      </a>
+    </div>
+  </aside>
+
+  {%- comment -%} Search overlay {%- endcomment -%}
+  <div class="jt-search-backdrop jt:fixed jt:inset-0 jt:z-[80] jt:bg-charcoal/60 jt:backdrop-blur-sm" data-jt-search-close hidden></div>
+  <div class="jt-search jt:fixed jt:top-20 jt:left-1/2 jt:z-[85] jt:mx-auto jt:w-full jt:max-w-2xl jt:-translate-x-1/2 jt:px-4" role="dialog" aria-modal="true" aria-label="Search" hidden>
+    <div class="jt:overflow-hidden jt:border jt:border-charcoal/20 jt:bg-cream jt:shadow-2xl">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="jt:relative jt:border-b jt:border-charcoal/10">
+        <input type="hidden" name="options[prefix]" value="last">
+        {% render 'jt-icon', name: 'search', size: 18, class: 'jt:absolute jt:left-5 jt:top-1/2 jt:-translate-y-1/2 jt:text-charcoal' %}
+        <input type="search" name="q" autocomplete="off" placeholder="Search pages and products..." aria-label="Search" class="jt:w-full jt:bg-transparent jt:py-5 jt:pr-14 jt:pl-14 jt:text-sm jt:text-charcoal jt:placeholder:text-charcoal/60 jt:focus:outline-none" data-jt-search-input>
+        <button type="button" class="jt:absolute jt:top-1/2 jt:right-4 jt:flex jt:h-8 jt:w-8 jt:-translate-y-1/2 jt:items-center jt:justify-center jt:rounded-full jt:bg-charcoal/10 jt:transition-colors jt:hover:bg-charcoal/20" aria-label="Close search" data-jt-search-close>
+          {% render 'jt-icon', name: 'x', size: 14, class: 'jt:text-charcoal' %}
+        </button>
+      </form>
+      <div class="jt:max-h-[60vh] jt:overflow-y-auto jt:p-6">
+        <p class="jt:mb-4 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal">Quick Links</p>
+        <div class="jt:grid jt:grid-cols-2 jt:gap-2">
+          {%- for block in links limit: 4 -%}
+            <a href="{{ block.settings.url | default: '#' }}" class="jt:group jt:flex jt:items-center jt:justify-between jt:bg-charcoal/5 jt:p-3 jt:transition-colors jt:hover:bg-charcoal/10">
+              <span class="jt:text-sm jt:font-medium jt:text-charcoal">{{ block.settings.label }}</span>
+              {% render 'jt-icon', name: 'arrow-right', size: 14, class: 'jt:text-charcoal/30 jt:transition-colors jt:group-hover:text-gold' %}
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="jt:flex jt:items-center jt:justify-between jt:border-t jt:border-charcoal/10 jt:px-5 jt:py-3 jt:text-[10px] jt:text-charcoal/60">
+        <span>Press ESC to close</span>
+        <span>Enter to search</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.querySelector('[data-jt-nav-root]');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = '1';
+    var nav = root.querySelector('.jt-nav');
+    var onScroll = function () { nav.setAttribute('data-scrolled', window.scrollY > 40 ? 'true' : 'false'); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    var panel = root.querySelector('#jt-mobile-menu');
+    var backdrop = root.querySelector('.jt-mnav-backdrop');
+    var toggle = root.querySelector('[data-jt-menu-toggle]');
+    var iconOpen = root.querySelector('[data-jt-menu-icon-open]');
+    var iconClose = root.querySelector('[data-jt-menu-icon-close]');
+    function setMenu(open) {
+      panel.classList.toggle('is-open', open);
+      panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      backdrop.hidden = !open;
+      requestAnimationFrame(function () { backdrop.classList.toggle('is-open', open); });
+      iconOpen.hidden = open; iconClose.hidden = !open;
+      document.documentElement.classList.toggle('jt-lock', open);
+    }
+    toggle.addEventListener('click', function () { setMenu(!panel.classList.contains('is-open')); });
+    root.querySelectorAll('[data-jt-menu-close]').forEach(function (b) { b.addEventListener('click', function () { setMenu(false); }); });
+
+    var search = root.querySelector('.jt-search');
+    var sBackdrop = root.querySelector('.jt-search-backdrop');
+    var input = root.querySelector('[data-jt-search-input]');
+    function setSearch(open) {
+      search.hidden = !open; sBackdrop.hidden = !open;
+      document.documentElement.classList.toggle('jt-lock', open);
+      if (open) setTimeout(function () { input.focus(); }, 30);
+    }
+    root.querySelectorAll('[data-jt-search-open]').forEach(function (b) { b.addEventListener('click', function () { setSearch(true); }); });
+    root.querySelectorAll('[data-jt-search-close]').forEach(function (b) { b.addEventListener('click', function () { setSearch(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setSearch(false); setMenu(false); } });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "JANKS Header",
+  "class": "jt-header-section",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo (falls back to Theme settings → Logo)", "info": "Rendered in black on the light header and white in the menu, as on the reference site." },
+    { "type": "text", "id": "book_label", "label": "Book button label", "default": "Book" },
+    { "type": "text", "id": "mobile_book_label", "label": "Mobile menu button label", "default": "Book a Fitting" },
+    { "type": "url", "id": "book_url", "label": "Book button link", "info": "Leave empty to use https://jankstailoring.com/book" }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Menu link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "About" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "JANKS Header" }]
+}
+{% endschema %}

@@ -1,0 +1,293 @@
+{%- comment -%} Services page: hero, sticky jump-nav, three approaches, offerings list, process, FAQ and closing CTA (reference: /services). {%- endcomment -%}
+{%- liquid
+  assign book_url = section.settings.book_url | default: 'https://jankstailoring.com/book'
+  assign approaches = section.blocks | where: 'type', 'approach'
+  assign offerings = section.blocks | where: 'type', 'offering'
+  assign steps = section.blocks | where: 'type', 'step'
+  assign faqs = section.blocks | where: 'type', 'faq'
+-%}
+<div class="jt">
+
+  {%- comment -%} Hero {%- endcomment -%}
+  <section class="jt:relative jt:flex jt:min-h-[70vh] jt:items-end jt:overflow-hidden">
+    {%- render 'jt-img', image: section.settings.hero_image, fallback: 'jt-hero-jacquard-lapel-bw.jpg', alt: '', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '100vw', loading: 'eager', priority: 'high', max: 2400 -%}
+    <div class="jt:absolute jt:inset-0 jt:bg-gradient-to-t jt:from-black/85 jt:via-black/45 jt:to-black/30"></div>
+    <div class="jt:relative jt:mx-auto jt:w-full jt:max-w-7xl jt:px-6 jt:pb-16 jt:lg:px-12 jt:lg:pb-24">
+      <div class="jt-reveal">
+        <span class="jt:mb-5 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.hero_eyebrow }}</span>
+        <h1 class="jt:mb-8 jt:font-cinzel jt:text-5xl jt:leading-[0.95] jt:text-cream jt:lg:text-8xl">{{ section.settings.hero_heading }}</h1>
+        <p class="jt:max-w-xl jt:text-lg jt:leading-relaxed jt:text-cream/70">{{ section.settings.hero_text }}</p>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Jump between the approaches {%- endcomment -%}
+  <nav aria-label="Our approaches" class="jt:sticky jt:top-20 jt:z-30 jt:border-b jt:border-charcoal/10 jt:bg-cream/85 jt:backdrop-blur-md">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      <ul class="jt:flex jt:items-center jt:gap-6 jt:overflow-x-auto jt:py-4 jt:sm:gap-10">
+        {%- for block in approaches -%}
+          <li class="jt:shrink-0">
+            <a href="#{{ block.settings.title | handleize }}" class="jt:group jt:flex jt:items-baseline jt:gap-2 jt:text-[11px] jt:uppercase jt:tracking-[0.22em] jt:text-charcoal/50 jt:transition-colors jt:hover:text-charcoal">
+              <span class="jt:text-gold">0{{ forloop.index }}</span>
+              {{ block.settings.title }}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </nav>
+
+  {%- comment -%} The three approaches {%- endcomment -%}
+  <section class="jt:overflow-hidden jt:py-20 jt:lg:py-28">
+    {%- for block in approaches -%}
+      {%- liquid
+        assign flipped = false
+        assign rem = forloop.index0 | modulo: 2
+        if rem == 1
+          assign flipped = true
+        endif
+        case forloop.index
+          when 1
+            assign fb = 'jt-service-heritage-hero.webp'
+          when 2
+            assign fb = 'jt-service-confidence-hero.jpg'
+          else
+            assign fb = 'jt-service-sartorial-jacket.jpg'
+        endcase
+        assign features = block.settings.features | newline_to_br | split: '<br />'
+        assign alt_text = block.settings.title | append: ' — ' | append: block.settings.subtitle
+      -%}
+      <article id="{{ block.settings.title | handleize }}" class="jt-reveal jt:relative jt:scroll-mt-36{% unless forloop.last %} jt:mb-24 jt:lg:mb-36{% endunless %}" {{ block.shopify_attributes }}>
+        <span aria-hidden="true" class="jt:pointer-events-none jt:absolute jt:-top-8 jt:hidden jt:font-cinzel jt:text-[120px] jt:leading-none jt:text-charcoal/[0.05] jt:select-none jt:sm:block jt:lg:-top-16 jt:lg:text-[220px] {% if flipped %}jt:right-6 jt:lg:right-16{% else %}jt:left-6 jt:lg:left-16{% endif %}">0{{ forloop.index }}</span>
+
+        <div class="jt:relative jt:mx-auto jt:max-w-[1500px] jt:lg:grid jt:lg:grid-cols-12 jt:lg:items-center">
+          <div class="jt:relative jt:lg:col-span-7 jt:lg:row-start-1 {% if flipped %}jt:lg:col-start-6{% else %}jt:lg:col-start-1{% endif %}">
+            <div class="jt:relative jt:aspect-[4/5] jt:overflow-hidden jt:bg-charcoal/5 jt:sm:aspect-[3/4] jt:lg:aspect-[4/5]">
+              {%- render 'jt-img', image: block.settings.image, fallback: fb, alt: alt_text, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:transition-transform jt:duration-[1400ms] jt:ease-out jt:hover:scale-[1.04]', sizes: '(max-width: 1024px) 100vw, 58vw' -%}
+            </div>
+          </div>
+
+          <div class="jt:relative jt:z-10 jt:lg:col-span-6 jt:lg:row-start-1 {% if flipped %}jt:lg:col-start-1 jt:lg:-mr-16{% else %}jt:lg:col-start-7 jt:lg:-ml-16{% endif %}">
+            <div class="jt:-mt-12 jt:mx-4 jt:border jt:border-charcoal/10 jt:bg-cream jt:px-7 jt:py-10 jt:shadow-[0_20px_60px_-30px_rgba(0,0,0,0.35)] jt:sm:px-10 jt:lg:mx-0 jt:lg:mt-0 jt:lg:px-12 jt:lg:py-14">
+              <span class="jt:text-[11px] jt:uppercase jt:tracking-[0.28em] jt:text-gold">{{ block.settings.subtitle }}</span>
+              <h2 class="jt:mt-4 jt:mb-6 jt:font-cinzel jt:text-4xl jt:leading-[1.03] jt:text-charcoal jt:lg:text-6xl">{{ block.settings.title }}</h2>
+              <p class="jt:mb-5 jt:font-cinzel jt:text-xl jt:leading-snug jt:text-charcoal jt:lg:text-2xl">{{ block.settings.lead }}</p>
+              <p class="jt:mb-9 jt:leading-relaxed jt:text-charcoal/70">{{ block.settings.description }}</p>
+              <ul class="jt:mb-10 jt:grid jt:gap-x-6 jt:gap-y-3 jt:border-t jt:border-charcoal/10 jt:pt-8 jt:sm:grid-cols-2">
+                {%- for feature in features -%}
+                  {%- assign f = feature | strip -%}
+                  {%- if f != blank -%}
+                    <li class="jt:flex jt:items-start jt:gap-3 jt:text-sm jt:text-charcoal/80"><span class="jt:mt-2 jt:h-1 jt:w-1 jt:shrink-0 jt:rounded-full jt:bg-gold"></span>{{ f }}</li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+              <a href="{{ book_url }}" class="jt:group jt:inline-flex jt:items-center jt:gap-3 jt:bg-charcoal jt:px-7 jt:py-4 jt:text-[11px] jt:uppercase jt:tracking-[0.22em] jt:text-cream jt:transition-all jt:duration-300 jt:hover:bg-gold jt:hover:text-charcoal">
+                {{ section.settings.approach_button }} {% render 'jt-icon', name: 'arrow-right', size: 14, class: 'jt:transition-transform jt:duration-300 jt:group-hover:translate-x-1' %}
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    {%- endfor -%}
+  </section>
+
+  {%- comment -%} What we make {%- endcomment -%}
+  <section class="jt:border-y jt:border-charcoal/10 jt:bg-charcoal/[0.03] jt:py-24 jt:lg:py-32">
+    <div class="jt:mx-auto jt:max-w-5xl jt:px-6 jt:lg:px-12">
+      <div class="jt-reveal jt:mb-14 jt:lg:mb-20">
+        <span class="jt:mb-4 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.offerings_eyebrow }}</span>
+        <h2 class="jt:max-w-xl jt:font-cinzel jt:text-3xl jt:leading-[1.1] jt:text-charcoal jt:lg:text-5xl">{{ section.settings.offerings_heading }}</h2>
+      </div>
+      <div class="jt:divide-y jt:divide-charcoal/10 jt:border-t jt:border-charcoal/10">
+        {%- for block in offerings -%}
+          <div class="jt-reveal jt:group jt:grid jt:gap-6 jt:py-8 jt:md:grid-cols-[1fr_auto] jt:md:gap-12 jt:lg:py-10" style="--jt-delay: {{ forloop.index0 | times: 0.06 }}s" {{ block.shopify_attributes }}>
+            <div class="jt:max-w-xl">
+              <div class="jt:mb-3 jt:flex jt:flex-wrap jt:items-baseline jt:gap-x-4 jt:gap-y-1">
+                <h3 class="jt:font-cinzel jt:text-2xl jt:text-charcoal jt:lg:text-3xl">{{ block.settings.name }}</h3>
+                <span class="jt:text-[11px] jt:uppercase jt:tracking-[0.15em] jt:text-charcoal/40">{{ block.settings.meta }}</span>
+              </div>
+              <p class="jt:text-sm jt:leading-relaxed jt:text-charcoal/70">{{ block.settings.description }}</p>
+            </div>
+            <div class="jt:flex jt:shrink-0 jt:items-center jt:justify-between jt:gap-4 jt:md:flex-col jt:md:items-end jt:md:justify-center">
+              <span class="jt:font-cinzel jt:text-xl jt:whitespace-nowrap jt:text-gold jt:lg:text-2xl">{{ block.settings.price }}</span>
+              <a href="{{ block.settings.url | default: book_url }}" class="jt:inline-flex jt:items-center jt:gap-2 jt:border-b jt:border-charcoal/20 jt:pb-1 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:whitespace-nowrap jt:text-charcoal/60 jt:transition-colors jt:hover:border-gold jt:hover:text-gold">
+                Book {% render 'jt-icon', name: 'arrow-right', size: 12 %}
+              </a>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+      <p class="jt:mt-10 jt:max-w-lg jt:text-xs jt:leading-relaxed jt:text-charcoal/40">{{ section.settings.offerings_note }}</p>
+    </div>
+  </section>
+
+  {%- comment -%} How it works {%- endcomment -%}
+  <section class="jt:py-24 jt:lg:py-32">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      <div class="jt-reveal jt:mb-14 jt:max-w-xl jt:lg:mb-20">
+        <span class="jt:mb-4 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.process_eyebrow }}</span>
+        <h2 class="jt:font-cinzel jt:text-3xl jt:leading-[1.1] jt:text-charcoal jt:lg:text-5xl">{{ section.settings.process_heading }}</h2>
+      </div>
+      <div class="jt:grid jt:gap-8 jt:sm:grid-cols-2 jt:lg:grid-cols-4 jt:lg:gap-6">
+        {%- for block in steps -%}
+          {%- liquid
+            case forloop.index
+              when 1
+                assign fb = 'jt-work-consultation.jpeg'
+              when 2
+                assign fb = 'jt-work-measurements.jpeg'
+              when 3
+                assign fb = 'jt-work-first-fitting.jpeg'
+              else
+                assign fb = 'jt-work-final-fitting.webp'
+            endcase
+          -%}
+          <div class="jt-reveal" style="--jt-delay: {{ forloop.index0 | times: 0.1 }}s" {{ block.shopify_attributes }}>
+            <div class="jt:relative jt:mb-6 jt:aspect-[3/4] jt:overflow-hidden jt:bg-charcoal/5">
+              {%- render 'jt-img', image: block.settings.image, fallback: fb, alt: block.settings.title, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw' -%}
+              <span class="jt:absolute jt:top-4 jt:left-4 jt:font-cinzel jt:text-2xl jt:text-cream jt:drop-shadow-lg">0{{ forloop.index }}</span>
+            </div>
+            <h3 class="jt:mb-3 jt:font-cinzel jt:text-xl jt:text-charcoal">{{ block.settings.title }}</h3>
+            <p class="jt:text-sm jt:leading-relaxed jt:text-charcoal/65">{{ block.settings.text }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Questions {%- endcomment -%}
+  <section class="jt:border-y jt:border-charcoal/10 jt:bg-charcoal/[0.03] jt:py-24 jt:lg:py-32" data-jt-faq>
+    <div class="jt:mx-auto jt:max-w-3xl jt:px-6 jt:lg:px-12">
+      <div class="jt-reveal jt:mb-12">
+        <span class="jt:mb-4 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.faq_eyebrow }}</span>
+        <h2 class="jt:font-cinzel jt:text-3xl jt:leading-[1.1] jt:text-charcoal jt:lg:text-5xl">{{ section.settings.faq_heading }}</h2>
+      </div>
+      <div class="jt:divide-y jt:divide-charcoal/10 jt:border-y jt:border-charcoal/10">
+        {%- for block in faqs -%}
+          <div {{ block.shopify_attributes }}>
+            <button type="button" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="jt-faq-{{ forloop.index }}" data-jt-faq-btn class="jt:group jt:flex jt:w-full jt:items-start jt:justify-between jt:gap-6 jt:py-6 jt:text-left">
+              <span class="jt:font-cinzel jt:text-lg jt:text-charcoal jt:transition-colors jt:group-hover:text-gold jt:lg:text-xl">{{ block.settings.question }}</span>
+              <span class="jt:mt-1 jt:shrink-0 jt:text-charcoal/40 jt:transition-colors jt:group-hover:text-gold">
+                <span data-jt-faq-plus{% if forloop.first %} hidden{% endif %}>{% render 'jt-icon', name: 'plus', size: 16 %}</span>
+                <span data-jt-faq-minus{% unless forloop.first %} hidden{% endunless %}>{% render 'jt-icon', name: 'minus', size: 16 %}</span>
+              </span>
+            </button>
+            <p id="jt-faq-{{ forloop.index }}" data-jt-faq-panel class="jt:max-w-2xl jt:overflow-hidden jt:pb-6 jt:text-sm jt:leading-relaxed jt:text-charcoal/70"{% unless forloop.first %} hidden{% endunless %}>{{ block.settings.answer }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Closing {%- endcomment -%}
+  <section class="jt:relative jt:overflow-hidden jt:py-28 jt:lg:py-40">
+    {%- render 'jt-img', image: section.settings.closing_image, fallback: 'jt-our-story-bg.png', alt: '', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '100vw' -%}
+    <div class="jt:absolute jt:inset-0 jt:bg-charcoal/85"></div>
+    <div class="jt:relative jt:mx-auto jt:max-w-3xl jt:px-6 jt:text-center jt:lg:px-12">
+      <div class="jt-reveal">
+        <span class="jt:mb-6 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.closing_eyebrow }}</span>
+        <h2 class="jt:mb-7 jt:font-cinzel jt:text-4xl jt:leading-[1.05] jt:text-cream jt:lg:text-6xl">{{ section.settings.closing_heading }}</h2>
+        <p class="jt:mx-auto jt:mb-11 jt:max-w-md jt:leading-relaxed jt:text-cream/60">{{ section.settings.closing_text }}</p>
+        <a href="{{ book_url }}" class="jt:group jt:inline-flex jt:items-center jt:gap-3 jt:bg-gold jt:px-10 jt:py-5 jt:text-[11px] jt:uppercase jt:tracking-[0.25em] jt:text-charcoal jt:transition-all jt:duration-300 jt:hover:bg-cream">
+          {{ section.settings.approach_button }} {% render 'jt-icon', name: 'arrow-right', size: 14, class: 'jt:transition-transform jt:duration-300 jt:group-hover:translate-x-1' %}
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  (function () {
+    var root = document.querySelector('[data-jt-faq]');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = '1';
+    var items = root.querySelectorAll('[data-jt-faq-btn]');
+    items.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        items.forEach(function (b) {
+          var isThis = b === btn, next = isThis && !open;
+          b.setAttribute('aria-expanded', next ? 'true' : 'false');
+          b.querySelector('[data-jt-faq-plus]').hidden = next;
+          b.querySelector('[data-jt-faq-minus]').hidden = !next;
+          document.getElementById(b.getAttribute('aria-controls')).hidden = !next;
+        });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "JANKS Services page",
+  "class": "jt-section",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow", "default": "Our Expertise" },
+    { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Services" },
+    { "type": "textarea", "id": "hero_text", "label": "Text" },
+    { "type": "header", "content": "Buttons" },
+    { "type": "text", "id": "approach_button", "label": "Booking button label", "default": "Book a Consultation" },
+    { "type": "url", "id": "book_url", "label": "Booking link", "info": "Leave empty to use https://jankstailoring.com/book" },
+    { "type": "header", "content": "What we make" },
+    { "type": "text", "id": "offerings_eyebrow", "label": "Eyebrow", "default": "What We Make" },
+    { "type": "text", "id": "offerings_heading", "label": "Heading", "default": "Book Appointment" },
+    { "type": "textarea", "id": "offerings_note", "label": "Note under the list" },
+    { "type": "header", "content": "Process" },
+    { "type": "text", "id": "process_eyebrow", "label": "Eyebrow", "default": "The Process" },
+    { "type": "text", "id": "process_heading", "label": "Heading", "default": "From conversation to collection" },
+    { "type": "header", "content": "Questions" },
+    { "type": "text", "id": "faq_eyebrow", "label": "Eyebrow", "default": "Before You Book" },
+    { "type": "text", "id": "faq_heading", "label": "Heading", "default": "Questions worth asking" },
+    { "type": "header", "content": "Closing" },
+    { "type": "image_picker", "id": "closing_image", "label": "Background photo" },
+    { "type": "text", "id": "closing_eyebrow", "label": "Eyebrow", "default": "Confidence In Gentility" },
+    { "type": "text", "id": "closing_heading", "label": "Heading", "default": "Start with a conversation" },
+    { "type": "textarea", "id": "closing_text", "label": "Text" }
+  ],
+  "blocks": [
+    {
+      "type": "approach",
+      "name": "Approach",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the built-in reference photo for this position." },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle" },
+        { "type": "text", "id": "lead", "label": "Lead line" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "textarea", "id": "features", "label": "Features (one per line)" }
+      ]
+    },
+    {
+      "type": "offering",
+      "name": "Offering",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "price", "label": "Price" },
+        { "type": "text", "id": "meta", "label": "Detail line" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    },
+    {
+      "type": "step",
+      "name": "Process step",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the built-in reference photo for this position." },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "textarea", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "JANKS Services page" }]
+}
+{% endschema %}

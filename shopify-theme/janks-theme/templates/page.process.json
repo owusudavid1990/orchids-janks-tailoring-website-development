@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-page-process",
+      "blocks": {
+        "service_1": {
+          "type": "service",
+          "settings": {
+            "title": "Bespoke Suit",
+            "duration": "8-12 weeks",
+            "intro": "A bespoke suit is more than a garment—it is a collaboration between artisan and client, resulting in a piece that exists nowhere else in the world.",
+            "steps": "Consultation | 90 min | Your journey begins with an intimate conversation about lifestyle, occasions, and personal aesthetic.\nMeasurements | 45 min | Over forty individual measurements form the blueprint of your pattern.\nPattern Cutting | 2-3 days | Your master pattern is drafted by hand, where science meets intuition.\nFirst Fitting | 60 min | The basted garment arrives—adjustments are pinned and balance refined.\nConstruction | 4-6 weeks | Hand-padded lapels, pick stitching, and hand-worked buttonholes.\nFinal Fitting | 30 min | Your finished suit is presented, pressed, and perfected."
+          }
+        },
+        "service_2": {
+          "type": "service",
+          "settings": {
+            "title": "Made-to-Measure",
+            "duration": "4-6 weeks",
+            "intro": "Made-to-measure represents the perfect balance between accessibility and individuality, creating a fit that rivals bespoke.",
+            "steps": "Style Selection | 45 min | Browse our curated collection of silhouettes from contemporary slim cuts to classic English drape.\nFabric & Details | 30 min | Choose from hundreds of the world's finest fabrics and personalise every detail.\nMeasurement | 30 min | Twenty-five key measurements taken and cross-referenced against master patterns.\nConstruction | 3-4 weeks | Cut and assembled by skilled tailors with hand-finished critical elements.\nFitting | 45 min | Final fitting with minor adjustments made in-house to perfect the silhouette."
+          }
+        },
+        "service_3": {
+          "type": "service",
+          "settings": {
+            "title": "Alterations",
+            "duration": "1-2 weeks",
+            "intro": "Our alterations service applies bespoke techniques to transform any garment, ensuring your wardrobe performs at its best.",
+            "steps": "Assessment | 20 min | Each garment is examined with a critical eye to identify the best approach.\nFitting & Marking | 30 min | Our tailor pins and marks every adjustment with methodical precision.\nAlteration | 1-2 weeks | Alterations executed with surgical precision, respecting original construction.\nFinal Review | 15 min | Your altered garment is pressed, inspected, and prepared for collection."
+          }
+        }
+      },
+      "block_order": [
+        "service_1",
+        "service_2",
+        "service_3"
+      ],
+      "settings": {
+        "eyebrow": "Our Process",
+        "heading": "The Making",
+        "cta_heading": "Ready to begin?",
+        "cta_text": "Book your consultation and experience the art of true tailoring.",
+        "cta_label": "Book Consultation"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

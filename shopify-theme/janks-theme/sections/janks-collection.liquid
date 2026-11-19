@@ -1,0 +1,101 @@
+{%- comment -%} Collection page: centred intro + product grid + "More from the collection" links (reference: /category/ties). {%- endcomment -%}
+{%- liquid
+  assign heading = collection.title
+  assign intro = collection.description
+  for block in section.blocks
+    if block.type == 'copy' and block.settings.handle == collection.handle
+      assign heading = block.settings.title | default: collection.title
+      if collection.description == blank
+        assign intro = block.settings.text
+      endif
+    endif
+  endfor
+-%}
+{%- paginate collection.products by section.settings.per_page -%}
+<div class="jt">
+  <section class="jt:pt-32 jt:pb-12 jt:lg:pt-40 jt:lg:pb-16">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      <div class="jt-reveal jt:mx-auto jt:max-w-2xl jt:text-center">
+        <span class="jt:mb-4 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-charcoal/40">{{ section.settings.eyebrow }}</span>
+        <h1 class="jt:mb-6 jt:font-cinzel jt:text-4xl jt:text-charcoal jt:lg:text-6xl">{{ heading }}</h1>
+        {%- if intro != blank -%}
+          <div class="jt:text-sm jt:leading-relaxed jt:text-charcoal/60">{{ intro }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  <section class="jt:pb-24 jt:lg:pb-32">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      <h2 class="jt:sr-only">Products in {{ collection.title }}</h2>
+      {%- if collection.products.size > 0 -%}
+        <div class="jt:grid jt:grid-cols-2 jt:gap-5 jt:md:grid-cols-3 jt:lg:gap-8">
+          {%- for product in collection.products -%}
+            {%- render 'jt-product-card', product: product, index: forloop.index0 -%}
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+          <nav class="jt:mt-14 jt:flex jt:items-center jt:justify-center jt:gap-3 jt:text-[11px] jt:uppercase jt:tracking-[0.2em]" aria-label="Pagination">
+            {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" class="jt:border jt:border-charcoal/20 jt:px-4 jt:py-2.5 jt:text-charcoal/60 jt:transition-all jt:hover:border-charcoal jt:hover:text-charcoal">Prev</a>{%- endif -%}
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}" class="jt:px-3 jt:py-2.5 jt:text-charcoal/50 jt:transition-colors jt:hover:text-charcoal">{{ part.title }}</a>
+              {%- else -%}
+                <span class="jt:px-3 jt:py-2.5 jt:text-charcoal" aria-current="page">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if paginate.next -%}<a href="{{ paginate.next.url }}" class="jt:border jt:border-charcoal/20 jt:px-4 jt:py-2.5 jt:text-charcoal/60 jt:transition-all jt:hover:border-charcoal jt:hover:text-charcoal">Next</a>{%- endif -%}
+          </nav>
+        {%- endif -%}
+      {%- else -%}
+        <div class="jt:flex jt:items-center jt:justify-center jt:py-32"><p class="jt:text-sm jt:text-charcoal/50">No products in this collection yet.</p></div>
+      {%- endif -%}
+
+      {%- if section.settings.show_more -%}
+      <nav aria-label="More from the collection" class="jt:mt-16 jt:flex jt:flex-wrap jt:items-center jt:justify-center jt:gap-x-8 jt:gap-y-3 jt:border-t jt:border-charcoal/10 jt:pt-8 jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/50">
+        <span class="jt:text-charcoal/30">More from the collection</span>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'link' and block.settings.hide_on_handle != collection.handle -%}
+          <a href="{{ block.settings.url | default: '#' }}" class="jt:transition-colors jt:hover:text-charcoal" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "JANKS Collection",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Accessories" },
+    { "type": "checkbox", "id": "show_more", "label": "Show \"More from the collection\" links", "default": false },
+    { "type": "range", "id": "per_page", "min": 6, "max": 48, "step": 6, "default": 24, "label": "Products per page" }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Footer link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "All Categories" },
+        { "type": "url", "id": "url", "label": "Link" },
+        { "type": "text", "id": "hide_on_handle", "label": "Hide on collection (handle)", "info": "e.g. neckties — so a collection does not link to itself." }
+      ]
+    },
+    {
+      "type": "copy",
+      "name": "Heading & intro",
+      "settings": [
+        { "type": "text", "id": "handle", "label": "Collection handle", "info": "The heading and intro below replace the collection's own title and are used when it has no description." },
+        { "type": "text", "id": "title", "label": "Heading" },
+        { "type": "textarea", "id": "text", "label": "Intro" }
+      ]
+    }
+  ],
+  "max_blocks": 16,
+  "presets": [{ "name": "JANKS Collection" }]
+}
+{% endschema %}

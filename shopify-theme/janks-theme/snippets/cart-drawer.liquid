@@ -1,0 +1,12 @@
+{%- comment -%}
+  JANKS cart drawer (reference: ShopifyCartDrawer). The <cart-drawer> element keeps the name Shopify's product form looks for,
+  so "Add to cart" opens it. Behaviour lives in assets/cart-drawer.js; markup in snippets/jt-cart-panel.liquid.
+{%- endcomment -%}
+<cart-drawer class="jt jt-cdrawer" id="jt-cart-drawer">
+  <div class="jt-cdrawer__overlay jt:fixed jt:inset-0 jt:z-[60] jt:bg-black/50 jt:backdrop-blur-sm" data-jt-cart-close></div>
+  <div class="jt-cdrawer__panel jt:fixed jt:top-0 jt:right-0 jt:bottom-0 jt:z-[70] jt:w-full jt:max-w-md jt:border-l jt:border-charcoal/10 jt:bg-cream jt:shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="jt-cart-title" tabindex="-1">
+    <div id="CartDrawer" class="jt:h-full" data-jt-cart-mount>
+      {%- render 'jt-cart-panel' -%}
+    </div>
+  </div>
+</cart-drawer>

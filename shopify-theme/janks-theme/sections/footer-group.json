@@ -1,0 +1,127 @@
+{
+  "name": "Footer group",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "janks-footer",
+      "blocks": {
+        "nav_1": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Services",
+            "url": "/pages/services"
+          }
+        },
+        "nav_2": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Work",
+            "url": "/pages/our-process"
+          }
+        },
+        "nav_fit": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Fit Guide",
+            "url": "https://jankstailoring.com/fit-guide"
+          }
+        },
+        "nav_4": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Gallery",
+            "url": "/pages/gallery"
+          }
+        },
+        "nav_5": {
+          "type": "nav_link",
+          "settings": {
+            "label": "About",
+            "url": "/pages/about-us"
+          }
+        },
+        "nav_6": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Shop",
+            "url": "/collections"
+          }
+        },
+        "nav_7": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Book",
+            "url": "https://jankstailoring.com/book"
+          }
+        },
+        "pol_1": {
+          "type": "policy_link",
+          "settings": {
+            "label": "Privacy & Data Policy",
+            "url": "/policies/privacy-policy"
+          }
+        },
+        "pol_2": {
+          "type": "policy_link",
+          "settings": {
+            "label": "Return & Refund Policy",
+            "url": "/policies/refund-policy"
+          }
+        },
+        "pol_3": {
+          "type": "policy_link",
+          "settings": {
+            "label": "Shipping Policy",
+            "url": "/policies/shipping-policy"
+          }
+        },
+        "pol_4": {
+          "type": "policy_link",
+          "settings": {
+            "label": "Terms of Service",
+            "url": "/policies/terms-of-service"
+          }
+        }
+      },
+      "block_order": [
+        "nav_1",
+        "nav_2",
+        "nav_fit",
+        "nav_4",
+        "nav_5",
+        "nav_6",
+        "nav_7",
+        "pol_1",
+        "pol_2",
+        "pol_3",
+        "pol_4"
+      ],
+      "settings": {
+        "message_url": "/pages/contact",
+        "instagram": "https://www.instagram.com/official_janks.tailoring?igsh=azNjdnkzYXU0Mm1h&utm_source=qr",
+        "youtube": "https://youtube.com/@jankstailoring?si=FEwqqKDFy-IdMElm",
+        "facebook": "https://www.facebook.com/profile.php?id=100054995383463",
+        "tiktok": "https://www.tiktok.com/@janks.tailoring",
+        "pinterest": "https://www.pinterest.com/JanksTailoring/",
+        "google_reviews": "https://www.google.com/search?q=JANKs+Tailoring+Ltd&stick=H4sIAAAAAAAA_-NgU1I1qDBKSjVJMjFPTE4xSLY0TLG0AgqZp5lYGhmkmVgkJhulJqUsYhX2cvTzLlYISczMyS_KzEtX8ClJAQA3caGpPwAAAA&hl=en&mat=CfjY04Q8A3VoElcBa0lj_2-1xkZaWdK2hWEBRfOhXnKMbKoxnvLfRYpcnV7okVUNwXUQtoe2Q0bV3y-0GiDWoL1r5uN23qyWBclJCLvMxWr5ygL-Y2bkOJ7Q52UEStMezJc&authuser=0"
+      }
+    },
+    "widgets": {
+      "type": "janks-widgets",
+      "settings": {
+        "whatsapp": "447828338172",
+        "popup_enabled": true,
+        "popup_eyebrow": "Welcome to JANKS",
+        "popup_heading": "15% Off Your First Order",
+        "popup_text": "Ties, cufflinks, and pocket squares — handcrafted to the same standard as our bespoke work.",
+        "popup_code": "WELCOME15",
+        "popup_button_label": "Shop Now",
+        "popup_button_url": "/collections"
+      }
+    }
+  },
+  "order": [
+    "footer",
+    "widgets"
+  ]
+}

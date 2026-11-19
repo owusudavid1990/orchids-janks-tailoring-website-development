@@ -1,0 +1,26 @@
+{%- comment -%} Default page (any Shopify page without its own template): dark title banner + long-form body. {%- endcomment -%}
+<div class="jt">
+  <section class="jt:bg-charcoal jt:pt-32 jt:pb-16 jt:lg:pt-40 jt:lg:pb-20">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      <div class="jt-reveal">
+        <span class="jt:mb-4 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-cream/40">{{ section.settings.eyebrow }}</span>
+        <h1 class="jt:font-cinzel jt:text-4xl jt:leading-tight jt:text-cream jt:lg:text-6xl">{{ page.title }}</h1>
+      </div>
+    </div>
+  </section>
+  <section class="jt:py-20 jt:lg:py-28">
+    <div class="jt:mx-auto jt:max-w-4xl jt:px-6 jt:lg:px-12">
+      <div class="jt-prose">{{ page.content }}</div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "JANKS Page",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "JANKS Tailoring" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,90 @@
+{%- comment -%} Shop landing page ("Categories") — dark banner + 3-up tile grid with a hover image swap (reference: /category). {%- endcomment -%}
+{%- assign tiles = section.blocks | where: 'type', 'tile' -%}
+<div class="jt">
+  <section class="jt:relative jt:bg-charcoal jt:pt-32 jt:pb-16" style="background-image: url('{% if section.settings.banner != blank %}{{ section.settings.banner | image_url: width: 2000 }}{% else %}{{ 'jt-category-hero.jpg' | asset_url }}{% endif %}'); background-size: cover; background-position: center">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      <div class="jt-reveal">
+        <span class="jt:text-[11px] jt:font-semibold jt:uppercase jt:tracking-[0.2em] jt:text-gold">{{ section.settings.eyebrow }}</span>
+        <h1 class="jt:mt-4 jt:font-cinzel jt:text-5xl jt:leading-[1.05] jt:text-white jt:drop-shadow-lg jt:lg:text-7xl">{{ section.settings.heading }}</h1>
+        <p class="jt:mt-6 jt:max-w-lg jt:leading-relaxed jt:text-white jt:drop-shadow-md">{{ section.settings.text }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="jt:bg-cream jt:py-24 jt:lg:py-32">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      <h2 class="jt:sr-only">Shop by category</h2>
+      <div class="jt:grid jt:gap-6 jt:md:grid-cols-2 jt:lg:grid-cols-3">
+        {%- for block in tiles -%}
+          {%- liquid
+            case forloop.index
+              when 1
+                assign fb = 'jt-suits-collection.webp'
+                assign fb2 = 'jt-hero-suit-1.webp'
+              when 2
+                assign fb = 'jt-hero-suit-3.webp'
+                assign fb2 = 'jt-hero-suit-4.jpeg'
+              when 3
+                assign fb = 'jt-trousers-collection.jpeg'
+                assign fb2 = 'jt-hero-suit-4.jpeg'
+              when 4
+                assign fb = 'jt-necktie-collection.webp'
+                assign fb2 = 'jt-hero-suit-1.webp'
+              when 5
+                assign fb = 'jt-cufflink-collection.webp'
+                assign fb2 = 'jt-hero-suit-1.webp'
+              else
+                assign fb = 'jt-pocket-square-collection.webp'
+                assign fb2 = 'jt-pocket-square-collection.webp'
+            endcase
+          -%}
+          <div class="jt-reveal jt:group jt:cursor-pointer" style="--jt-delay: {{ forloop.index0 | times: 0.1 }}s" {{ block.shopify_attributes }}>
+            <div class="jt:relative jt:aspect-[4/5] jt:overflow-hidden jt:bg-charcoal">
+              <a href="{{ block.settings.url | default: routes.collections_url }}" aria-label="Shop {{ block.settings.title }}" class="jt:absolute jt:inset-0 jt:z-20"></a>
+              {%- render 'jt-img', image: block.settings.image, fallback: fb, alt: block.settings.title, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:transition-all jt:duration-700 jt:group-hover:scale-105 jt:group-hover:opacity-0', sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw' -%}
+              {%- render 'jt-img', image: block.settings.hover_image, fallback: fb2, alt: '', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:scale-105 jt:object-cover jt:opacity-0 jt:transition-all jt:duration-700 jt:group-hover:scale-100 jt:group-hover:opacity-100', sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw' -%}
+              <div class="jt:absolute jt:inset-0 jt:bg-charcoal/40 jt:transition-colors jt:duration-500 jt:group-hover:bg-charcoal/20"></div>
+              <div class="jt:absolute jt:inset-0 jt:flex jt:flex-col jt:justify-end jt:p-6">
+                <div class="jt:flex jt:items-center jt:justify-between">
+                  <div>
+                    <h3 class="jt:font-cinzel jt:text-2xl jt:text-white jt:drop-shadow-md jt:transition-colors jt:duration-300 jt:group-hover:text-gold">{{ block.settings.title }}</h3>
+                    <p class="jt:mt-2 jt:text-sm jt:leading-relaxed jt:text-white/90 jt:drop-shadow-sm">{{ block.settings.description }}</p>
+                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="jt:text-white/80 jt:transition-colors jt:duration-300 jt:group-hover:text-gold" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "JANKS Categories",
+  "class": "jt-section",
+  "settings": [
+    { "type": "image_picker", "id": "banner", "label": "Banner background", "info": "Leave empty to use the built-in reference banner." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop Collection" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Categories" },
+    { "type": "textarea", "id": "text", "label": "Intro", "default": "Browse our curated collection and shop directly from our Shopify store. Each piece reflects our commitment to exceptional craftsmanship." }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Category tile",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the built-in reference photo for this position." },
+        { "type": "image_picker", "id": "hover_image", "label": "Hover image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Suits" },
+        { "type": "text", "id": "description", "label": "Description" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [{ "name": "JANKS Categories" }]
+}
+{% endschema %}

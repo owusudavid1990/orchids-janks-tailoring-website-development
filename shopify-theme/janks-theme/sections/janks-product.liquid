@@ -1,0 +1,194 @@
+{%- comment -%}
+  Product page (reference: /products/[handle]) — square gallery with arrows/dots/thumbs, details column, variant pills,
+  quantity stepper and Add to Cart. Uses Shopify's own product form (variants, pricing, availability, cart drawer).
+{%- endcomment -%}
+{%- liquid
+  assign current = product.selected_or_first_available_variant
+  assign has_variants = false
+  if product.variants.size > 1
+    assign has_variants = true
+  endif
+  assign images = product.images
+-%}
+<div class="jt" data-jt-product data-product-url="{{ product.url }}">
+  <div class="jt:pt-24">
+    <div class="jt:mx-auto jt:max-w-6xl jt:px-6 jt:pt-8 jt:lg:px-12">
+      <a href="{{ routes.collections_url }}" class="jt:inline-flex jt:items-center jt:gap-2 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40 jt:transition-colors jt:hover:text-charcoal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        {{ section.settings.back_label }}
+      </a>
+    </div>
+
+    <div class="jt:mx-auto jt:grid jt:max-w-6xl jt:gap-10 jt:px-6 jt:py-10 jt:md:grid-cols-2 jt:lg:gap-16 jt:lg:px-12">
+
+      {%- comment -%} Gallery {%- endcomment -%}
+      <div class="jt-gallery jt:relative jt:aspect-square jt:w-full jt:bg-charcoal/5" data-jt-gallery>
+        {%- if images.size > 0 -%}
+          {%- for image in images -%}
+            {%- liquid
+              assign img_loading = 'lazy'
+              assign img_priority = 'auto'
+              if forloop.first
+                assign img_loading = 'eager'
+                assign img_priority = 'high'
+              endif
+              assign img_alt = image.alt | default: product.title
+            -%}
+            <div class="jt-gallery__slide jt:absolute jt:inset-0{% if forloop.first %} is-active{% endif %}" data-jt-gslide>
+              {{ image | image_url: width: 1200 | image_tag: widths: '400, 600, 800, 1000, 1200', sizes: '(max-width: 1024px) 100vw, 50vw', alt: img_alt, class: 'jt:h-full jt:w-full jt:object-cover', loading: img_loading, fetchpriority: img_priority }}
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="jt:flex jt:h-full jt:w-full jt:items-center jt:justify-center jt:text-sm jt:text-charcoal/20">No image</div>
+        {%- endif -%}
+
+        {%- if images.size > 1 -%}
+          <button type="button" data-jt-gprev aria-label="Previous image" class="jt:absolute jt:top-1/2 jt:left-3 jt:z-10 jt:flex jt:h-9 jt:w-9 jt:-translate-y-1/2 jt:items-center jt:justify-center jt:bg-cream/80 jt:transition-colors jt:hover:bg-cream">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="jt:text-charcoal" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button type="button" data-jt-gnext aria-label="Next image" class="jt:absolute jt:top-1/2 jt:right-3 jt:z-10 jt:flex jt:h-9 jt:w-9 jt:-translate-y-1/2 jt:items-center jt:justify-center jt:bg-cream/80 jt:transition-colors jt:hover:bg-cream">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="jt:text-charcoal" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+          <div class="jt:absolute jt:bottom-3 jt:left-1/2 jt:z-10 jt:flex jt:-translate-x-1/2 jt:gap-1.5">
+            {%- for image in images -%}
+              <button type="button" data-jt-gdot aria-label="View image {{ forloop.index }}" class="jt-gdot{% if forloop.first %} is-active{% endif %}"></button>
+            {%- endfor -%}
+          </div>
+          <div class="jt:absolute jt:right-0 jt:bottom-10 jt:left-0 jt:z-10 jt:flex jt:gap-1.5 jt:overflow-x-auto jt:px-3">
+            {%- for image in images -%}
+              <button type="button" data-jt-gthumb aria-label="Thumbnail {{ forloop.index }}" class="jt-gthumb jt:relative jt:h-14 jt:w-14 jt:shrink-0 jt:overflow-hidden{% if forloop.first %} is-active{% endif %}">
+                {{ image | image_url: width: 120 | image_tag: alt: '', width: 56, height: 56, class: 'jt:h-full jt:w-full jt:object-cover', loading: 'lazy' }}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Details {%- endcomment -%}
+      <div>
+        <span class="jt:mb-2 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.eyebrow }}</span>
+        <h1 class="jt:mb-4 jt:font-cinzel jt:text-2xl jt:leading-snug jt:text-charcoal jt:lg:text-3xl">{{ product.title }}</h1>
+
+        {%- unless product.available -%}
+          <span class="jt:mb-4 jt:inline-block jt:border jt:border-charcoal/20 jt:bg-cream/90 jt:px-2.5 jt:py-1 jt:text-[9px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal">Sold Out</span>
+        {%- endunless -%}
+
+        {%- if product.description != blank -%}
+          <div class="jt:mb-8 jt:max-w-none jt:text-sm jt:leading-relaxed jt:text-charcoal/70 jt:[&_p]:mb-3 jt:[&_ul]:mb-3 jt:[&_ul]:list-disc jt:[&_ul]:pl-5">{{ product.description }}</div>
+        {%- endif -%}
+
+        {%- assign form_id = 'product-form-' | append: section.id -%}
+        <product-form data-hide-errors="false">
+          {%- form 'product', product, id: form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+            <p class="jt:mb-6 jt:text-xl jt:text-charcoal" data-jt-price>{%- if current.compare_at_price > current.price -%}<s class="jt-compare">{{ current.compare_at_price | money }}</s>{%- endif -%}{{ current.price | money }}</p>
+
+            {%- if has_variants -%}
+              <fieldset class="jt:mb-6" data-jt-variants>
+                <legend class="jt:mb-3 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/50">Select Option</legend>
+                <div class="jt:flex jt:flex-wrap jt:gap-2">
+                  {%- for variant in product.variants -%}
+                    <label class="jt-variant{% unless variant.available %} is-soldout{% endunless %}">
+                      <input type="radio" name="id" value="{{ variant.id }}" class="jt:sr-only" data-price="{{ variant.price | money }}" data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money }}{% endif %}" data-available="{{ variant.available }}" data-image="{{ variant.featured_image.position | default: 0 }}"{% if variant.id == current.id %} checked{% endif %}{% unless variant.available %} disabled{% endunless %}>
+                      <span>{{ variant.title }}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </fieldset>
+            {%- else -%}
+              <input type="hidden" name="id" value="{{ current.id }}">
+            {%- endif -%}
+
+            <div class="jt:mb-6">
+              <p class="jt:mb-3 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/50" id="{{ form_id }}-qty-label">Quantity</p>
+              <div class="jt:flex jt:w-fit jt:items-center jt:border jt:border-charcoal/20">
+                <button type="button" data-jt-qty="-1" aria-label="Decrease quantity" class="jt:flex jt:h-10 jt:w-10 jt:items-center jt:justify-center jt:transition-colors jt:hover:bg-charcoal/5">{% render 'jt-icon', name: 'minus', size: 12, class: 'jt:text-charcoal' %}</button>
+                <input type="number" name="quantity" value="1" min="1" inputmode="numeric" aria-labelledby="{{ form_id }}-qty-label" data-jt-qty-input class="jt-qty jt:w-12 jt:text-center jt:text-sm jt:font-medium jt:text-charcoal">
+                <button type="button" data-jt-qty="1" aria-label="Increase quantity" class="jt:flex jt:h-10 jt:w-10 jt:items-center jt:justify-center jt:transition-colors jt:hover:bg-charcoal/5">{% render 'jt-icon', name: 'plus', size: 12, class: 'jt:text-charcoal' %}</button>
+              </div>
+            </div>
+
+            <div>
+              <button type="submit" name="add" class="product-form__submit jt-add jt:flex jt:w-full jt:items-center jt:justify-center jt:gap-2 jt:bg-charcoal jt:py-4 jt:text-[10px] jt:uppercase jt:tracking-[0.25em] jt:text-cream jt:transition-all jt:duration-300 jt:hover:bg-gold jt:hover:text-charcoal"{% unless current.available %} disabled{% endunless %} data-jt-add>
+                <span data-jt-add-label>{% if current.available %}Add to Cart{% else %}Sold Out{% endif %}</span>
+                <span class="loading__spinner hidden jt:inline-flex" aria-hidden="true">{{- 'icon-spinner.svg' | inline_asset_content -}}</span>
+              </button>
+              <div class="product-form__error-message-wrapper jt:mt-3 jt:text-center jt:text-[11px] jt:text-destructive" role="alert" hidden>
+                <span class="product-form__error-message"></span>
+              </div>
+              <p class="jt:mt-3 jt:text-center jt:text-[10px] jt:tracking-wide jt:text-charcoal/40" data-jt-soldout-note{% if current.available %} hidden{% endif %}>This variant is sold out</p>
+            </div>
+          {%- endform -%}
+        </product-form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script>
+  (function () {
+    var root = document.querySelector('[data-jt-product]');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = '1';
+
+    // gallery
+    var slides = root.querySelectorAll('[data-jt-gslide]');
+    var dots = root.querySelectorAll('[data-jt-gdot]');
+    var thumbs = root.querySelectorAll('[data-jt-gthumb]');
+    var i = 0;
+    function show(n) {
+      if (!slides.length) return;
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle('is-active', k === i); });
+      thumbs.forEach(function (t, k) { t.classList.toggle('is-active', k === i); });
+    }
+    var prev = root.querySelector('[data-jt-gprev]'), next = root.querySelector('[data-jt-gnext]');
+    if (prev) prev.addEventListener('click', function () { show(i - 1); });
+    if (next) next.addEventListener('click', function () { show(i + 1); });
+    dots.forEach(function (d, k) { d.addEventListener('click', function () { show(k); }); });
+    thumbs.forEach(function (t, k) { t.addEventListener('click', function () { show(k); }); });
+
+    // variants: price, availability, image
+    var priceWrap = root.querySelector('[data-jt-price]');
+    var add = root.querySelector('[data-jt-add]');
+    var addLabel = root.querySelector('[data-jt-add-label]');
+    var note = root.querySelector('[data-jt-soldout-note]');
+    root.querySelectorAll('[data-jt-variants] input[type=radio]').forEach(function (r) {
+      r.addEventListener('change', function () {
+        priceWrap.innerHTML = (r.dataset.compare ? '<s class="jt-compare">' + r.dataset.compare + '</s>' : '') + r.dataset.price;
+        var ok = r.dataset.available === 'true';
+        add.disabled = !ok; addLabel.textContent = ok ? 'Add to Cart' : 'Sold Out'; note.hidden = ok;
+        var pos = parseInt(r.dataset.image, 10);
+        if (pos > 0) show(pos - 1);
+        try { var u = new URL(location.href); u.searchParams.set('variant', r.value); history.replaceState({}, '', u); } catch (e) {}
+      });
+    });
+
+    // quantity
+    var qty = root.querySelector('[data-jt-qty-input]');
+    root.querySelectorAll('[data-jt-qty]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var v = parseInt(qty.value, 10) || 1;
+        qty.value = Math.max(1, v + parseInt(b.dataset.jtQty, 10));
+      });
+    });
+  })();
+</script>
+
+{%- if product != blank -%}
+  <script type="application/ld+json">
+    {{ product | structured_data }}
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "JANKS Product",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow above the title", "default": "JANKS Tailoring" },
+    { "type": "text", "id": "back_label", "label": "Back link label", "default": "Back to Shop" }
+  ]
+}
+{% endschema %}

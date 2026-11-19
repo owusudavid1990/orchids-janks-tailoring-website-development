@@ -1,0 +1,171 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-page-about",
+      "blocks": {
+        "image_1": {
+          "type": "image",
+          "settings": {
+            "alt": "Master tailor at work",
+            "side": "left"
+          }
+        },
+        "paragraph_2": {
+          "type": "paragraph",
+          "settings": {
+            "text": "JANKs Tailoring was born from a singular passion: the pursuit of the perfect fit. What began as a young tailor's personal journey into the world of bespoke menswear has evolved into a refined destination for individuals who understand that true elegance lies in craftsmanship, precision, and attention to detail."
+          }
+        },
+        "paragraph_3": {
+          "type": "paragraph",
+          "settings": {
+            "text": "The story of JANKs begins in Ghana, where founder Kwaku Nketiah Acheampong first discovered his passion for fashion and textiles. While studying Fashion & Textiles at Kumasi Technical University, he immersed himself in the art of garment construction, pattern making, and design. This period laid the foundation for his technical expertise and ignited the entrepreneurial spirit that would soon define his career."
+          }
+        },
+        "paragraph_4": {
+          "type": "paragraph",
+          "settings": {
+            "text": "In 2016, Kwaku transformed his passion into a fully-fledged enterprise by establishing JANKs Tailoring, which quickly expanded from a one‑person venture into a growing business overseeing a team of six staff. Clients quickly came to associate JANKs with precision, exceptional customer service, and garments that felt uniquely personal. Whether creating bespoke suits or traditional African garments, every stitch was placed with purpose, skill, and pride."
+          }
+        },
+        "paragraph_5": {
+          "type": "paragraph",
+          "settings": {
+            "text": "JANKs Tailoring earned a loyal clientele not only because of the craftsmanship, but because of Kwaku's approach. He took the time to understand each client's tastes, shape, and personality. For him, tailoring wasn't just about fabric, it was about creating confidence. Clients returned repeatedly, trusting him with their most important garments, knowing that every piece would be crafted with thoughtfulness and integrity."
+          }
+        },
+        "clear_6": {
+          "type": "clear",
+          "settings": {}
+        },
+        "image_7": {
+          "type": "image",
+          "settings": {
+            "alt": "Tailoring craftsmanship",
+            "side": "right"
+          }
+        },
+        "paragraph_8": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Throughout this journey, faith in God remained the most important foundation of Kwaku's growth. Every step from his early apprenticeship days in Ghana, to building a thriving tailoring business, to moving across continents was guided by a deep belief that God's hand was shaping his path. Kwaku attributes his resilience, opportunities, creativity, and milestones to God's grace. His progress reflects not only hard work and skill, but a conviction that he is walking in the purpose God has prepared for him. Faith continues to guide where he is today and where he is destined to go."
+          }
+        },
+        "paragraph_9": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Kwaku migrated to the United Kingdom as a refugee in 2022 and despite considerable challenges associated with rebuilding his life in a new country, he remained committed to pursuing his long‑held dreams. Navigating unfamiliar systems, adapting to cultural and social differences, and overcoming setbacks that would have discouraged many, he has consistently demonstrated remarkable determination and resilience. His journey reflects not only his personal strength but also his unwavering belief in his aspirations, which continue to motivate him as he strives for a brighter and more stable future."
+          }
+        },
+        "paragraph_10": {
+          "type": "paragraph",
+          "settings": {
+            "text": "His journey in the United Kingdom took him to some of the most respected names in British tailoring, including Ozwald Boateng Studios and Anderson & Sheppard on Savile Row. These experiences deepened his understanding of luxury menswear, enhanced his mastery of intricate tailoring techniques, and strengthened his commitment to excellence."
+          }
+        },
+        "clear_11": {
+          "type": "clear",
+          "settings": {}
+        },
+        "image_12": {
+          "type": "image",
+          "settings": {
+            "alt": "Tailored suit detail",
+            "side": "left",
+            "square": true
+          }
+        },
+        "paragraph_13": {
+          "type": "paragraph",
+          "settings": {
+            "text": "These experiences combined with his faith, determination, and unwavering commitment to excellence now shape the identity of JANKs Tailoring. The brand stands as a fusion of Ghanaian artistry, British refinement, and a relentless dedication to perfect fit. Every garment tells a story. Every measurement is taken with intention. Every detail reflects years of learning, growth and passion."
+          }
+        },
+        "paragraph_14": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Today, JANKs Tailoring is more than a tailoring service. It is the embodiment of a journey shaped by craftsmanship, culture, and the belief that God guides every step. JANKs Tailoring continues to evolve, but its core belief remains unchanged:"
+          }
+        },
+        "paragraph_15": {
+          "type": "paragraph",
+          "settings": {
+            "text": "We are not merely crafting garments, we are creating Confidence In Gentility.",
+            "emphasis": true
+          }
+        },
+        "clear_16": {
+          "type": "clear",
+          "settings": {}
+        },
+        "value_17": {
+          "type": "value",
+          "settings": {
+            "title": "Craftsmanship",
+            "text": "Every stitch is placed with intention, every detail considered."
+          }
+        },
+        "value_18": {
+          "type": "value",
+          "settings": {
+            "title": "Integrity",
+            "text": "We use only the finest materials and transparent pricing."
+          }
+        },
+        "value_19": {
+          "type": "value",
+          "settings": {
+            "title": "Personalization",
+            "text": "No two bodies are alike; no two suits should be either."
+          }
+        },
+        "value_20": {
+          "type": "value",
+          "settings": {
+            "title": "Legacy",
+            "text": "We create garments meant to last generations, not seasons."
+          }
+        }
+      },
+      "block_order": [
+        "image_1",
+        "paragraph_2",
+        "paragraph_3",
+        "paragraph_4",
+        "paragraph_5",
+        "clear_6",
+        "image_7",
+        "paragraph_8",
+        "paragraph_9",
+        "paragraph_10",
+        "clear_11",
+        "image_12",
+        "paragraph_13",
+        "paragraph_14",
+        "paragraph_15",
+        "clear_16",
+        "value_17",
+        "value_18",
+        "value_19",
+        "value_20"
+      ],
+      "settings": {
+        "eyebrow": "Our Story",
+        "heading": "The Art of Tailoring",
+        "journey_eyebrow": "A Personal Journey",
+        "journey_heading": "Where tradition meets innovation",
+        "journey_text": "With Ghanaian roots and a deep appreciation for both African heritage and contemporary fashion, my creative vision is shaped by the stories, textures, and symbolism embedded within my culture. I aim to fuse the richness of African history with modern design principles to create fashion that feels both innovative and meaningful. My goal is to develop pieces that honour traditional influences such as African craftsmanship, fabrics, and motifs while presenting them through a fresh, contemporary lens. By blending these two worlds, I hope to produce work that not only stands out aesthetically, but also celebrates identity, heritage, and the evolving narrative of African creativity in global fashion.",
+        "founder_name": "Kwaku Acheampong",
+        "founder_role": "Founder & Master Tailor",
+        "values_eyebrow": "Our Values",
+        "values_heading": "What guides us",
+        "cta_heading": "Begin Your Journey",
+        "cta_text": "Experience the JANKS difference. Book a consultation and discover what bespoke tailoring truly means.",
+        "cta_label": "Book Consultation"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

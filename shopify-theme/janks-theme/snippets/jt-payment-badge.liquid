@@ -1,0 +1,22 @@
+{%- comment -%}
+  "Secure checkout" trust badge — same six methods the reference site shows (Shop Pay, Visa, Mastercard, Amex, Apple Pay, Google Pay).
+  Only list methods that are switched on in Settings → Payments. Usage: {% render 'jt-payment-badge', dark: true, compact: true %}
+{%- endcomment -%}
+{%- capture card -%}jt:flex jt:h-7 jt:w-11 jt:shrink-0 jt:items-center jt:justify-center jt:gap-0.5 jt:rounded jt:border jt:border-black/10 jt:bg-white jt:shadow-sm{%- endcapture -%}
+<div>
+  <div class="jt:mb-3 jt:flex jt:items-center jt:justify-center jt:gap-2">
+    {% render 'jt-icon', name: 'lock', size: 12, class: 'jt:text-cream/40' %}
+    <span class="jt:text-[11px] jt:tracking-[0.1em] {% if dark %}jt:text-cream/40{% else %}jt:text-charcoal/50{% endif %}">Secure checkout, powered by Shopify</span>
+  </div>
+  {%- unless compact -%}
+    <p class="jt:mb-3 jt:text-center jt:text-[10px] jt:uppercase jt:tracking-[0.15em] {% if dark %}jt:text-cream/30{% else %}jt:text-charcoal/30{% endif %}">We accept</p>
+  {%- endunless -%}
+  <div class="jt:flex jt:flex-wrap jt:items-center jt:justify-center jt:gap-2" role="list" aria-label="Accepted payment methods">
+    <div role="listitem" title="Shop Pay"><div class="jt:flex jt:h-7 jt:w-11 jt:shrink-0 jt:items-center jt:justify-center jt:rounded jt:bg-[#5A31F4] jt:shadow-sm"><span class="jt:text-[10px] jt:font-bold jt:text-white jt:italic">shop</span></div></div>
+    <div role="listitem" title="Visa"><div class="{{ card }}"><span class="jt:text-[13px] jt:font-bold jt:tracking-tight jt:italic" style="color:#1A1F71">VISA</span></div></div>
+    <div role="listitem" title="Mastercard"><div class="{{ card }}"><svg width="26" height="16" viewBox="0 0 26 16" aria-hidden="true"><circle cx="9" cy="8" r="7.5" fill="#EB001B"/><circle cx="17" cy="8" r="7.5" fill="#F79E1B" fill-opacity="0.92"/></svg></div></div>
+    <div role="listitem" title="American Express"><div class="{{ card }}"><span class="jt:text-center jt:text-[8px] jt:leading-none jt:font-bold jt:tracking-wide" style="color:#2E77BC">AMEX</span></div></div>
+    <div role="listitem" title="Apple Pay"><div class="{{ card }}"><svg width="11" height="13" viewBox="0 0 14 16" fill="black" aria-hidden="true"><path d="M9.6 2.6c.5-.6.9-1.5.8-2.4-.8 0-1.7.5-2.3 1.1-.5.5-.9 1.4-.8 2.3.9.1 1.8-.5 2.3-1z"/><path d="M10.4 3.8c-1.3-.1-2.4.7-3 .7s-1.6-.7-2.6-.7C3.4 3.9 2.2 4.7 1.5 6c-1.4 2.4-.4 6 1 8 .7 1 1.5 2.1 2.6 2 1-.1 1.4-.6 2.6-.6s1.6.6 2.6.6c1.1 0 1.8-1 2.5-2 .7-1 1-2 1-2.1-.1 0-2-.8-2-3 0-2 1.6-2.8 1.7-2.9-.9-1.3-2.3-1.5-2.8-1.6z"/></svg><span class="jt:text-[11px] jt:font-medium jt:text-black">Pay</span></div></div>
+    <div role="listitem" title="Google Pay"><div class="{{ card }}"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5c-.3 1.5-1.1 2.8-2.4 3.6v3h3.9c2.3-2.1 3.5-5.2 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.9-3c-1.1.7-2.4 1.2-4 1.2-3.1 0-5.7-2.1-6.6-4.9H1.3v3.1C3.3 21.3 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.4 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3V6.6H1.3C.5 8.2 0 10 0 12s.5 3.8 1.3 5.4l4.1-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.3 0 3.3 2.7 1.3 6.6l4.1 3.1c.9-2.8 3.5-4.9 6.6-4.9z"/></svg><span class="jt:text-[11px] jt:font-medium jt:text-[#3C4043]">Pay</span></div></div>
+  </div>
+</div>

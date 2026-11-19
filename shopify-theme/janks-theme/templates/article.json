@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-article",
+      "settings": {
+        "cta_label": "Book a Consultation"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

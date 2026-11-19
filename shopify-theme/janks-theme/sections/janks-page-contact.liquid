@@ -1,0 +1,185 @@
+{%- comment -%} Contact page: photo banner, founder + details + hours + socials, and a native Shopify contact form (reference: /contact). {%- endcomment -%}
+{%- liquid
+  assign phone_digits = section.settings.phone | remove: ' '
+-%}
+<div class="jt">
+
+  <section class="jt:relative jt:flex jt:h-[45vh] jt:items-end jt:overflow-hidden">
+    {%- render 'jt-img', image: section.settings.hero_image, fallback: 'jt-contact-hero.jpg', alt: 'Janks Tailoring Atelier', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '100vw', loading: 'eager', priority: 'high', max: 2400 -%}
+    <div class="jt:absolute jt:inset-0 jt:bg-gradient-to-t jt:from-black/80 jt:via-black/30 jt:to-transparent"></div>
+    <div class="jt:relative jt:z-10 jt:mx-auto jt:w-full jt:max-w-7xl jt:px-6 jt:pb-12 jt:lg:px-12">
+      <div class="jt-reveal">
+        <span class="jt:mb-3 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-white/50">{{ section.settings.eyebrow }}</span>
+        <h1 class="jt:font-cinzel jt:text-4xl jt:text-white jt:lg:text-6xl">{{ section.settings.heading }}</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="jt:py-20 jt:lg:py-28">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      <div class="jt:grid jt:grid-cols-1 jt:gap-16 jt:lg:grid-cols-2 jt:lg:gap-24">
+
+        <div class="jt-reveal jt-reveal--left jt:space-y-10">
+          <div class="jt:flex jt:items-center jt:gap-4 jt:border-b jt:border-charcoal/10 jt:pb-8">
+            <div class="jt:relative jt:h-16 jt:w-16 jt:shrink-0 jt:overflow-hidden jt:rounded-full jt:border jt:border-charcoal/10">
+              {%- render 'jt-img', image: section.settings.founder_image, fallback: 'jt-founder.jpg', alt: section.settings.founder_name, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '64px', max: 300 -%}
+            </div>
+            <div>
+              <h2 class="jt:font-cinzel jt:text-xl jt:text-charcoal">{{ section.settings.founder_name }}</h2>
+              <p class="jt:mt-0.5 jt:text-sm jt:text-charcoal/50">{{ section.settings.founder_role }}</p>
+            </div>
+          </div>
+
+          <div class="jt:space-y-6">
+            {%- if section.settings.email != blank -%}
+              <a href="mailto:{{ section.settings.email }}" class="jt:group jt:flex jt:items-start jt:gap-4">
+                <div class="jt:flex jt:h-10 jt:w-10 jt:shrink-0 jt:items-center jt:justify-center jt:border jt:border-charcoal/15 jt:transition-colors jt:group-hover:bg-charcoal">{% render 'jt-icon', name: 'mail', size: 16, class: 'jt:text-charcoal jt:transition-colors jt:group-hover:text-cream' %}</div>
+                <div>
+                  <span class="jt:mb-1 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40">Email</span>
+                  <span class="jt:text-charcoal jt:transition-colors jt:group-hover:text-gold">{{ section.settings.email }}</span>
+                </div>
+              </a>
+            {%- endif -%}
+            {%- if section.settings.phone != blank -%}
+              <a href="tel:{{ phone_digits }}" class="jt:group jt:flex jt:items-start jt:gap-4">
+                <div class="jt:flex jt:h-10 jt:w-10 jt:shrink-0 jt:items-center jt:justify-center jt:border jt:border-charcoal/15 jt:transition-colors jt:group-hover:bg-charcoal">{% render 'jt-icon', name: 'phone', size: 16, class: 'jt:text-charcoal jt:transition-colors jt:group-hover:text-cream' %}</div>
+                <div>
+                  <span class="jt:mb-1 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40">Phone</span>
+                  <span class="jt:text-charcoal jt:transition-colors jt:group-hover:text-gold">{{ section.settings.phone }}</span>
+                </div>
+              </a>
+            {%- endif -%}
+            <div class="jt:flex jt:items-start jt:gap-4">
+              <div class="jt:flex jt:h-10 jt:w-10 jt:shrink-0 jt:items-center jt:justify-center jt:border jt:border-charcoal/15">{% render 'jt-icon', name: 'map-pin', size: 16, class: 'jt:text-charcoal' %}</div>
+              <div>
+                <span class="jt:mb-1 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40">Atelier</span>
+                <address class="jt:leading-relaxed jt:text-charcoal jt:not-italic">{{ section.settings.address | newline_to_br }}</address>
+              </div>
+            </div>
+          </div>
+
+          <div class="jt:border jt:border-charcoal/10 jt:p-6">
+            <div class="jt:mb-5 jt:flex jt:items-center jt:gap-2">
+              {% render 'jt-icon', name: 'clock', size: 14, class: 'jt:text-charcoal/40' %}
+              <span class="jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40">Opening Hours</span>
+            </div>
+            <div class="jt:space-y-3 jt:text-sm jt:text-charcoal/70">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'hours' -%}
+                  <div class="jt:flex jt:justify-between" {{ block.shopify_attributes }}>
+                    <span>{{ block.settings.days }}</span>
+                    <span class="{% if block.settings.muted %}jt:text-charcoal/40{% else %}jt:text-charcoal{% endif %}">{{ block.settings.time }}</span>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+
+          <div>
+            <span class="jt:mb-4 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40">Follow Us</span>
+            <div class="jt:flex jt:flex-wrap jt:gap-3">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'social' and block.settings.url != blank -%}
+                  <a href="{{ block.settings.url }}" target="_blank" rel="noopener noreferrer" class="jt:group jt:flex jt:items-center jt:gap-3 jt:border jt:border-charcoal/10 jt:px-4 jt:py-3 jt:transition-all jt:hover:border-charcoal/30 jt:hover:bg-charcoal/5" {{ block.shopify_attributes }}>
+                    {%- case block.settings.network -%}
+                      {%- when 'instagram' -%}{% render 'jt-icon', name: 'instagram', size: 16, class: 'jt:text-charcoal' %}
+                      {%- when 'youtube' -%}{% render 'jt-icon', name: 'youtube', size: 16, class: 'jt:text-charcoal' %}
+                      {%- when 'facebook' -%}{% render 'jt-icon', name: 'facebook', size: 16, class: 'jt:text-charcoal' %}
+                      {%- when 'tiktok' -%}<span class="jt:text-charcoal">{% render 'jt-brand-icon', name: 'tiktok', size: 16 %}</span>
+                      {%- when 'pinterest' -%}<span class="jt:text-charcoal">{% render 'jt-brand-icon', name: 'pinterest', size: 16 %}</span>
+                    {%- endcase -%}
+                    <span class="jt:text-[11px] jt:tracking-wide jt:text-charcoal/60">{{ block.settings.label }}</span>
+                  </a>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+
+        <div class="jt-reveal jt-reveal--right" style="--jt-delay: .1s">
+          <h2 class="jt:mb-2 jt:font-cinzel jt:text-2xl jt:text-charcoal jt:lg:text-3xl">{{ section.settings.form_heading }}</h2>
+          <p class="jt:mb-8 jt:text-sm jt:text-charcoal/50">{{ section.settings.form_text }}</p>
+
+          {%- form 'contact', id: 'jt-contact-form', class: 'jt:space-y-5' -%}
+            {%- if form.posted_successfully? -%}
+              <div class="jt:border jt:border-charcoal/10 jt:p-10 jt:text-center" role="status">
+                <div class="jt:mx-auto jt:mb-4 jt:flex jt:h-12 jt:w-12 jt:items-center jt:justify-center jt:bg-gold/10">{% render 'jt-icon', name: 'send', size: 20, class: 'jt:text-gold' %}</div>
+                <h3 class="jt:mb-2 jt:font-cinzel jt:text-xl jt:text-charcoal">Message Sent</h3>
+                <p class="jt:text-sm jt:text-charcoal/50">Thank you. We'll be in touch shortly.</p>
+              </div>
+            {%- else -%}
+              {%- if form.errors -%}
+                <p class="jt:text-sm jt:text-destructive" role="alert">{{ form.errors | default_errors }}</p>
+              {%- endif -%}
+              <div class="jt:grid jt:grid-cols-2 jt:gap-4">
+                <div>
+                  <label for="jt-contact-name" class="jt:mb-2 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40">Full Name</label>
+                  <input id="jt-contact-name" type="text" name="contact[name]" required autocomplete="name" placeholder="Your name" value="{{ form.name }}" class="jt:w-full jt:border jt:border-charcoal/15 jt:bg-transparent jt:px-4 jt:py-3 jt:text-sm jt:text-charcoal jt:transition-colors jt:placeholder:text-charcoal/25 jt:focus:border-charcoal/40 jt:focus:outline-none">
+                </div>
+                <div>
+                  <label for="jt-contact-phone" class="jt:mb-2 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40">Phone</label>
+                  <input id="jt-contact-phone" type="tel" name="contact[phone]" autocomplete="tel" placeholder="+44 7000 000000" value="{{ form.phone }}" class="jt:w-full jt:border jt:border-charcoal/15 jt:bg-transparent jt:px-4 jt:py-3 jt:text-sm jt:text-charcoal jt:transition-colors jt:placeholder:text-charcoal/25 jt:focus:border-charcoal/40 jt:focus:outline-none">
+                </div>
+              </div>
+              <div>
+                <label for="jt-contact-email" class="jt:mb-2 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40">Email</label>
+                <input id="jt-contact-email" type="email" name="contact[email]" required autocomplete="email" placeholder="your@email.com" value="{{ form.email }}" class="jt:w-full jt:border jt:border-charcoal/15 jt:bg-transparent jt:px-4 jt:py-3 jt:text-sm jt:text-charcoal jt:transition-colors jt:placeholder:text-charcoal/25 jt:focus:border-charcoal/40 jt:focus:outline-none">
+              </div>
+              <div>
+                <label for="jt-contact-message" class="jt:mb-2 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40">Message</label>
+                <textarea id="jt-contact-message" name="contact[body]" required rows="6" placeholder="Tell us about your requirements..." class="jt:w-full jt:resize-none jt:border jt:border-charcoal/15 jt:bg-transparent jt:px-4 jt:py-3 jt:text-sm jt:text-charcoal jt:transition-colors jt:placeholder:text-charcoal/25 jt:focus:border-charcoal/40 jt:focus:outline-none">{{ form.body }}</textarea>
+              </div>
+              <button type="submit" class="jt:group jt:flex jt:w-full jt:items-center jt:justify-center jt:gap-3 jt:bg-charcoal jt:py-4 jt:text-[11px] jt:uppercase jt:tracking-[0.25em] jt:text-cream jt:transition-all jt:duration-300 jt:hover:bg-gold jt:hover:text-charcoal">
+                Send Message {% render 'jt-icon', name: 'send', size: 13, class: 'jt:transition-transform jt:group-hover:translate-x-1' %}
+              </button>
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "JANKS Contact page",
+  "class": "jt-section",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Banner photo" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Get in Touch" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Contact Us" },
+    { "type": "header", "content": "Details" },
+    { "type": "image_picker", "id": "founder_image", "label": "Founder photo" },
+    { "type": "text", "id": "founder_name", "label": "Founder name", "default": "Kwaku Acheampong" },
+    { "type": "text", "id": "founder_role", "label": "Founder role", "default": "Master Tailor & Founder" },
+    { "type": "text", "id": "email", "label": "Email", "default": "jankstailoring@gmail.com" },
+    { "type": "text", "id": "phone", "label": "Phone", "default": "+44 7828 338172" },
+    { "type": "textarea", "id": "address", "label": "Address", "default": "3rd Floor, 86-90 Paul Street\nLondon, EC2A 4NE" },
+    { "type": "header", "content": "Form" },
+    { "type": "text", "id": "form_heading", "label": "Heading", "default": "Send a Message" },
+    { "type": "text", "id": "form_text", "label": "Text", "default": "We typically respond within 24 hours." }
+  ],
+  "blocks": [
+    {
+      "type": "hours",
+      "name": "Opening hours row",
+      "settings": [
+        { "type": "text", "id": "days", "label": "Days", "default": "Monday – Friday" },
+        { "type": "text", "id": "time", "label": "Hours", "default": "9:00 – 18:00" },
+        { "type": "checkbox", "id": "muted", "label": "Muted style", "default": false }
+      ]
+    },
+    {
+      "type": "social",
+      "name": "Social link",
+      "settings": [
+        { "type": "select", "id": "network", "label": "Network", "options": [{ "value": "instagram", "label": "Instagram" }, { "value": "youtube", "label": "YouTube" }, { "value": "facebook", "label": "Facebook" }, { "value": "tiktok", "label": "TikTok" }, { "value": "pinterest", "label": "Pinterest" }], "default": "instagram" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Instagram" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "JANKS Contact page" }]
+}
+{% endschema %}

@@ -1,0 +1,133 @@
+{%- comment -%} JANKS footer — mirrors the reference site's Footer component. {%- endcomment -%}
+{%- liquid
+  assign logo = section.settings.logo | default: settings.logo
+  assign nav_links = section.blocks | where: 'type', 'nav_link'
+  assign policy_links = section.blocks | where: 'type', 'policy_link'
+-%}
+{%- capture social_class -%}jt:relative jt:before:absolute jt:before:-inset-1.5 jt:before:content-[''] jt:text-cream/40 jt:transition-colors jt:duration-300 jt:hover:text-cream{%- endcapture -%}
+{%- capture col_link -%}jt:text-[11px] jt:uppercase jt:tracking-[0.15em] jt:text-cream/50 jt:transition-colors jt:duration-300 jt:hover:text-cream{%- endcapture -%}
+{%- capture col_head -%}jt:mb-5 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.25em] jt:text-cream/30{%- endcapture -%}
+
+<footer class="jt jt:bg-black jt:text-cream">
+  <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:py-16 jt:lg:px-12 jt:lg:py-20">
+
+    <div class="jt:grid jt:grid-cols-1 jt:gap-12 jt:sm:grid-cols-2 jt:lg:grid-cols-4 jt:lg:gap-8">
+
+      {%- comment -%} Col 1 — Brand {%- endcomment -%}
+      <div class="jt:flex jt:flex-col jt:sm:col-span-2 jt:lg:col-span-1">
+        <a href="{{ routes.root_url }}" class="jt:mb-6 jt:inline-block">
+          {%- if logo != blank -%}
+            {{ logo | image_url: width: 480 | image_tag: alt: shop.name, width: 160, height: 64, class: 'jt:h-16 jt:w-auto jt:brightness-0 jt:invert', loading: 'lazy' }}
+          {%- else -%}
+            <img src="{{ 'jt-janks-logo.webp' | asset_url }}" alt="{{ shop.name }}" width="160" height="64" class="jt:h-16 jt:w-auto jt:brightness-0 jt:invert" loading="lazy">
+          {%- endif -%}
+        </a>
+        <p class="jt:mb-6 jt:text-sm jt:leading-relaxed jt:text-cream/50">{{ section.settings.tagline }}</p>
+        <div class="jt:mt-auto jt:flex jt:items-center jt:gap-4">
+          {%- if section.settings.instagram != blank -%}<a href="{{ section.settings.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="JANKS Tailoring on Instagram" class="{{ social_class }}">{% render 'jt-icon', name: 'instagram', size: 17 %}</a>{%- endif -%}
+          {%- if section.settings.youtube != blank -%}<a href="{{ section.settings.youtube }}" target="_blank" rel="noopener noreferrer" aria-label="JANKS Tailoring on YouTube" class="{{ social_class }}">{% render 'jt-icon', name: 'youtube', size: 17 %}</a>{%- endif -%}
+          {%- if section.settings.facebook != blank -%}<a href="{{ section.settings.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="JANKS Tailoring on Facebook" class="{{ social_class }}">{% render 'jt-icon', name: 'facebook', size: 17 %}</a>{%- endif -%}
+          {%- if section.settings.tiktok != blank -%}<a href="{{ section.settings.tiktok }}" target="_blank" rel="noopener noreferrer" aria-label="JANKS Tailoring on TikTok" class="{{ social_class }}">{% render 'jt-brand-icon', name: 'tiktok', size: 16 %}</a>{%- endif -%}
+          {%- if section.settings.pinterest != blank -%}<a href="{{ section.settings.pinterest }}" target="_blank" rel="noopener noreferrer" aria-label="JANKS Tailoring on Pinterest" class="{{ social_class }}">{% render 'jt-brand-icon', name: 'pinterest', size: 17 %}</a>{%- endif -%}
+          {%- if section.settings.google_reviews != blank -%}<a href="{{ section.settings.google_reviews }}" target="_blank" rel="noopener noreferrer" aria-label="Read our reviews on Google" class="{{ social_class }}">{% render 'jt-brand-icon', name: 'google', size: 16 %}</a>{%- endif -%}
+        </div>
+      </div>
+
+      {%- comment -%} Col 2 — Navigate {%- endcomment -%}
+      <div>
+        <span class="{{ col_head }}">{{ section.settings.nav_heading }}</span>
+        <ul class="jt:space-y-3">
+          {%- for block in nav_links -%}
+            <li {{ block.shopify_attributes }}><a href="{{ block.settings.url | default: '#' }}" class="{{ col_link }}">{{ block.settings.label }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      {%- comment -%} Col 3 — Contact {%- endcomment -%}
+      <div>
+        <span class="{{ col_head }}">Contact</span>
+        <ul class="jt:space-y-3">
+          {%- if section.settings.email != blank -%}<li><a href="mailto:{{ section.settings.email }}" class="{{ col_link }}">Email Us</a></li>{%- endif -%}
+          {%- if section.settings.phone != blank -%}<li><a href="tel:{{ section.settings.phone | remove: ' ' }}" class="{{ col_link }}">{{ section.settings.phone }}</a></li>{%- endif -%}
+          {%- if section.settings.message_url != blank -%}<li><a href="{{ section.settings.message_url }}" class="{{ col_link }}">Send a Message</a></li>{%- endif -%}
+        </ul>
+      </div>
+
+      {%- comment -%} Col 4 — Atelier {%- endcomment -%}
+      <div>
+        <span class="{{ col_head }}">Atelier</span>
+        <address class="jt:text-[11px] jt:leading-relaxed jt:text-cream/50 jt:not-italic">{{ section.settings.address | newline_to_br }}</address>
+        <p class="jt:mt-4 jt:text-[11px] jt:leading-relaxed jt:text-cream/30">{{ section.settings.hours | newline_to_br }}</p>
+      </div>
+
+    </div>
+
+    <div class="jt:mt-16 jt:border-t jt:border-cream/10 jt:pt-8">
+      {% render 'jt-payment-badge', dark: true, compact: true %}
+    </div>
+
+    <div class="jt:mt-16 jt:flex jt:flex-col jt:items-start jt:justify-between jt:gap-4 jt:border-t jt:border-cream/10 jt:pt-8 jt:sm:flex-row jt:sm:items-center">
+      <p class="jt:text-[10px] jt:uppercase jt:leading-relaxed jt:tracking-[0.1em] jt:text-cream/30">
+        &copy; {{ 'now' | date: '%Y' }} {{ section.settings.company }} · London
+        <br>
+        <span class="jt:tracking-normal jt:normal-case">{{ section.settings.registration }}</span>
+      </p>
+      <div class="jt:flex jt:flex-wrap jt:items-center jt:gap-x-6 jt:gap-y-2">
+        {%- for block in policy_links -%}
+          <a href="{{ block.settings.url | default: '#' }}" class="jt:text-[10px] jt:uppercase jt:tracking-[0.1em] jt:text-cream/30 jt:transition-colors jt:duration-300 jt:hover:text-cream/60" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+        {%- endfor -%}
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "JANKS Footer",
+  "class": "jt-footer-section",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo (falls back to Theme settings → Logo)" },
+    { "type": "textarea", "id": "tagline", "label": "Tagline", "default": "Bespoke tailoring for the modern gentleman. Precision, heritage, and craft." },
+    { "type": "header", "content": "Social links" },
+    { "type": "url", "id": "instagram", "label": "Instagram" },
+    { "type": "url", "id": "youtube", "label": "YouTube" },
+    { "type": "url", "id": "facebook", "label": "Facebook" },
+    { "type": "url", "id": "tiktok", "label": "TikTok" },
+    { "type": "url", "id": "pinterest", "label": "Pinterest" },
+    { "type": "url", "id": "google_reviews", "label": "Google reviews" },
+    { "type": "header", "content": "Navigate column" },
+    { "type": "text", "id": "nav_heading", "label": "Heading", "default": "Navigate" },
+    { "type": "header", "content": "Contact column" },
+    { "type": "text", "id": "email", "label": "Email", "default": "jankstailoring@gmail.com" },
+    { "type": "text", "id": "phone", "label": "Phone", "default": "+44 7828 338172" },
+    { "type": "url", "id": "message_url", "label": "\"Send a Message\" link" },
+    { "type": "header", "content": "Atelier column" },
+    { "type": "textarea", "id": "address", "label": "Address", "default": "3rd Floor\n86–90 Paul Street\nLondon, EC2A 4NE" },
+    { "type": "textarea", "id": "hours", "label": "Opening hours", "default": "Mon–Fri: 9:00–18:00\nSat: 10:00–16:00" },
+    { "type": "header", "content": "Bottom bar" },
+    { "type": "text", "id": "company", "label": "Company name", "default": "JANKS TAILORING LTD" },
+    { "type": "text", "id": "registration", "label": "Registration line", "default": "Registered in England and Wales · Company No. 16870658" }
+  ],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Navigate link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Services" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    },
+    {
+      "type": "policy_link",
+      "name": "Policy link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Privacy & Data Policy" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 16,
+  "presets": [{ "name": "JANKS Footer" }]
+}
+{% endschema %}

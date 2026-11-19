@@ -1,0 +1,44 @@
+{%- comment -%} "Why JANKS" — photo left, checklist right (reference: HomeClient value propositions). {%- endcomment -%}
+<section class="jt jt:grid jt:min-h-[560px] jt:bg-white jt:lg:grid-cols-2">
+  <div class="jt:relative jt:min-h-[320px] jt:lg:min-h-0">
+    {%- render 'jt-img', image: section.settings.image, fallback: 'jt-janks-craftsmanship-ivory.jpg', alt: section.settings.image_alt, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:object-[50%_28%]', sizes: '(max-width: 1024px) 100vw, 50vw' -%}
+  </div>
+  <div class="jt:flex jt:items-center jt:px-8 jt:py-16 jt:lg:px-16 jt:lg:py-20">
+    <div class="jt-reveal jt-reveal--right jt:max-w-md">
+      <span class="jt:mb-4 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.eyebrow }}</span>
+      <h2 class="jt:mb-8 jt:font-cinzel jt:text-3xl jt:leading-tight jt:text-charcoal jt:lg:text-4xl">{{ section.settings.heading }}</h2>
+      <ul class="jt:space-y-5">
+        {%- for block in section.blocks -%}
+          <li class="jt:flex jt:items-start jt:gap-3" {{ block.shopify_attributes }}>
+            {% render 'jt-icon', name: 'check', size: 14, class: 'jt:mt-0.5 jt:shrink-0 jt:text-gold' %}
+            <span class="jt:text-sm jt:leading-relaxed jt:text-charcoal/60">{{ block.settings.text }}</span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JANKS Why JANKS",
+  "class": "jt-section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "text", "id": "image_alt", "label": "Photo description", "default": "Ivory jacquard dinner jacket with satin peak lapel, made by JANKS Tailoring" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why JANKS" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The difference a proper fit makes." }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Point",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Every pattern cut from scratch — never from a template" }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [{ "name": "JANKS Why JANKS", "blocks": [{ "type": "point" }] }]
+}
+{% endschema %}

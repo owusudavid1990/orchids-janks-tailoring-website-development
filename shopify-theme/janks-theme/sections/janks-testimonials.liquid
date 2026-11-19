@@ -1,0 +1,57 @@
+{%- comment -%} "Client Stories" — rotating testimonial with five gold stars and dots (reference: HomeClient testimonials). {%- endcomment -%}
+{%- assign quotes = section.blocks | where: 'type', 'quote' -%}
+<section class="jt jt:bg-[#F5F3EF] jt:py-20 jt:lg:py-24" data-jt-testimonials>
+  <div class="jt:mx-auto jt:max-w-4xl jt:px-6 jt:text-center jt:lg:px-12">
+    <span class="jt:mb-8 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.eyebrow }}</span>
+    <div class="jt:mb-6 jt:flex jt:justify-center jt:gap-1" aria-label="Five star rating">
+      {%- for i in (1..5) -%}{% render 'jt-icon', name: 'star', size: 14, class: 'jt:text-gold' %}{%- endfor -%}
+    </div>
+
+    {%- for block in quotes -%}
+      <div class="jt-quote{% if forloop.first %} is-active{% endif %}" data-jt-quote {{ block.shopify_attributes }}>
+        <p class="jt:mb-8 jt:font-cinzel jt:text-xl jt:leading-relaxed jt:text-charcoal jt:italic jt:lg:text-2xl">"{{ block.settings.quote }}"</p>
+        <p class="jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal">{{ block.settings.author }}</p>
+        <p class="jt:mt-1 jt:text-[10px] jt:uppercase jt:tracking-[0.1em] jt:text-charcoal/40">{{ block.settings.role }}</p>
+      </div>
+    {%- endfor -%}
+
+    {%- if quotes.size > 1 -%}
+      <div class="jt:mt-8 jt:flex jt:justify-center jt:gap-4">
+        {%- for block in quotes -%}
+          <button type="button" data-jt-tdot aria-label="Show testimonial {{ forloop.index }}"{% if forloop.first %} aria-current="true"{% endif %} class="jt-tdot jt:relative jt:before:absolute jt:before:-inset-2 jt:before:content-['']{% if forloop.first %} is-active{% endif %}"></button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.link_url != blank -%}
+      <a href="{{ section.settings.link_url }}" target="_blank" rel="noopener noreferrer" class="jt:mt-8 jt:inline-flex jt:items-center jt:gap-2 jt:text-[11px] jt:uppercase jt:tracking-[0.15em] jt:text-charcoal/50 jt:transition-colors jt:duration-300 jt:hover:text-charcoal">
+        {{ section.settings.link_label }} {% render 'jt-icon', name: 'arrow-right', size: 12 %}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JANKS Testimonials",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Client Stories" },
+    { "type": "text", "id": "link_label", "label": "Reviews link label", "default": "Read Our Reviews on Google" },
+    { "type": "url", "id": "link_url", "label": "Reviews link" }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "author", "label": "Author" },
+        { "type": "text", "id": "role", "label": "Role / source", "default": "Google Review" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "JANKS Testimonials", "blocks": [{ "type": "quote" }] }]
+}
+{% endschema %}

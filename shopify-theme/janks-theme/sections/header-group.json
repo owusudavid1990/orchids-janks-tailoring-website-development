@@ -1,0 +1,68 @@
+{
+  "name": "Header group",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "janks-header",
+      "blocks": {
+        "link_1": {
+          "type": "link",
+          "settings": {
+            "label": "About",
+            "url": "/pages/about-us"
+          }
+        },
+        "link_2": {
+          "type": "link",
+          "settings": {
+            "label": "Services",
+            "url": "/pages/services"
+          }
+        },
+        "link_3": {
+          "type": "link",
+          "settings": {
+            "label": "Shop",
+            "url": "/collections"
+          }
+        },
+        "link_4": {
+          "type": "link",
+          "settings": {
+            "label": "Gallery",
+            "url": "/pages/gallery"
+          }
+        },
+        "link_5": {
+          "type": "link",
+          "settings": {
+            "label": "Academy",
+            "url": "https://jankstailoring.com/style-guide"
+          }
+        },
+        "link_6": {
+          "type": "link",
+          "settings": {
+            "label": "Contact",
+            "url": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "link_1",
+        "link_2",
+        "link_3",
+        "link_4",
+        "link_5",
+        "link_6"
+      ],
+      "settings": {
+        "book_label": "Book",
+        "mobile_book_label": "Book a Fitting"
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

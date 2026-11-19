@@ -1,0 +1,85 @@
+{%- comment -%}
+  "Begin your bespoke journey" — consultation request form over a fabric-swatch photo (reference: HomeClient CTA).
+  Uses Shopify's native contact form, so requests arrive as store emails / customer messages.
+{%- endcomment -%}
+{%- assign steps = section.blocks | where: 'type', 'step' -%}
+<section class="jt jt:relative jt:overflow-hidden jt:bg-charcoal jt:py-16 jt:lg:py-24" id="consultation">
+  <div class="jt:absolute jt:inset-0">
+    {%- render 'jt-img', image: section.settings.image, fallback: 'jt-fabric-swatches.jpeg', alt: '', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:opacity-40', sizes: '100vw' -%}
+    <div class="jt:absolute jt:inset-0 jt:bg-charcoal/70"></div>
+  </div>
+  <div class="jt:relative jt:z-10 jt:mx-auto jt:max-w-2xl jt:px-6 jt:text-center jt:lg:px-12">
+    <div class="jt-reveal">
+      <span class="jt:mb-5 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-cream/40">{{ section.settings.eyebrow }}</span>
+      <h2 class="jt:mb-4 jt:font-cinzel jt:text-4xl jt:leading-[1.1] jt:text-cream jt:lg:text-5xl">{{ section.settings.heading_before }} <span class="jt:text-gold">{{ section.settings.heading_accent }}</span><br>{{ section.settings.heading_after }}</h2>
+      <p class="jt:mb-8 jt:text-sm jt:text-cream/50">{{ section.settings.subheading }}</p>
+
+      <div class="jt:mb-10 jt:flex jt:items-center jt:justify-center jt:gap-8">
+        {%- for block in steps -%}
+          <div class="jt:flex jt:items-center jt:gap-2" {{ block.shopify_attributes }}>
+            <span class="jt:font-cinzel jt:text-[11px] jt:text-gold">0{{ forloop.index }}</span>
+            <span class="jt:text-[11px] jt:tracking-[0.1em] jt:text-cream/60">{{ block.settings.label }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="jt:border jt:border-cream/10 jt:bg-charcoal/40 jt:p-6 jt:backdrop-blur-sm jt:lg:p-8">
+        {%- form 'contact', id: 'jt-consultation-form', class: 'jt:space-y-5' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="jt:py-8 jt:text-center" role="status">
+              <div class="jt:mx-auto jt:mb-4 jt:flex jt:h-12 jt:w-12 jt:items-center jt:justify-center jt:border jt:border-gold">{% render 'jt-icon', name: 'check', size: 20, class: 'jt:text-gold' %}</div>
+              <p class="jt:mb-2 jt:font-cinzel jt:text-lg jt:text-cream">Request Received</p>
+              <p class="jt:text-sm jt:text-cream/50">Thank you. We'll be in touch within 24 hours.</p>
+            </div>
+          {%- else -%}
+            {%- if form.errors -%}
+              <p class="jt:text-left jt:text-sm jt:text-[#f0a0a0]" role="alert">{{ form.errors | default_errors }}</p>
+            {%- endif -%}
+            <input type="hidden" name="contact[Request type]" value="Consultation request">
+            <div class="jt:grid jt:grid-cols-2 jt:gap-4">
+              <input type="text" name="contact[First name]" placeholder="First name" aria-label="First name" required class="jt:w-full jt:border-b jt:border-cream/20 jt:bg-transparent jt:pb-2 jt:text-sm jt:text-cream jt:transition-colors jt:placeholder:text-cream/30 jt:focus:border-gold jt:focus:outline-none">
+              <input type="text" name="contact[Last name]" placeholder="Last name" aria-label="Last name" required class="jt:w-full jt:border-b jt:border-cream/20 jt:bg-transparent jt:pb-2 jt:text-sm jt:text-cream jt:transition-colors jt:placeholder:text-cream/30 jt:focus:border-gold jt:focus:outline-none">
+            </div>
+            <div class="jt:grid jt:grid-cols-2 jt:gap-4">
+              <input type="email" name="contact[email]" placeholder="Email address" aria-label="Email address" required autocomplete="email" class="jt:w-full jt:border-b jt:border-cream/20 jt:bg-transparent jt:pb-2 jt:text-sm jt:text-cream jt:transition-colors jt:placeholder:text-cream/30 jt:focus:border-gold jt:focus:outline-none">
+              <input type="tel" name="contact[phone]" placeholder="Phone number" aria-label="Phone number" autocomplete="tel" class="jt:w-full jt:border-b jt:border-cream/20 jt:bg-transparent jt:pb-2 jt:text-sm jt:text-cream jt:transition-colors jt:placeholder:text-cream/30 jt:focus:border-gold jt:focus:outline-none">
+            </div>
+            <select name="contact[Service]" aria-label="Select service" class="jt:w-full jt:cursor-pointer jt:appearance-none jt:border-b jt:border-cream/20 jt:bg-transparent jt:pb-2 jt:text-sm jt:text-cream/40 jt:transition-colors jt:focus:border-gold jt:focus:outline-none">
+              <option value="" class="jt:bg-charcoal">Select service</option>
+              <option value="Bespoke Suit" class="jt:bg-charcoal jt:text-cream">Bespoke Suit</option>
+              <option value="Custom Shirt" class="jt:bg-charcoal jt:text-cream">Custom Shirt</option>
+              <option value="Made-to-Measure" class="jt:bg-charcoal jt:text-cream">Made-to-Measure</option>
+              <option value="Alterations" class="jt:bg-charcoal jt:text-cream">Alterations</option>
+            </select>
+            <textarea name="contact[body]" rows="2" placeholder="Tell us about your vision..." aria-label="Your message" class="jt:w-full jt:resize-none jt:border-b jt:border-cream/20 jt:bg-transparent jt:pb-2 jt:text-sm jt:text-cream jt:transition-colors jt:placeholder:text-cream/30 jt:focus:border-gold jt:focus:outline-none"></textarea>
+            <button type="submit" class="jt:flex jt:w-full jt:items-center jt:justify-center jt:gap-3 jt:bg-gold jt:py-4 jt:text-[11px] jt:font-medium jt:uppercase jt:tracking-[0.25em] jt:text-charcoal jt:transition-colors jt:duration-300 jt:hover:bg-cream">
+              {{ section.settings.button_label }} {% render 'jt-icon', name: 'arrow-right', size: 13 %}
+            </button>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+      <p class="jt:mt-4 jt:text-[10px] jt:tracking-wide jt:text-cream/20">We typically respond within 24 hours</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JANKS Consultation CTA",
+  "class": "jt-section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background photo" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "05 — Contact" },
+    { "type": "text", "id": "heading_before", "label": "Heading — start", "default": "Begin your" },
+    { "type": "text", "id": "heading_accent", "label": "Heading — gold word", "default": "bespoke" },
+    { "type": "text", "id": "heading_after", "label": "Heading — second line", "default": "journey" },
+    { "type": "text", "id": "subheading", "label": "Sub-heading", "default": "Schedule a private consultation at our atelier." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Request Consultation" }
+  ],
+  "blocks": [
+    { "type": "step", "name": "Step", "settings": [{ "type": "text", "id": "label", "label": "Label", "default": "Consult" }] }
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "JANKS Consultation CTA", "blocks": [{ "type": "step" }, { "type": "step" }, { "type": "step" }] }]
+}
+{% endschema %}

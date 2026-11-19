@@ -1,0 +1,83 @@
+{%- comment -%} Full cart page (/cart). The reference uses a slide-in drawer; this page is the same design at page size, for direct links and no-JS visitors. {%- endcomment -%}
+<div class="jt">
+  <section class="jt:mx-auto jt:max-w-6xl jt:px-6 jt:pt-32 jt:pb-24 jt:lg:px-12 jt:lg:pt-40 jt:lg:pb-32">
+    <div class="jt:mb-10 jt:text-center">
+      <span class="jt:mb-4 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-charcoal/40">{{ section.settings.eyebrow }}</span>
+      <h1 class="jt:font-cinzel jt:text-4xl jt:text-charcoal jt:lg:text-5xl">{{ section.settings.heading }}</h1>
+    </div>
+
+    {%- if cart.item_count == 0 -%}
+      <div class="jt:mx-auto jt:flex jt:max-w-md jt:flex-col jt:items-center jt:py-16 jt:text-center">
+        <div class="jt:mb-5 jt:flex jt:h-16 jt:w-16 jt:items-center jt:justify-center jt:border jt:border-charcoal/10">{% render 'jt-icon', name: 'bag', size: 24, class: 'jt:text-charcoal/20' %}</div>
+        <h2 class="jt:mb-2 jt:font-cinzel jt:text-xl jt:text-charcoal">Your cart is empty</h2>
+        <p class="jt:mb-6 jt:max-w-xs jt:text-sm jt:leading-relaxed jt:text-charcoal/50">Add accessories from our collection to begin.</p>
+        <a href="{{ routes.collections_url }}" class="jt:bg-charcoal jt:px-6 jt:py-3 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-cream jt:transition-all jt:duration-300 jt:hover:bg-gold jt:hover:text-charcoal">Continue Shopping</a>
+      </div>
+    {%- else -%}
+      <div class="jt:grid jt:gap-10 jt:lg:grid-cols-[1fr_360px] jt:lg:gap-16" data-jt-cart-page>
+        <div class="jt:space-y-5" role="list">
+          {%- for item in cart.items -%}
+            <div class="jt:flex jt:gap-5 jt:border-b jt:border-charcoal/10 jt:pb-5" role="listitem">
+              <a href="{{ item.url }}" class="jt:relative jt:block jt:h-32 jt:w-28 jt:shrink-0 jt:overflow-hidden jt:bg-charcoal/5" aria-hidden="true" tabindex="-1">
+                {%- if item.image != blank -%}
+                  {{ item.image | image_url: width: 320 | image_tag: alt: item.product.title, width: 112, height: 128, class: 'jt:h-full jt:w-full jt:object-cover', loading: 'lazy' }}
+                {%- endif -%}
+              </a>
+              <div class="jt:flex jt:min-w-0 jt:flex-1 jt:flex-col">
+                <div class="jt:flex jt:items-start jt:justify-between jt:gap-4">
+                  <div class="jt:min-w-0">
+                    <a href="{{ item.url }}" class="jt:block jt:font-cinzel jt:text-base jt:text-charcoal jt:transition-colors jt:hover:text-gold">{{ item.product.title }}</a>
+                    {%- unless item.product.has_only_default_variant -%}<p class="jt:mt-1 jt:text-xs jt:text-charcoal/50">{{ item.variant.title }}</p>{%- endunless -%}
+                    <p class="jt:mt-1 jt:text-xs jt:text-charcoal/50">{{ item.original_price | money }}</p>
+                    {%- for allocation in item.line_level_discount_allocations -%}<p class="jt:mt-1 jt:text-xs jt:text-gold">{{ allocation.discount_application.title }} (-{{ allocation.amount | money }})</p>{%- endfor -%}
+                  </div>
+                  <p class="jt:font-cinzel jt:text-base jt:text-charcoal">{{ item.final_line_price | money }}</p>
+                </div>
+                <div class="jt:mt-auto jt:flex jt:items-center jt:justify-between jt:pt-4">
+                  <div class="jt:flex jt:items-center jt:border jt:border-charcoal/15">
+                    <button type="button" data-line="{{ forloop.index }}" data-quantity="{{ item.quantity | minus: 1 }}" aria-label="Decrease quantity" class="jt:flex jt:h-9 jt:w-9 jt:items-center jt:justify-center jt:transition-colors jt:hover:bg-charcoal/5">{% render 'jt-icon', name: 'minus', size: 12, class: 'jt:text-charcoal' %}</button>
+                    <span class="jt:w-10 jt:text-center jt:text-sm jt:font-medium jt:text-charcoal" aria-live="polite">{{ item.quantity }}</span>
+                    <button type="button" data-line="{{ forloop.index }}" data-quantity="{{ item.quantity | plus: 1 }}" aria-label="Increase quantity" class="jt:flex jt:h-9 jt:w-9 jt:items-center jt:justify-center jt:transition-colors jt:hover:bg-charcoal/5">{% render 'jt-icon', name: 'plus', size: 12, class: 'jt:text-charcoal' %}</button>
+                  </div>
+                  <button type="button" data-line="{{ forloop.index }}" data-quantity="0" class="jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40 jt:transition-colors jt:hover:text-red-500">Remove</button>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div class="jt:h-fit jt:border jt:border-charcoal/10 jt:bg-white jt:p-6 jt:lg:sticky jt:lg:top-32">
+          <h2 class="jt:mb-5 jt:font-cinzel jt:text-lg jt:text-charcoal">Order Summary</h2>
+          <div class="jt:flex jt:items-center jt:justify-between">
+            <span class="jt:text-xs jt:uppercase jt:tracking-[0.1em] jt:text-charcoal/60">Subtotal</span>
+            <span class="jt:font-cinzel jt:text-lg jt:text-charcoal">{{ cart.total_price | money }}</span>
+          </div>
+          <p class="jt:mt-3 jt:mb-5 jt:text-[11px] jt:leading-relaxed jt:text-charcoal/40">Shipping and taxes calculated at checkout.</p>
+          <form action="{{ routes.cart_url }}" method="post" class="jt:m-0">
+            <button type="submit" name="checkout" class="jt:flex jt:w-full jt:items-center jt:justify-center jt:gap-2 jt:bg-charcoal jt:py-4 jt:text-[10px] jt:uppercase jt:tracking-[0.25em] jt:text-cream jt:transition-all jt:duration-300 jt:hover:bg-gold jt:hover:text-charcoal">{% render 'jt-icon', name: 'lock', size: 12 %} Proceed to Checkout</button>
+          </form>
+          <a href="{{ routes.collections_url }}" class="jt:mt-3 jt:block jt:py-3 jt:text-center jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/50 jt:transition-colors jt:hover:text-charcoal">Continue Shopping</a>
+        </div>
+      </div>
+      <script>
+        document.querySelectorAll('[data-jt-cart-page] button[data-line]').forEach(function (b) {
+          b.addEventListener('click', function () {
+            fetch(window.routes.cart_change_url, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ line: +b.dataset.line, quantity: +b.dataset.quantity }) })
+              .then(function () { window.location.reload(); });
+          });
+        });
+      </script>
+    {%- endif -%}
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "JANKS Cart page",
+  "class": "jt-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shopping Bag" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your Cart" }
+  ]
+}
+{% endschema %}

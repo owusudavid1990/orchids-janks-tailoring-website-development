@@ -1,0 +1,198 @@
+{%- comment -%} Fit Guide: banner, tabs (Shirt / Suit / Trousers / Size Charts), measuring instructions and size tables (reference: /fit-guide). {%- endcomment -%}
+{%- liquid
+  assign groups = section.blocks | where: 'type', 'measure_group'
+  assign charts = section.blocks | where: 'type', 'size_chart'
+  assign book_url = section.settings.cta_url | default: 'https://jankstailoring.com/book'
+  assign tab_count = groups.size
+  if charts.size > 0
+    assign tab_count = tab_count | plus: 1
+  endif
+-%}
+<div class="jt" data-jt-fit>
+
+  <section class="jt:relative jt:overflow-hidden jt:bg-charcoal jt:pt-32 jt:pb-16 jt:lg:pt-48 jt:lg:pb-32">
+    <div class="jt:absolute jt:inset-0 jt:z-0">
+      {%- render 'jt-img', image: section.settings.hero_image, fallback: 'jt-fit-hero.jpg', alt: 'Tailoring fabrics', class: 'jt:h-full jt:w-full jt:object-cover jt:opacity-40', sizes: '100vw', loading: 'eager', max: 2000 -%}
+      <div class="jt:absolute jt:inset-0 jt:bg-gradient-to-r jt:from-charcoal jt:via-charcoal/80 jt:to-transparent"></div>
+    </div>
+    <div class="jt:relative jt:z-10 jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      <div class="jt-reveal">
+        <span class="jt:mb-4 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-white/40">{{ section.settings.eyebrow }}</span>
+        <h1 class="jt:font-cinzel jt:text-4xl jt:leading-[1.1] jt:text-white jt:lg:text-6xl">{{ section.settings.heading }}</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="jt:border-t jt:border-charcoal/10">
+    <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+      <div class="jt:flex jt:overflow-x-auto jt:border-b jt:border-charcoal/10" role="tablist">
+        {%- for block in groups -%}
+          <button type="button" role="tab" data-jt-fit-tab="{{ forloop.index0 }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" class="jt-fittab jt:relative jt:shrink-0 jt:px-6 jt:py-4 jt:text-[11px] jt:uppercase jt:tracking-[0.15em] jt:transition-all{% if forloop.first %} is-active{% endif %}">
+            {{ block.settings.tab_label }}
+            <span class="jt-fittab__bar jt:absolute jt:right-0 jt:bottom-0 jt:left-0 jt:h-px jt:bg-charcoal"></span>
+          </button>
+        {%- endfor -%}
+        {%- if charts.size > 0 -%}
+          <button type="button" role="tab" data-jt-fit-tab="{{ groups.size }}" aria-selected="false" class="jt-fittab jt:relative jt:shrink-0 jt:px-6 jt:py-4 jt:text-[11px] jt:uppercase jt:tracking-[0.15em] jt:transition-all">
+            {{ section.settings.charts_tab_label }}
+            <span class="jt-fittab__bar jt:absolute jt:right-0 jt:bottom-0 jt:left-0 jt:h-px jt:bg-charcoal"></span>
+          </button>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- for block in groups -%}
+    {%- liquid
+      assign items = block.settings.items | newline_to_br | split: '<br />'
+      assign fb = 'jt-shirt-measurement.jpeg'
+      if forloop.index == 2
+        assign fb = 'jt-fit-suit.png'
+      elsif forloop.index >= 3
+        assign fb = 'jt-fit-trouser.png'
+      endif
+    -%}
+    <section class="jt:py-16 jt:lg:py-24" data-jt-fit-panel="{{ forloop.index0 }}"{% unless forloop.first %} hidden{% endunless %} {{ block.shopify_attributes }}>
+      <div class="jt:mx-auto jt:max-w-7xl jt:px-6 jt:lg:px-12">
+        <div class="jt:grid jt:gap-12 jt:lg:grid-cols-2 jt:lg:gap-20">
+          <div class="jt:lg:sticky jt:lg:top-32 jt:lg:self-start">
+            <div class="jt:bg-secondary {% if forloop.first %}jt:p-6 jt:lg:p-8{% else %}jt:p-8 jt:lg:p-12{% endif %}">
+              {%- if forloop.first -%}
+                {%- render 'jt-img', image: block.settings.image, fallback: fb, alt: block.settings.image_alt, class: 'jt:h-auto jt:w-full jt:object-contain', sizes: '(max-width: 1024px) 100vw, 50vw', max: 1200 -%}
+              {%- else -%}
+                {%- render 'jt-img', image: block.settings.image, fallback: fb, alt: block.settings.image_alt, class: 'jt:mx-auto jt:h-auto jt:w-full jt:max-w-[400px]', sizes: '400px', max: 1200 -%}
+                <p class="jt:mt-6 jt:text-center jt:text-xs jt:text-charcoal/40">Hover over measurements to see where to measure</p>
+              {%- endif -%}
+            </div>
+          </div>
+          <div>
+            <h2 class="jt:mb-8 jt:font-cinzel jt:text-2xl jt:text-charcoal">{{ block.settings.title }}</h2>
+            <div class="jt:space-y-1">
+              {%- assign n = 0 -%}
+              {%- for line in items -%}
+                {%- assign parts = line | strip | split: '|' -%}
+                {%- if parts.size >= 2 -%}
+                  {%- assign n = n | plus: 1 -%}
+                  <div class="jt-fititem jt:cursor-pointer jt:border jt:border-charcoal/10 jt:p-4 jt:transition-all">
+                    <div class="jt:flex jt:items-start jt:gap-4">
+                      <span class="jt:text-sm jt:text-charcoal/20">0{{ n }}</span>
+                      <div>
+                        <h3 class="jt:mb-1 jt:font-cinzel jt:text-base jt:text-charcoal">{{ parts[0] | strip }}</h3>
+                        <p class="jt:text-sm jt:leading-relaxed jt:text-charcoal/50">{{ parts[1] | strip }}</p>
+                      </div>
+                    </div>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {%- endfor -%}
+
+  {%- if charts.size > 0 -%}
+    <section class="jt:py-16 jt:lg:py-24" data-jt-fit-panel="{{ groups.size }}" hidden>
+      <div class="jt:mx-auto jt:max-w-7xl jt:space-y-16 jt:px-6 jt:lg:px-12">
+        {%- for block in charts -%}
+          {%- liquid
+            assign cols = block.settings.columns | split: '|'
+            assign rows = block.settings.rows | newline_to_br | split: '<br />'
+          -%}
+          <div {{ block.shopify_attributes }}>
+            <h2 class="jt:mb-6 jt:font-cinzel jt:text-2xl jt:text-charcoal">{{ block.settings.title }}</h2>
+            <p class="jt:mb-6 jt:text-sm jt:text-charcoal/50">{{ block.settings.note }}</p>
+            <div class="jt:overflow-x-auto">
+              <table class="jt:w-full jt:text-sm">
+                <thead>
+                  <tr class="jt:border-b jt:border-charcoal/10">
+                    {%- for col in cols -%}<th class="jt:px-4 jt:py-3 jt:text-left jt:text-[11px] jt:uppercase jt:tracking-[0.15em] jt:text-charcoal/40">{{ col | strip }}</th>{%- endfor -%}
+                  </tr>
+                </thead>
+                <tbody>
+                  {%- for row in rows -%}
+                    {%- assign cells = row | strip | split: '|' -%}
+                    {%- if cells.size > 1 -%}
+                      <tr class="jt:border-b jt:border-charcoal/5 jt:hover:bg-secondary">
+                        {%- for cell in cells -%}<td class="jt:px-4 jt:py-3 {% if forloop.first %}jt:font-cinzel jt:text-charcoal{% else %}jt:text-charcoal/60{% endif %}">{{ cell | strip }}</td>{%- endfor -%}
+                      </tr>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  <section class="jt:bg-charcoal jt:py-16 jt:lg:py-20">
+    <div class="jt:mx-auto jt:max-w-4xl jt:px-6 jt:text-center jt:lg:px-12">
+      <div class="jt-reveal">
+        <h2 class="jt:mb-4 jt:font-cinzel jt:text-2xl jt:text-cream jt:lg:text-3xl">{{ section.settings.cta_heading }}</h2>
+        <p class="jt:mx-auto jt:mb-8 jt:max-w-md jt:text-sm jt:text-cream/50">{{ section.settings.cta_text }}</p>
+        <a href="{{ book_url }}" class="jt:inline-flex jt:items-center jt:gap-3 jt:border jt:border-cream/20 jt:px-8 jt:py-4 jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-cream jt:transition-all jt:duration-300 jt:hover:bg-cream jt:hover:text-charcoal">{{ section.settings.cta_label }} {% render 'jt-icon', name: 'arrow-right', size: 14 %}</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  (function () {
+    var root = document.querySelector('[data-jt-fit]');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = '1';
+    var tabs = root.querySelectorAll('[data-jt-fit-tab]');
+    var panels = root.querySelectorAll('[data-jt-fit-panel]');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var n = tab.getAttribute('data-jt-fit-tab');
+        tabs.forEach(function (t) { var on = t === tab; t.classList.toggle('is-active', on); t.setAttribute('aria-selected', on ? 'true' : 'false'); });
+        panels.forEach(function (p) { p.hidden = p.getAttribute('data-jt-fit-panel') !== n; });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "JANKS Fit Guide page",
+  "class": "jt-section",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Banner photo" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How to Measure" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Fit Guide" },
+    { "type": "text", "id": "charts_tab_label", "label": "Size charts tab label", "default": "Size Charts" },
+    { "type": "header", "content": "Closing call to action" },
+    { "type": "text", "id": "cta_heading", "label": "Heading", "default": "Need Help Measuring?" },
+    { "type": "textarea", "id": "cta_text", "label": "Text", "default": "Book a consultation and our expert tailors will take all measurements for you, ensuring the perfect fit every time." },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Book Consultation" },
+    { "type": "url", "id": "cta_url", "label": "Button link", "info": "Leave empty to use https://jankstailoring.com/book" }
+  ],
+  "blocks": [
+    {
+      "type": "measure_group",
+      "name": "Measuring tab",
+      "settings": [
+        { "type": "text", "id": "tab_label", "label": "Tab label" },
+        { "type": "text", "id": "title", "label": "Heading" },
+        { "type": "image_picker", "id": "image", "label": "Diagram", "info": "Leave empty to use the built-in reference diagram." },
+        { "type": "text", "id": "image_alt", "label": "Diagram description" },
+        { "type": "textarea", "id": "items", "label": "Measurements", "info": "One per line: Label | Instruction" }
+      ]
+    },
+    {
+      "type": "size_chart",
+      "name": "Size chart",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Heading" },
+        { "type": "text", "id": "note", "label": "Note" },
+        { "type": "text", "id": "columns", "label": "Columns", "info": "Separated by | e.g. Size | Collar | Chest" },
+        { "type": "textarea", "id": "rows", "label": "Rows", "info": "One row per line, cells separated by |" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "JANKS Fit Guide page" }]
+}
+{% endschema %}

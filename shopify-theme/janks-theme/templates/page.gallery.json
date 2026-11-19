@@ -1,0 +1,154 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-page-gallery",
+      "blocks": {
+        "photo_1": {
+          "type": "photo",
+          "settings": {
+            "filename": "event-03.jpg",
+            "alt": "Groom Ivory Jacket Rooftop",
+            "category": "events"
+          }
+        },
+        "photo_2": {
+          "type": "photo",
+          "settings": {
+            "filename": "event-02.jpg",
+            "alt": "Groom Ivory Jacquard Dinner Jacket",
+            "category": "events"
+          }
+        },
+        "photo_3": {
+          "type": "photo",
+          "settings": {
+            "filename": "event-01.jpg",
+            "alt": "Groom White Shirt Black Bowtie",
+            "category": "events"
+          }
+        },
+        "photo_4": {
+          "type": "photo",
+          "settings": {
+            "filename": "jt-gallery-copper-brocade-dinner-jacket.jpg",
+            "alt": "Copper Brocade Dinner Jacket",
+            "category": "garments"
+          }
+        },
+        "photo_5": {
+          "type": "photo",
+          "settings": {
+            "filename": "garment-11.jpg",
+            "alt": "Copper Brocade Lapel Detail",
+            "category": "garments"
+          }
+        },
+        "photo_6": {
+          "type": "photo",
+          "settings": {
+            "filename": "garment-10.jpg",
+            "alt": "Copper Brocade Shawl Lapel",
+            "category": "garments"
+          }
+        },
+        "photo_7": {
+          "type": "photo",
+          "settings": {
+            "filename": "garment-08.jpg",
+            "alt": "Ivory Jacquard Jacket Detail",
+            "category": "garments"
+          }
+        },
+        "photo_8": {
+          "type": "photo",
+          "settings": {
+            "filename": "garment-09.jpg",
+            "alt": "Ivory Jacquard Jacket Mannequin",
+            "category": "garments"
+          }
+        },
+        "photo_9": {
+          "type": "photo",
+          "settings": {
+            "filename": "garment-06.jpg",
+            "alt": "Navy Beaded Mandarin Collar Jacket",
+            "category": "garments"
+          }
+        },
+        "photo_10": {
+          "type": "photo",
+          "settings": {
+            "filename": "garment-05.jpg",
+            "alt": "Navy Beaded Yoke Detail",
+            "category": "garments"
+          }
+        },
+        "photo_11": {
+          "type": "photo",
+          "settings": {
+            "filename": "garment-07.jpg",
+            "alt": "Navy Jacquard Pocket And Cuff Detail",
+            "category": "garments"
+          }
+        },
+        "photo_12": {
+          "type": "photo",
+          "settings": {
+            "filename": "garment-01.jpg",
+            "alt": "Peacock Velvet Jacket Lapel Detail",
+            "category": "garments"
+          }
+        },
+        "photo_13": {
+          "type": "photo",
+          "settings": {
+            "filename": "garment-04.jpg",
+            "alt": "Peacock Velvet Jacket Staircase Angle",
+            "category": "garments"
+          }
+        },
+        "photo_14": {
+          "type": "photo",
+          "settings": {
+            "filename": "garment-03.jpg",
+            "alt": "Peacock Velvet Jacket Staircase Front",
+            "category": "garments"
+          }
+        },
+        "photo_15": {
+          "type": "photo",
+          "settings": {
+            "filename": "garment-02.jpg",
+            "alt": "Peacock Velvet Jacket Window Light",
+            "category": "garments"
+          }
+        }
+      },
+      "block_order": [
+        "photo_1",
+        "photo_2",
+        "photo_3",
+        "photo_4",
+        "photo_5",
+        "photo_6",
+        "photo_7",
+        "photo_8",
+        "photo_9",
+        "photo_10",
+        "photo_11",
+        "photo_12",
+        "photo_13",
+        "photo_14",
+        "photo_15"
+      ],
+      "settings": {
+        "eyebrow": "Portfolio",
+        "heading": "Gallery",
+        "text": "A closer look at the garments that leave our atelier — from cloth and construction to the moments they were made for."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

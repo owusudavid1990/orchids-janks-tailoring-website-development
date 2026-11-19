@@ -1,0 +1,82 @@
+{
+  "sections": {
+    "main": {
+      "type": "janks-page-fit-guide",
+      "blocks": {
+        "measure_group_1": {
+          "type": "measure_group",
+          "settings": {
+            "tab_label": "Shirt",
+            "title": "Shirt Measurements",
+            "image_alt": "Shirt measurement guide",
+            "items": "Collar | Measure around the base of your neck, where a shirt collar sits. Add 1/2 inch for comfort.\nChest | Measure around the fullest part of your chest, under the arms, with arms relaxed at sides.\nWaist | Measure around your natural waistline, typically the narrowest part of your torso.\nSleeve Length | From the center back of neck, across the shoulder, down to the wrist bone with arm slightly bent.\nShoulder Width | Measure from the edge of one shoulder to the other, across the back."
+          }
+        },
+        "measure_group_2": {
+          "type": "measure_group",
+          "settings": {
+            "tab_label": "Suit",
+            "title": "Suit Measurements",
+            "image_alt": "Suit measurement guide showing chest, waist, sleeve length, shoulder width, and other key measurements",
+            "items": "Chest | Measure around the fullest part of your chest, under the arms, keeping the tape level. Arms should be relaxed at your sides.\nWaist | Measure around your natural waistline, typically at the navel or slightly above, where you'd wear your trouser waistband.\nShoulder Width | Measure from the edge of one shoulder bone to the other, across the back where the sleeve seam would sit.\nSleeve Length | From the shoulder point, down the outside of the arm to the wrist bone, with arm slightly bent.\nJacket Length | From the base of the collar at the center back, down to where you want the jacket to end (typically mid-seat).\nArmhole | Measure around the armhole opening, from the top of the shoulder down under the arm and back up."
+          }
+        },
+        "measure_group_3": {
+          "type": "measure_group",
+          "settings": {
+            "tab_label": "Trousers",
+            "title": "Trouser Measurements",
+            "image_alt": "Trouser measurement guide showing waist, hip, thigh, knee, outseam, front rise, back rise, and hem measurements",
+            "items": "Waist | Measure around where you normally wear your trousers, keeping the tape comfortably snug.\nSeat/Hip | Measure around the fullest part of your hips and seat.\nInseam | From the crotch seam down to the bottom of the ankle bone, along the inside leg.\nOutseam | From the waist to the desired length along the outside of the leg.\nThigh | Measure around the fullest part of your thigh, typically just below the crotch."
+          }
+        },
+        "size_chart_4": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Shirt Size Chart",
+            "note": "All measurements in inches",
+            "columns": "Size | Collar | Chest | Waist | Sleeve",
+            "rows": "XS | 14 | 34-36 | 28-30 | 32\nS | 14.5 | 36-38 | 30-32 | 33\nM | 15-15.5 | 38-40 | 32-34 | 34\nL | 16-16.5 | 42-44 | 36-38 | 35\nXL | 17-17.5 | 46-48 | 40-42 | 36\nXXL | 18-18.5 | 50-52 | 44-46 | 37"
+          }
+        },
+        "size_chart_5": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Trouser Size Chart",
+            "note": "All measurements in inches",
+            "columns": "Size | Waist | Seat | Inseam",
+            "rows": "28 | 28 | 34 | 30-32\n30 | 30 | 36 | 30-32\n32 | 32 | 38 | 30-32\n34 | 34 | 40 | 30-32\n36 | 36 | 42 | 30-32\n38 | 38 | 44 | 30-32\n40 | 40 | 46 | 30-32"
+          }
+        },
+        "size_chart_6": {
+          "type": "size_chart",
+          "settings": {
+            "title": "Suit Size Chart",
+            "note": "All measurements in inches. S = Short, R = Regular, L = Long",
+            "columns": "Size | Chest | Waist | Shoulder | Sleeve | Jacket Length",
+            "rows": "36S | 36 | 30 | 17 | 23 | 28\n38R | 38 | 32 | 17.5 | 24 | 29\n40R | 40 | 34 | 18 | 24.5 | 30\n42R | 42 | 36 | 18.5 | 25 | 31\n44R | 44 | 38 | 19 | 25.5 | 31.5\n46L | 46 | 40 | 19.5 | 26 | 32\n48L | 48 | 42 | 20 | 26.5 | 32.5"
+          }
+        }
+      },
+      "block_order": [
+        "measure_group_1",
+        "measure_group_2",
+        "measure_group_3",
+        "size_chart_4",
+        "size_chart_5",
+        "size_chart_6"
+      ],
+      "settings": {
+        "eyebrow": "How to Measure",
+        "heading": "Fit Guide",
+        "charts_tab_label": "Size Charts",
+        "cta_heading": "Need Help Measuring?",
+        "cta_text": "Book a consultation and our expert tailors will take all measurements for you, ensuring the perfect fit every time.",
+        "cta_label": "Book Consultation"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

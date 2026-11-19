@@ -1,0 +1,88 @@
+{%- comment -%}
+  Inner content of the slide-in cart (reference: ShopifyCartDrawer). Rendered inside the drawer on every page and
+  by sections/cart-drawer.liquid, which Shopify's Section Rendering API re-fetches after every cart change.
+{%- endcomment -%}
+<div class="jt jt:flex jt:h-full jt:flex-col" data-jt-cart-panel>
+  <div class="jt:flex jt:items-center jt:justify-between jt:border-b jt:border-charcoal/10 jt:px-6 jt:py-5">
+    <div class="jt:flex jt:items-center jt:gap-3">
+      {% render 'jt-icon', name: 'bag', size: 18, class: 'jt:text-charcoal' %}
+      <h2 class="jt:font-cinzel jt:text-base jt:tracking-wide jt:text-charcoal" id="jt-cart-title">Your Cart</h2>
+      {%- if cart.item_count > 0 -%}
+        <span class="jt:text-xs jt:text-charcoal/50">({{ cart.item_count }} {% if cart.item_count == 1 %}item{% else %}items{% endif %})</span>
+      {%- endif -%}
+    </div>
+    <button type="button" data-jt-cart-close aria-label="Close cart" class="jt:group jt:flex jt:h-9 jt:w-9 jt:items-center jt:justify-center jt:border jt:border-charcoal/20 jt:transition-all jt:duration-300 jt:hover:border-charcoal jt:hover:bg-charcoal">
+      {% render 'jt-icon', name: 'x', size: 15, class: 'jt:text-charcoal jt:transition-colors jt:group-hover:text-cream' %}
+    </button>
+  </div>
+
+  <div class="jt:flex-1 jt:overflow-y-auto jt:px-6 jt:py-6">
+    {%- if cart.item_count == 0 -%}
+      <div class="jt:flex jt:h-full jt:flex-col jt:items-center jt:justify-center jt:text-center">
+        <div class="jt:mb-5 jt:flex jt:h-16 jt:w-16 jt:items-center jt:justify-center jt:border jt:border-charcoal/10">
+          {% render 'jt-icon', name: 'bag', size: 24, class: 'jt:text-charcoal/20' %}
+        </div>
+        <h3 class="jt:mb-2 jt:font-cinzel jt:text-base jt:text-charcoal">Your cart is empty</h3>
+        <p class="jt:mb-6 jt:max-w-xs jt:text-sm jt:leading-relaxed jt:text-charcoal/50">Add accessories from our collection to begin.</p>
+        <button type="button" data-jt-cart-close class="jt:bg-charcoal jt:px-6 jt:py-3 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-cream jt:transition-all jt:duration-300 jt:hover:bg-gold jt:hover:text-charcoal">Continue Shopping</button>
+      </div>
+    {%- else -%}
+      <div class="jt:space-y-5" role="list">
+        {%- for item in cart.items -%}
+          <div class="jt-cart-line jt:flex jt:gap-4 jt:border-b jt:border-charcoal/10 jt:pb-5 jt:last:border-0" role="listitem" data-line="{{ forloop.index }}">
+            <a href="{{ item.url }}" class="jt:relative jt:block jt:h-24 jt:w-20 jt:shrink-0 jt:overflow-hidden jt:bg-charcoal/5" tabindex="-1" aria-hidden="true">
+              {%- if item.image != blank -%}
+                {{ item.image | image_url: width: 240 | image_tag: alt: item.product.title, width: 80, height: 96, class: 'jt:h-full jt:w-full jt:object-cover', loading: 'lazy' }}
+              {%- else -%}
+                <span class="jt:flex jt:h-full jt:w-full jt:items-center jt:justify-center">{% render 'jt-icon', name: 'bag', size: 18, class: 'jt:text-charcoal/20' %}</span>
+              {%- endif -%}
+            </a>
+
+            <div class="jt:flex jt:min-w-0 jt:flex-1 jt:flex-col">
+              <div class="jt:flex jt:items-start jt:justify-between jt:gap-2">
+                <div class="jt:min-w-0">
+                  <a href="{{ item.url }}" class="jt:block jt:truncate jt:font-cinzel jt:text-xs jt:text-charcoal">{{ item.product.title }}</a>
+                  {%- unless item.product.has_only_default_variant -%}
+                    <p class="jt:mt-0.5 jt:text-[10px] jt:text-charcoal/50">{{ item.variant.title }}</p>
+                  {%- endunless -%}
+                  {%- for allocation in item.line_level_discount_allocations -%}
+                    <p class="jt:mt-0.5 jt:text-[10px] jt:text-gold">{{ allocation.discount_application.title }} (-{{ allocation.amount | money }})</p>
+                  {%- endfor -%}
+                </div>
+                <button type="button" data-jt-line-remove="{{ forloop.index }}" aria-label="Remove {{ item.product.title | escape }}" class="jt:shrink-0 jt:p-1 jt:text-charcoal/30 jt:transition-colors jt:hover:text-red-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                </button>
+              </div>
+
+              <div class="jt:mt-auto jt:flex jt:items-center jt:justify-between jt:pt-3">
+                <div class="jt:flex jt:items-center jt:border jt:border-charcoal/15">
+                  <button type="button" data-jt-line-qty="{{ forloop.index }}" data-quantity="{{ item.quantity | minus: 1 }}" aria-label="Decrease quantity of {{ item.product.title | escape }}" class="jt:flex jt:h-7 jt:w-7 jt:items-center jt:justify-center jt:transition-colors jt:hover:bg-charcoal/5">{% render 'jt-icon', name: 'minus', size: 10, class: 'jt:text-charcoal' %}</button>
+                  <span class="jt:w-8 jt:text-center jt:text-xs jt:font-medium jt:text-charcoal" aria-live="polite">{{ item.quantity }}</span>
+                  <button type="button" data-jt-line-qty="{{ forloop.index }}" data-quantity="{{ item.quantity | plus: 1 }}" aria-label="Increase quantity of {{ item.product.title | escape }}" class="jt:flex jt:h-7 jt:w-7 jt:items-center jt:justify-center jt:transition-colors jt:hover:bg-charcoal/5">{% render 'jt-icon', name: 'plus', size: 10, class: 'jt:text-charcoal' %}</button>
+                </div>
+                <p class="jt:font-cinzel jt:text-xs jt:text-charcoal">{{ item.final_line_price | money }}</p>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+      <p class="jt:mt-4 jt:text-[11px] jt:text-destructive" data-jt-cart-error role="alert" hidden></p>
+    {%- endif -%}
+  </div>
+
+  {%- if cart.item_count > 0 -%}
+    <div class="jt:space-y-4 jt:border-t jt:border-charcoal/10 jt:bg-cream jt:px-6 jt:py-6">
+      <div class="jt:flex jt:items-center jt:justify-between">
+        <span class="jt:text-xs jt:uppercase jt:tracking-[0.1em] jt:text-charcoal/60">Subtotal</span>
+        <span class="jt:font-cinzel jt:text-base jt:text-charcoal">{{ cart.total_price | money }}</span>
+      </div>
+      <p class="jt:text-[10px] jt:leading-relaxed jt:text-charcoal/40">Shipping and taxes calculated at checkout.</p>
+      <form action="{{ routes.cart_url }}" method="post" class="jt:m-0">
+        <button type="submit" name="checkout" class="jt:flex jt:w-full jt:items-center jt:justify-center jt:gap-2 jt:bg-charcoal jt:py-4 jt:text-[10px] jt:uppercase jt:tracking-[0.25em] jt:text-cream jt:transition-all jt:duration-300 jt:hover:bg-gold jt:hover:text-charcoal">
+          {% render 'jt-icon', name: 'lock', size: 12 %} Proceed to Checkout
+        </button>
+      </form>
+      <button type="button" data-jt-cart-close class="jt:w-full jt:py-3 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/50 jt:transition-colors jt:hover:text-charcoal">Continue Shopping</button>
+    </div>
+  {%- endif -%}
+</div>
