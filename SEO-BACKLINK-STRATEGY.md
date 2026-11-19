@@ -45,7 +45,7 @@ be added to the site's metadata in one line.
 These give Google consistent proof the business is real. **Use identical name, address and phone
 everywhere** (this is called NAP consistency):
 
-> JANKS Tailoring · 3rd Floor, 86–90 Paul Street, London EC2A 4NE · +44 7828 338172 · https://jankstailoring.com
+> JANKS Tailoring · 3rd Floor, 86–90 Paul Street, London EC2A 4NE · +44 7565 533096 · https://jankstailoring.com
 
 Claim or create, in this order of value:
 

@@ -79,7 +79,7 @@ export function FloatingWidgets() {
         {
           role: "assistant",
           content:
-            "Sorry, something went wrong. Please reach us on WhatsApp at +44 7828 338172.",
+            "Sorry, something went wrong. Please reach us on WhatsApp at +44 7565 533096.",
         },
       ]);
     } finally {
@@ -98,7 +98,7 @@ export function FloatingWidgets() {
     <>
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/447828338172"
+        href="https://wa.me/447565533096"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-[45] w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#20bd5a] transition-all duration-300 hover:scale-110"
@@ -179,7 +179,7 @@ export function FloatingWidgets() {
             {exchangeCount >= 2 && (
               <div className="px-4 py-2 bg-[#f0fdf4] border-t border-[#25D366]/20 shrink-0">
                 <a
-                  href="https://wa.me/447828338172"
+                  href="https://wa.me/447565533096"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-[11px] tracking-[0.1em] uppercase text-[#16a34a] hover:text-[#15803d] transition-colors"

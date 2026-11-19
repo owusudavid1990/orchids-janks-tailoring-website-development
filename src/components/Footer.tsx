@@ -88,8 +88,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="tel:+447828338172" className="text-[11px] tracking-[0.15em] uppercase text-cream/50 hover:text-cream transition-colors duration-300">
-                  +44 7828 338172
+                <a href="tel:+447565533096" className="text-[11px] tracking-[0.15em] uppercase text-cream/50 hover:text-cream transition-colors duration-300">
+                  +44 7565 533096
                 </a>
               </li>
               <li>

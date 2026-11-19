@@ -100,13 +100,13 @@ export default function ContactPage() {
                   </div>
                 </a>
 
-                <a href="tel:+447828338172" className="flex items-start gap-4 group">
+                <a href="tel:+447565533096" className="flex items-start gap-4 group">
                   <div className="w-10 h-10 border border-charcoal/15 dark:border-white/15 flex items-center justify-center shrink-0 group-hover:bg-charcoal dark:group-hover:bg-white transition-colors">
                     <Phone size={16} className="text-charcoal dark:text-white group-hover:text-cream dark:group-hover:text-charcoal transition-colors" />
                   </div>
                   <div>
                     <span className="text-[10px] tracking-[0.2em] uppercase text-charcoal/40 dark:text-white/40 block mb-1">Phone</span>
-                    <span className="text-charcoal dark:text-white group-hover:text-gold transition-colors">+44 7828 338172</span>
+                    <span className="text-charcoal dark:text-white group-hover:text-gold transition-colors">+44 7565 533096</span>
                   </div>
                 </a>
 

@@ -71,7 +71,7 @@ London EC2A 4NE
 This is our registered business address, not a shop. Consultations are by appointment only — we travel to you. Every order is delivered.
 
 Email: jankstailoring@gmail.com
-Phone: +44 7828 338172`,
+Phone: +44 7565 533096`,
   },
 ];
 
