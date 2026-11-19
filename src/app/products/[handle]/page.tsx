@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const plainDescription = product.descriptionHtml
     ? product.descriptionHtml.replace(/<[^>]*>/g, "").slice(0, 160)
-    : `Shop ${product.title} at JANKS Tailoring — bespoke menswear accessories, handcrafted in London.`;
+    : `Shop ${product.title} at JANKS Tailoring. Ready-to-wear accessories, delivered to you.`;
 
   return {
     title: `${product.title} | JANKS Tailoring`,

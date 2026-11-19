@@ -38,16 +38,16 @@ export default function AboutPage() {
                 </div>
 
                 <p className="text-charcoal/50 dark:text-white/50 leading-relaxed text-sm mb-6">
-                  JANKs Tailoring was born from a singular passion: the pursuit of the perfect fit. What began as a young tailor&apos;s personal journey into the world of bespoke menswear has evolved into a refined destination for individuals who understand that true elegance lies in craftsmanship, precision, and attention to detail.
+                  JANKS Tailoring was born from a singular passion: the pursuit of the perfect fit. What began as a young tailor&apos;s personal journey into the world of bespoke menswear has evolved into a private tailoring practice for individuals who understand that true elegance lies in craftsmanship, precision, and attention to detail.
                 </p>
                 <p className="text-charcoal/50 dark:text-white/50 leading-relaxed text-sm mb-6">
-                  The story of JANKs begins in Ghana, where founder Kwaku Nketiah Acheampong first discovered his passion for fashion and textiles. While studying Fashion &amp; Textiles at Kumasi Technical University, he immersed himself in the art of garment construction, pattern making, and design. This period laid the foundation for his technical expertise and ignited the entrepreneurial spirit that would soon define his career.
+                  The story of JANKS begins in Ghana, where founder Kwaku Nketiah Acheampong first discovered his passion for fashion and textiles. While studying Fashion &amp; Textiles at Kumasi Technical University, he immersed himself in the art of garment construction, pattern making, and design. This period laid the foundation for his technical expertise and ignited the entrepreneurial spirit that would soon define his career.
                 </p>
                 <p className="text-charcoal/50 dark:text-white/50 leading-relaxed text-sm mb-6">
-                  In 2016, Kwaku transformed his passion into a fully-fledged enterprise by establishing JANKs Tailoring, which quickly expanded from a one&#8209;person venture into a growing business overseeing a team of six staff. Clients quickly came to associate JANKs with precision, exceptional customer service, and garments that felt uniquely personal. Whether creating bespoke suits or traditional African garments, every stitch was placed with purpose, skill, and pride.
+                  In 2016, Kwaku transformed his passion into a fully-fledged enterprise by establishing JANKS Tailoring, which quickly expanded from a one&#8209;person venture into a growing business overseeing a team of six staff. Clients quickly came to associate JANKS with precision, exceptional customer service, and garments that felt uniquely personal. Whether creating bespoke suits or traditional African garments, every stitch was placed with purpose, skill, and pride.
                 </p>
                 <p className="text-charcoal/50 dark:text-white/50 leading-relaxed text-sm mb-6">
-                  JANKs Tailoring earned a loyal clientele not only because of the craftsmanship, but because of Kwaku&apos;s approach. He took the time to understand each client&apos;s tastes, shape, and personality. For him, tailoring wasn&apos;t just about fabric, it was about creating confidence. Clients returned repeatedly, trusting him with their most important garments, knowing that every piece would be crafted with thoughtfulness and integrity.
+                  JANKS Tailoring earned a loyal clientele not only because of the craftsmanship, but because of Kwaku&apos;s approach. He took the time to understand each client&apos;s tastes, shape, and personality. For him, tailoring wasn&apos;t just about fabric, it was about creating confidence. Clients returned repeatedly, trusting him with their most important garments, knowing that every piece would be crafted with thoughtfulness and integrity.
                 </p>
 
                 {/* Clear float before next section */}
@@ -89,10 +89,10 @@ export default function AboutPage() {
                 </div>
 
                 <p className="text-charcoal/50 dark:text-white/50 leading-relaxed text-sm mb-6">
-                  These experiences combined with his faith, determination, and unwavering commitment to excellence now shape the identity of JANKs Tailoring. The brand stands as a fusion of Ghanaian artistry, British refinement, and a relentless dedication to perfect fit. Every garment tells a story. Every measurement is taken with intention. Every detail reflects years of learning, growth and passion.
+                  These experiences combined with his faith, determination, and unwavering commitment to excellence now shape the identity of JANKS Tailoring. The brand stands as a fusion of Ghanaian artistry, British refinement, and a relentless dedication to perfect fit. Every garment tells a story. Every measurement is taken with intention. Every detail reflects years of learning, growth and passion.
                 </p>
                 <p className="text-charcoal/50 dark:text-white/50 leading-relaxed text-sm mb-6">
-                  Today, JANKs Tailoring is more than a tailoring service. It is the embodiment of a journey shaped by craftsmanship, culture, and the belief that God guides every step. JANKs Tailoring continues to evolve, but its core belief remains unchanged:
+                  Today, JANKS Tailoring is more than a tailoring service. It is the embodiment of a journey shaped by craftsmanship, culture, and the belief that God guides every step. JANKS Tailoring continues to evolve, but its core belief remains unchanged:
                 </p>
                 <p className="text-charcoal/50 dark:text-white/50 leading-relaxed text-sm italic font-medium mb-6">
                   We are not merely crafting garments, we are creating Confidence In Gentility.

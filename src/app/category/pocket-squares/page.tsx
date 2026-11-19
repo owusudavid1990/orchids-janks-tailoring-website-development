@@ -10,7 +10,7 @@ export const revalidate = 3600; // refresh product data hourly
 
 export const metadata: Metadata = {
   title: "Pocket Square Collection | JANKS Tailoring",
-  description: "The finishing touch to every ensemble. Shop JANKS Tailoring's pocket squares, crafted from the finest fabrics to add elegance and character.",
+  description: "Pocket squares, ready to ship. Shop the JANKS Tailoring pocket square collection.",
   alternates: { canonical: "https://jankstailoring.com/category/pocket-squares" },
 };
 
@@ -26,7 +26,7 @@ export default async function PocketSquaresCollectionPage() {
             <span className="text-[11px] tracking-[0.3em] uppercase text-charcoal/40 block mb-4">Accessories</span>
             <h1 className="font-cinzel text-4xl lg:text-6xl text-charcoal mb-6">Pocket Square Collection</h1>
             <p className="text-charcoal/60 text-sm leading-relaxed">
-              The finishing touch to every ensemble. Our pocket squares are crafted from the finest fabrics to add elegance and character.
+              Pocket squares, ready to ship.
             </p>
           </FadeIn>
         </div>

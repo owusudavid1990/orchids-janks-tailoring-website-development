@@ -14,28 +14,28 @@ const categories = [
     description: "Impeccably tailored suits for every occasion",
     image: "/suits-collection.webp",
     hoverImage: "/hero-suit-1.webp",
-    shopifyLink: "/book",
+    shopifyLink: "/services",
     internal: true,
   },
   {
     title: "Shirts",
-    description: "Premium dress shirts crafted to perfection",
+    description: "Custom shirts, made to order",
     image: "/hero-suit-3.webp",
     hoverImage: "/hero-suit-4.jpeg",
-    shopifyLink: "/book",
+    shopifyLink: "/services",
     internal: true,
   },
   {
     title: "Trousers",
-    description: "Classic and contemporary trouser styles",
+    description: "Bespoke and made-to-measure trousers",
     image: "/trousers-collection.jpeg",
     hoverImage: "/hero-suit-4.jpeg",
-    shopifyLink: "/book",
+    shopifyLink: "/services",
     internal: true,
   },
   {
     title: "Neck Ties",
-    description: "Handcrafted silk ties in classic and contemporary patterns",
+    description: "Ties, ready to ship",
     image: "/necktie-collection.webp",
     hoverImage: "/hero-suit-1.webp",
     shopifyLink: "/category/ties",
@@ -43,7 +43,7 @@ const categories = [
   },
   {
     title: "Cufflinks",
-    description: "Refined cufflinks for the discerning gentleman",
+    description: "Dress cufflinks",
     image: "/cufflink-collection.webp",
     hoverImage: "/hero-suit-1.webp",
     shopifyLink: "/category/cufflinks",
@@ -51,7 +51,7 @@ const categories = [
   },
   {
     title: "Pocket Squares",
-    description: "The finest finishing touch to every ensemble",
+    description: "Ready to ship",
     image: "/pocket-square-collection.webp",
     hoverImage: "/pocket-square-collection.jpeg",
     shopifyLink: "/category/pocket-squares",
@@ -88,8 +88,7 @@ export default function CategoryPage() {
               Categories
             </h1>
             <p className="text-white mt-6 max-w-lg leading-relaxed drop-shadow-md">
-              Browse our curated collection and shop directly from our Shopify store. 
-              Each piece reflects our commitment to exceptional craftsmanship.
+              Ties, cufflinks and pocket squares are ready to ship from the official shop. Suits, shirts and trousers are made to order — we travel to you.
             </p>
           </motion.div>
         </div>

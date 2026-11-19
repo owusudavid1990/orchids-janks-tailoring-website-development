@@ -37,9 +37,13 @@ const nextConfig: NextConfig = {
   // alive with permanent redirects for any bookmarks, external pages or cached
   // social previews that still point at them.
   async redirects() {
-    return ["necktie-collection", "pocket-square-collection", "suits-collection", "hero-suit-1", "service-heritage-hero"].map(
-      (name) => ({ source: `/${name}.png`, destination: `/${name}.webp`, permanent: true })
-    );
+    return [
+      ...["necktie-collection", "pocket-square-collection", "suits-collection", "hero-suit-1", "service-heritage-hero"].map(
+        (name) => ({ source: `/${name}.png`, destination: `/${name}.webp`, permanent: true })
+      ),
+      // Merchant Center and old links expect /cart. The shop cart is the checkout page.
+      { source: "/cart", destination: "/checkout", permanent: false },
+    ];
   },
   async headers() {
     return [

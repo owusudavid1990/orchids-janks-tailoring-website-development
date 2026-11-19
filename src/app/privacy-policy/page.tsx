@@ -80,7 +80,7 @@ Upon expiry of the applicable retention period, data is securely and permanently
 
 • **Shopify** — Our e-commerce platform for product listings and order processing. Shopify is PCI DSS compliant and maintains its own comprehensive privacy and security practices.
 • **Google Analytics** — Anonymised website analytics to understand how visitors use our site. Data is aggregated and not personally identifiable. You may opt out via Google's opt-out browser add-on.
-• **Google Fonts & CDN Services** — Used to deliver website assets efficiently. These services may log IP addresses in accordance with their own privacy policies.
+• **Website assets** — Typefaces are self-hosted on this website. We do not load fonts from Google Fonts.
 • **Email Service Providers** — Secure email platforms used to communicate with clients. Emails are transmitted over encrypted connections.
 
 We do not share your personal data with any third party for their own marketing purposes. All third-party processors are contractually bound to handle your data in accordance with UK GDPR requirements.`,
@@ -123,9 +123,12 @@ To exercise any of these rights, please contact us using the details below. We w
     title: "Contact & Complaints",
     content: `If you have any questions, concerns, or requests relating to this policy or how we handle your personal data, please contact us:
 
-**JANKS Tailoring — Data Enquiries**
-3rd Floor, 86-90 Paul Street
-London, EC2A 4NE
+**JANKS TAILORING LTD**
+Company No. 16870658
+Registered office: 3rd Floor, 86-90 Paul Street
+London EC2A 4NE
+
+This is our registered business address, not a shop. Consultations are by appointment only — we travel to you. Every order is delivered.
 
 Email: jankstailoring@gmail.com
 Phone: +44 7828 338172
@@ -162,7 +165,7 @@ export default function PrivacyPolicyPage() {
               This policy outlines our commitment to protecting your data and your rights under UK GDPR.
             </p>
             <p className="text-cream/30 text-xs mt-6 tracking-wide">
-              Last updated: {new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
+              Last updated: 19 November 2026
             </p>
           </motion.div>
         </div>

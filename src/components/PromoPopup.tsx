@@ -104,7 +104,7 @@ export function PromoPopup() {
                 15% Off Your First Order
               </h2>
               <p className="text-charcoal/60 text-sm leading-relaxed mb-6">
-                Ties, cufflinks, and pocket squares — handcrafted to the same standard as our bespoke work.
+                Ties, cufflinks, and pocket squares — ready to ship.
               </p>
 
               <button

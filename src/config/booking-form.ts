@@ -6,7 +6,7 @@
  *
  *  • To change a service name or price  -> edit SERVICES below
  *  • To add or remove a question        -> edit FIELDS below
- *  • To change the opening hours        -> edit TIME_SLOTS / BOOKING_WINDOW
+ *  • To change bookable appointment times -> edit TIME_SLOTS / BOOKING_WINDOW
  *
  * After editing, the site needs to be redeployed for changes to appear.
  * ───────────────────────────────────────────────────────────────────────────

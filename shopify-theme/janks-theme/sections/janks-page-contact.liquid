@@ -5,7 +5,7 @@
 <div class="jt">
 
   <section class="jt:relative jt:flex jt:h-[45vh] jt:items-end jt:overflow-hidden">
-    {%- render 'jt-img', image: section.settings.hero_image, fallback: 'jt-contact-hero.jpg', alt: 'Janks Tailoring Atelier', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '100vw', loading: 'eager', priority: 'high', max: 2400 -%}
+    {%- render 'jt-img', image: section.settings.hero_image, fallback: 'jt-contact-hero.jpg', alt: 'JANKS Tailoring', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '100vw', loading: 'eager', priority: 'high', max: 2400 -%}
     <div class="jt:absolute jt:inset-0 jt:bg-gradient-to-t jt:from-black/80 jt:via-black/30 jt:to-transparent"></div>
     <div class="jt:relative jt:z-10 jt:mx-auto jt:w-full jt:max-w-7xl jt:px-6 jt:pb-12 jt:lg:px-12">
       <div class="jt-reveal">
@@ -52,27 +52,15 @@
             <div class="jt:flex jt:items-start jt:gap-4">
               <div class="jt:flex jt:h-10 jt:w-10 jt:shrink-0 jt:items-center jt:justify-center jt:border jt:border-charcoal/15">{% render 'jt-icon', name: 'map-pin', size: 16, class: 'jt:text-charcoal' %}</div>
               <div>
-                <span class="jt:mb-1 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40">Atelier</span>
-                <address class="jt:leading-relaxed jt:text-charcoal jt:not-italic">{{ section.settings.address | newline_to_br }}</address>
+                <span class="jt:mb-1 jt:block jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40">Registered Office</span>
+                <address class="jt:leading-relaxed jt:text-charcoal jt:not-italic">JANKS TAILORING LTD · Company No. 16870658<br>{{ section.settings.address | newline_to_br }}</address>
               </div>
             </div>
           </div>
 
           <div class="jt:border jt:border-charcoal/10 jt:p-6">
-            <div class="jt:mb-5 jt:flex jt:items-center jt:gap-2">
-              {% render 'jt-icon', name: 'clock', size: 14, class: 'jt:text-charcoal/40' %}
-              <span class="jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal/40">Opening Hours</span>
-            </div>
-            <div class="jt:space-y-3 jt:text-sm jt:text-charcoal/70">
-              {%- for block in section.blocks -%}
-                {%- if block.type == 'hours' -%}
-                  <div class="jt:flex jt:justify-between" {{ block.shopify_attributes }}>
-                    <span>{{ block.settings.days }}</span>
-                    <span class="{% if block.settings.muted %}jt:text-charcoal/40{% else %}jt:text-charcoal{% endif %}">{{ block.settings.time }}</span>
-                  </div>
-                {%- endif -%}
-              {%- endfor -%}
-            </div>
+            <p class="jt:text-sm jt:leading-relaxed jt:text-charcoal/70">This is our registered business address, not a shop. Consultations are by appointment only — we travel to you. Every order is delivered.</p>
+            <a href="https://jankstailoring.com/book" class="jt:mt-4 jt:inline-block jt:text-[11px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal jt:transition-colors jt:hover:text-gold">Book a private consultation — we travel to you.</a>
           </div>
 
           <div>
@@ -155,21 +143,12 @@
     { "type": "text", "id": "founder_role", "label": "Founder role", "default": "Master Tailor & Founder" },
     { "type": "text", "id": "email", "label": "Email", "default": "jankstailoring@gmail.com" },
     { "type": "text", "id": "phone", "label": "Phone", "default": "+44 7828 338172" },
-    { "type": "textarea", "id": "address", "label": "Address", "default": "3rd Floor, 86-90 Paul Street\nLondon, EC2A 4NE" },
+    { "type": "textarea", "id": "address", "label": "Registered office", "default": "3rd Floor, 86-90 Paul Street\nLondon EC2A 4NE" },
     { "type": "header", "content": "Form" },
     { "type": "text", "id": "form_heading", "label": "Heading", "default": "Send a Message" },
     { "type": "text", "id": "form_text", "label": "Text", "default": "We typically respond within 24 hours." }
   ],
   "blocks": [
-    {
-      "type": "hours",
-      "name": "Opening hours row",
-      "settings": [
-        { "type": "text", "id": "days", "label": "Days", "default": "Monday – Friday" },
-        { "type": "text", "id": "time", "label": "Hours", "default": "9:00 – 18:00" },
-        { "type": "checkbox", "id": "muted", "label": "Muted style", "default": false }
-      ]
-    },
     {
       "type": "social",
       "name": "Social link",

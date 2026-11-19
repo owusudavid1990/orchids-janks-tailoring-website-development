@@ -165,7 +165,7 @@ export default function DashboardPage() {
           <p className="text-[10px] tracking-[0.25em] uppercase text-white/30 mb-4">Quick Actions</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {[
-              { href: "/book", icon: Scissors, label: "Book a Fitting", desc: "Schedule your appointment" },
+              { href: "/book", icon: Scissors, label: "Book a Consultation", desc: "We travel to you" },
               { href: "/category", icon: ShoppingBag, label: "Shop Accessories", desc: "Ties, cufflinks & more" },
               { href: "/contact", icon: Mail, label: "Contact Us", desc: "Get in touch" },
             ].map(({ href, icon: Icon, label, desc }) => (

@@ -11,15 +11,15 @@ const sections = [
     id: "bespoke",
     icon: Package,
     title: "Bespoke & Made-to-Measure Garments",
-    content: `Construction typically takes **4–6 weeks**. Once your garment is complete, it can be **shipped to you or collected in person** at our London atelier.
+    content: `Construction typically takes **4–6 weeks**. Once your garment is complete, it is **delivered to you**. We do not offer collection in person.
 
-Private fittings at your home or office can also be arranged where convenient for both parties.`,
+Private fittings are by appointment only — we travel to you, at your home or office.`,
   },
   {
     id: "accessories",
     icon: Truck,
     title: "Ready-to-Wear Accessories",
-    content: `Orders are processed once full payment is received, and are typically dispatched within **1–2 working days**. We ship via **DHL**, with tracking provided on every order.
+    content: `Orders are processed once full payment is received, and are typically dispatched within **1–2 working days**. We ship via **DHL**, with tracking provided on every order. Every accessory order is delivered. There is no collection option.
 
 **Within London** — from £6 (may vary based on your specific location)
 **Elsewhere in the UK and internationally** — shipping is available; cost is calculated at checkout based on your delivery address`,
@@ -60,9 +60,12 @@ Private fittings at your home or office can also be arranged where convenient fo
     id: "contact",
     icon: Mail,
     title: "Questions About Your Order",
-    content: `**JANKS Tailoring Ltd**
-3rd Floor, 86-90 Paul Street
-London, EC2A 4NE
+    content: `**JANKS TAILORING LTD**
+Company No. 16870658
+Registered office: 3rd Floor, 86-90 Paul Street
+London EC2A 4NE
+
+This is our registered business address, not a shop. Consultations are by appointment only — we travel to you. Every order is delivered.
 
 Email: jankstailoring@gmail.com
 Phone: +44 7828 338172`,
@@ -90,7 +93,7 @@ export default function ShippingPolicyPage() {
               How we deliver bespoke garments and shop accessories, and what to expect along the way.
             </p>
             <p className="text-cream/30 text-xs mt-6 tracking-wide">
-              Last updated: 16 August 2026
+              Last updated: 19 November 2026
             </p>
           </motion.div>
         </div>

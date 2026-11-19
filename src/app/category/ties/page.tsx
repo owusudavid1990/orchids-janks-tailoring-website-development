@@ -10,7 +10,7 @@ export const revalidate = 3600; // refresh product data hourly
 
 export const metadata: Metadata = {
   title: "Tie Collection | JANKS Tailoring",
-  description: "Handcrafted ties that complete the gentleman's look, made with the finest fabrics and attention to detail. Shop the JANKS Tailoring tie collection.",
+  description: "Ties, ready to ship. Shop the JANKS Tailoring tie collection.",
   alternates: { canonical: "https://jankstailoring.com/category/ties" },
 };
 
@@ -26,7 +26,7 @@ export default async function TieCollectionPage() {
             <span className="text-[11px] tracking-[0.3em] uppercase text-charcoal/40 block mb-4">Accessories</span>
             <h1 className="font-cinzel text-4xl lg:text-6xl text-charcoal mb-6">Tie Collection</h1>
             <p className="text-charcoal/60 text-sm leading-relaxed">
-              Handcrafted ties that complete the gentleman's look. Each piece made with the finest fabrics and attention to detail.
+              Ties, ready to ship.
             </p>
           </FadeIn>
         </div>

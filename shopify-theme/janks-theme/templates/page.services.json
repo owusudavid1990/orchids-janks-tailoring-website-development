@@ -75,14 +75,14 @@
             "name": "Alterations",
             "price": "From £50",
             "meta": "Garments you already own",
-            "description": "Sleeves shortened, waists taken in, jackets rebalanced. Bring us something that never quite fitted and we'll tell you honestly whether it can be saved."
+            "description": "Sleeves shortened, waists taken in, jackets rebalanced. Tell us about something that never quite fitted and we'll tell you honestly whether it can be saved."
           }
         },
         "step_9": {
           "type": "step",
           "settings": {
             "title": "Consultation",
-            "text": "We talk through the occasion, your wardrobe and what you want the garment to do. At our studio, or at your home or office. You're under no obligation to proceed."
+            "text": "We talk through the occasion, your wardrobe and what you want the garment to do. Consultations are by appointment only — we travel to you. You're under no obligation to proceed."
           }
         },
         "step_10": {
@@ -102,8 +102,8 @@
         "step_12": {
           "type": "step",
           "settings": {
-            "title": "Collection",
-            "text": "Collect in person, or have it sent by DHL. Allow four to six weeks from the first measurement."
+            "title": "Delivery",
+            "text": "Every order is delivered. Allow four to six weeks from the first measurement."
           }
         },
         "faq_13": {
@@ -131,7 +131,7 @@
           "type": "faq",
           "settings": {
             "question": "Where do fittings take place?",
-            "answer": "Private fittings can be arranged at your home or your office anywhere in London, as well as at our studio — whichever suits you."
+            "answer": "Consultations and fittings are by appointment only — we travel to you, at your home or office. We serve the United Kingdom."
           }
         },
         "faq_17": {
@@ -172,18 +172,18 @@
       "settings": {
         "hero_eyebrow": "Our Expertise",
         "hero_heading": "Services",
-        "hero_text": "Three approaches to the same intention — a garment that fits you, made in London, by people who will tell you the truth about what suits you.",
+        "hero_text": "Three approaches to the same intention — a garment that fits you, by people who will tell you the truth about what suits you.",
         "approach_button": "Book a Consultation",
         "offerings_eyebrow": "What We Make",
         "offerings_heading": "Book Appointment",
         "offerings_note": "Prices are starting points — the cloth you choose is the largest variable. You'll be given a firm figure at the consultation, before anything is committed to.",
         "process_eyebrow": "The Process",
-        "process_heading": "From conversation to collection",
+        "process_heading": "From conversation to delivery",
         "faq_eyebrow": "Before You Book",
         "faq_heading": "Questions worth asking",
         "closing_eyebrow": "Confidence In Gentility",
         "closing_heading": "Start with a conversation",
-        "closing_text": "A conversation first, with nothing committed. Come with an occasion in mind, or just a suit that has never fitted properly."
+        "closing_text": "A conversation first, with nothing committed. Start with an occasion in mind, or a suit that has never fitted properly. Book a private consultation — we travel to you."
       }
     }
   },

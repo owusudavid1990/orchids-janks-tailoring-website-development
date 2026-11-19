@@ -60,7 +60,7 @@ const services = [
 
 const process = [
   { step: "01", title: "Consult", body: "We start with a conversation — your lifestyle, occasions, and aesthetic goals." },
-  { step: "02", title: "Measure", body: "15+ precise measurements taken in our London atelier, including posture and proportion." },
+  { step: "02", title: "Measure", body: "15+ precise measurements, including posture and proportion, taken when we visit you." },
   { step: "03", title: "Design", body: "Choose your cloth, lining, details, and silhouette from hundreds of options." },
   { step: "04", title: "Craft", body: "Your garment is built by hand and fitted until it is exactly right." },
 ];
@@ -225,7 +225,7 @@ export default function HomeClient({ heroVideo = null }: { heroVideo?: string | 
               href="/book"
               className="inline-flex items-center gap-3 bg-cream text-charcoal text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-gold transition-colors duration-300"
             >
-              Book a Fitting
+              Book a Consultation
               <ArrowRight size={13} />
             </Link>
           </div>
@@ -250,7 +250,7 @@ export default function HomeClient({ heroVideo = null }: { heroVideo?: string | 
               <span className="text-[11px] tracking-[0.3em] uppercase text-gold block mb-2">Shop</span>
               <h2 className="font-cinzel text-3xl lg:text-5xl text-charcoal leading-tight">Featured Pieces</h2>
               <p className="text-charcoal/50 text-sm mt-3 max-w-md">
-                Handcrafted silk ties, ready to ship.
+                Ties, ready to ship.
               </p>
             </div>
             <Link href="/category" className="hidden lg:inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-charcoal/40 hover:text-charcoal transition-colors duration-300">
@@ -372,7 +372,7 @@ export default function HomeClient({ heroVideo = null }: { heroVideo?: string | 
       {/* ── FULL-BLEED ABOUT SPLIT ── */}
       <section className="grid lg:grid-cols-2 min-h-[560px]">
         <div className="relative min-h-[320px] lg:min-h-0">
-          <Image src="/service-heritage-hero.webp" alt="The JANKS atelier" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+          <Image src="/service-heritage-hero.webp" alt="Bespoke garment by JANKS Tailoring" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
           <div className="absolute inset-0 bg-charcoal/20" />
         </div>
         <div className="relative flex items-center px-8 lg:px-16 py-16 lg:py-20 overflow-hidden">
@@ -413,7 +413,7 @@ export default function HomeClient({ heroVideo = null }: { heroVideo?: string | 
             <div>
               <span className="text-[11px] tracking-[0.3em] uppercase text-gold block mb-2">Shop</span>
               <h2 className="font-cinzel text-3xl lg:text-5xl text-charcoal leading-tight">Browse the Collection</h2>
-              <p className="text-charcoal/50 text-sm mt-3 tracking-wide max-w-sm">Every category, made to order or ready to ship.</p>
+              <p className="text-charcoal/50 text-sm mt-3 tracking-wide max-w-sm">Suits, shirts and trousers are made to order. Ties, cufflinks and pocket squares are ready to ship.</p>
             </div>
             <Link
               href="/category"
@@ -427,12 +427,12 @@ export default function HomeClient({ heroVideo = null }: { heroVideo?: string | 
         {/* Tile grid — full bleed, no padding */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-cream/50">
           {[
-            { label: "Suits", sub: "Bespoke & MTM", image: "/suits-collection.webp", href: "/category" },
-            { label: "Shirts", sub: "Dress & Casual", image: "/hero-suit-3.webp", href: "/book" },
-            { label: "Trousers", sub: "Flat & Pleated", image: "/trousers-collection.jpeg", href: "/book" },
-            { label: "Ties", sub: "Silk & Wool", image: "/necktie-collection.webp", href: "/category/ties" },
-            { label: "Cufflinks", sub: "Precious Metal", image: "/cufflink-collection.webp", href: "/category/cufflinks" },
-            { label: "Pocket Squares", sub: "Hand-Rolled", image: "/pocket-square-collection.webp", href: "/category/pocket-squares" },
+            { label: "Suits", sub: "Bespoke & MTM", image: "/suits-collection.webp", href: "/services" },
+            { label: "Shirts", sub: "Dress & Casual", image: "/hero-suit-3.webp", href: "/services" },
+            { label: "Trousers", sub: "Flat & Pleated", image: "/trousers-collection.jpeg", href: "/services" },
+            { label: "Ties", sub: "Ties, ready to ship", image: "/necktie-collection.webp", href: "/category/ties" },
+            { label: "Cufflinks", sub: "Dress cufflinks", image: "/cufflink-collection.webp", href: "/category/cufflinks" },
+            { label: "Pocket Squares", sub: "Ready to ship", image: "/pocket-square-collection.webp", href: "/category/pocket-squares" },
           ].map((cat, i) => (
             <motion.div
               key={cat.label}
@@ -479,7 +479,7 @@ export default function HomeClient({ heroVideo = null }: { heroVideo?: string | 
                     </div>
                     <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="inline-flex items-center gap-1.5 bg-cream text-charcoal text-[10px] tracking-[0.2em] uppercase px-4 py-2">
-                        Shop <ArrowRight size={9} />
+                        {cat.href.startsWith("/services") ? "View" : "Shop"} <ArrowRight size={9} />
                       </span>
                     </div>
                   </div>
@@ -539,7 +539,7 @@ export default function HomeClient({ heroVideo = null }: { heroVideo?: string | 
             <div className="w-10 h-px bg-gold mb-8" />
 
             <p className="text-charcoal/60 text-base leading-relaxed mb-6">
-              Every garment that leaves the JANKS atelier is a testament to the belief that clothing is not merely worn — it is experienced. Our portfolio spans decades of commissions for executives, dignitaries, and discerning individuals who understand that true style begins with fit.
+              Every garment we make is a testament to the belief that clothing is not merely worn — it is experienced. We tailor for executives, dignitaries, and discerning individuals who understand that true style begins with fit.
             </p>
 
             <p className="text-charcoal/40 text-sm leading-relaxed mb-10">
@@ -633,7 +633,7 @@ export default function HomeClient({ heroVideo = null }: { heroVideo?: string | 
                 "Cloths sourced from leading British and Italian mills",
                 "Multiple fittings until the garment is exactly right",
                 "Lifetime pattern on file — every future garment fits faster",
-                "Based in London. Available for consultation nationwide",
+                "Based in London. We travel to you for consultations across the United Kingdom",
               ].map((point) => (
                 <li key={point} className="flex items-start gap-3">
                   <Check size={14} className="text-gold shrink-0 mt-0.5" />
@@ -758,7 +758,7 @@ export default function HomeClient({ heroVideo = null }: { heroVideo?: string | 
               Begin your <span className="text-gold">bespoke</span><br />journey
             </h2>
             <p className="text-cream/50 text-sm mb-8">
-              Schedule a private consultation at our atelier.
+              Book a private consultation — we travel to you.
             </p>
             <div className="flex items-center justify-center gap-8 mb-10">
               {[{ n: "01", l: "Consult" }, { n: "02", l: "Measure" }, { n: "03", l: "Create" }].map((s) => (

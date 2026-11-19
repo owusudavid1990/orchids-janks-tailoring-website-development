@@ -320,7 +320,7 @@ export function Navigation() {
                     onClick={() => setIsOpen(false)}
                     className="block w-full text-center bg-gold text-charcoal text-[11px] tracking-[0.25em] uppercase py-4 hover:bg-cream transition-colors duration-300"
                   >
-                    Book a Fitting
+                    Book a private consultation — we travel to you.
                   </Link>
                   {user ? (
                     <>

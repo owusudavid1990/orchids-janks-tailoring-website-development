@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Gallery of Bespoke Suits & Client Work | JANKS Tailoring",
-  description: "A gallery of JANKS Tailoring's bespoke garments and client moments — real work from the atelier.",
+  description: "A gallery of JANKS Tailoring's bespoke garments and client moments.",
   alternates: { canonical: "https://jankstailoring.com/gallery" },
 };
 
@@ -25,7 +25,7 @@ export default function GalleryPage() {
             Gallery
           </h1>
           <p className="text-cream/50 text-sm leading-relaxed max-w-2xl">
-            A closer look at the garments that leave our atelier — from cloth and construction to the moments they were made for.
+            A closer look at the garments we make — from cloth and construction to the moments they were made for.
           </p>
         </div>
       </section>

@@ -11,13 +11,19 @@ const sections = [
     id: "about",
     icon: Building2,
     title: "About Us",
-    content: `This website is operated by **JANKS Tailoring Ltd** (Company No. 16870658), based at 3rd Floor, 86-90 Paul Street, London, EC2A 4NE.`,
+    content: `This website is operated by **JANKS TAILORING LTD** (Company No. 16870658), incorporated in November 2025. The tailoring business was founded in 2016.
+
+**Registered office:** 3rd Floor, 86-90 Paul Street, London EC2A 4NE.
+
+This is our registered business address, not a shop. Consultations are by appointment only — we travel to you. Every order is delivered.
+
+jankstailoring.com is the brand, booking and editorial site. shop.jankstailoring.com is the official shop for accessories.`,
   },
   {
     id: "orders",
     icon: CreditCard,
     title: "Orders & Payment",
-    content: `Bespoke and made-to-measure commissions require a **70% deposit** before work begins, with the balance due before your garment is released to you.
+    content: `Bespoke and made-to-measure commissions require a **70% deposit** before work begins, with the balance due before your garment is delivered to you.
 
 Prices for ready-to-wear accessories are as shown at checkout in GBP (£). All information you provide with an order must be accurate and complete, and we accept the major payment methods displayed at checkout.`,
   },
@@ -39,13 +45,17 @@ We reserve the right to decline orders that cannot be fulfilled due to design li
     id: "returns",
     icon: RefreshCcw,
     title: "Returns & Refunds",
-    content: `See our [Return & Refund Policy](/return-policy) for full details on returns, exchanges, and refunds.`,
+    content: `Ready-to-wear accessory returns are accepted within **30 days from delivery** if the item is unused, unworn, with tags and in original packaging. Bespoke and made-to-measure garments are non-refundable once cutting has started.
+
+See our [Return & Refund Policy](/return-policy) for exchanges, refunds, and exceptions.`,
   },
   {
     id: "shipping",
     icon: Truck,
-    title: "Shipping & Collection",
-    content: `See our [Shipping Policy](/shipping-policy) for delivery times, costs, and collection options.`,
+    title: "Shipping & Delivery",
+    content: `Every order is delivered. We do not offer collection in person.
+
+See our [Shipping Policy](/shipping-policy) for delivery times and costs.`,
   },
   {
     id: "cancellations",
@@ -87,9 +97,12 @@ We reserve the right to decline orders that cannot be fulfilled due to design li
     id: "contact",
     icon: Mail,
     title: "Contact",
-    content: `**JANKS Tailoring Ltd**
-3rd Floor, 86-90 Paul Street
-London, EC2A 4NE
+    content: `**JANKS TAILORING LTD**
+Company No. 16870658
+Registered office: 3rd Floor, 86-90 Paul Street
+London EC2A 4NE
+
+This is our registered business address, not a shop. Consultations are by appointment only — we travel to you. Every order is delivered.
 
 Email: jankstailoring@gmail.com
 Phone: +44 7828 338172`,
@@ -123,7 +136,7 @@ export default function TermsOfServicePage() {
               The terms governing your use of the JANKS Tailoring website and our bespoke tailoring, made-to-measure, alteration, and retail services.
             </p>
             <p className="text-cream/30 text-xs mt-6 tracking-wide">
-              Last updated: 16 August 2026
+              Last updated: 19 November 2026
             </p>
           </motion.div>
         </div>

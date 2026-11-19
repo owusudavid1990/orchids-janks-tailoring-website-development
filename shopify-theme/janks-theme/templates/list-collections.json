@@ -8,30 +8,30 @@
           "settings": {
             "title": "Suits",
             "description": "Impeccably tailored suits for every occasion",
-            "url": "https://jankstailoring.com/book"
+            "url": "https://jankstailoring.com/services"
           }
         },
         "tile_2": {
           "type": "tile",
           "settings": {
             "title": "Shirts",
-            "description": "Premium dress shirts crafted to perfection",
-            "url": "https://jankstailoring.com/book"
+            "description": "Custom shirts, made to order",
+            "url": "https://jankstailoring.com/services"
           }
         },
         "tile_3": {
           "type": "tile",
           "settings": {
             "title": "Trousers",
-            "description": "Classic and contemporary trouser styles",
-            "url": "https://jankstailoring.com/book"
+            "description": "Bespoke and made-to-measure trousers",
+            "url": "https://jankstailoring.com/services"
           }
         },
         "tile_4": {
           "type": "tile",
           "settings": {
             "title": "Neck Ties",
-            "description": "Handcrafted silk ties in classic and contemporary patterns",
+            "description": "Ties, ready to ship",
             "url": "/collections/neckties"
           }
         },
@@ -39,7 +39,7 @@
           "type": "tile",
           "settings": {
             "title": "Cufflinks",
-            "description": "Refined cufflinks for the discerning gentleman",
+            "description": "Dress cufflinks",
             "url": "/collections/mother-of-pearl-cufflinks-copy-1"
           }
         },
@@ -47,7 +47,7 @@
           "type": "tile",
           "settings": {
             "title": "Pocket Squares",
-            "description": "The finest finishing touch to every ensemble",
+            "description": "Ready to ship",
             "url": "/collections/pocket-square"
           }
         }
@@ -63,7 +63,7 @@
       "settings": {
         "eyebrow": "Shop Collection",
         "heading": "Categories",
-        "text": "Browse our curated collection and shop directly from our Shopify store. Each piece reflects our commitment to exceptional craftsmanship."
+        "text": "Ties, cufflinks and pocket squares are ready to ship from the official shop. Suits, shirts and trousers are made to order — we travel to you."
       }
     }
   },

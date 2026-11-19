@@ -25,7 +25,7 @@ const essays = [
     slug: "behind-the-pattern-bespoke-suit",
     title: "Behind the Pattern: Making a Bespoke Suit from Scratch",
     excerpt:
-      "A rare look inside the atelier — from the first consultation and chalk marks on cloth through to the final fitting. This is what bespoke really means.",
+      "From the first consultation and chalk marks on cloth through to the final fitting. This is what bespoke really means.",
     image: "/suits-collection.webp",
     // Was "Atelier Vlog" — it's a written essay, and "vlog" implies video
     category: "From the Atelier",
@@ -128,7 +128,7 @@ export default function StyleGuidePage() {
               Dress Better.<br />Live Sharper.
             </h1>
             <p className="text-cream/50 text-sm leading-relaxed max-w-lg">
-              Style essays and reference guides from the JANKS atelier — what to look for
+              Style essays and reference guides from JANKS Tailoring — what to look for
               in a garment, how cloth behaves, and the details worth paying for.
             </p>
             <div className="flex items-center gap-6 mt-10">
@@ -157,7 +157,7 @@ export default function StyleGuidePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="mb-12">
             <span className="text-[11px] tracking-[0.3em] uppercase text-gold block mb-3">Reading Room</span>
-            <h2 className="font-cinzel text-3xl lg:text-4xl text-charcoal">Essays from the Atelier</h2>
+            <h2 className="font-cinzel text-3xl lg:text-4xl text-charcoal">Style Essays</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">

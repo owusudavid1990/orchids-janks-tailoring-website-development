@@ -140,7 +140,7 @@ export default function BookPage() {
         <Navigation />
         <section className="min-h-screen grid lg:grid-cols-2">
           <div className="relative hidden lg:block">
-            <Image src="/book-hero.jpeg" alt="JANKS Atelier" fill sizes="50vw" className="object-cover brightness-50" />
+            <Image src="/book-hero.jpeg" alt="JANKS Tailoring" fill sizes="50vw" className="object-cover brightness-50" />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/60" />
             <div className="absolute bottom-12 left-12">
               <Image src="/janks-logo.webp" alt="JANKS" width={120} height={48} className="brightness-0 invert opacity-40" />

@@ -17,7 +17,7 @@ const services = [
   introduction: "A bespoke suit is more than a garment—it is a collaboration between artisan and client, resulting in a piece that exists nowhere else in the world.",
   process: [
   { step: 1, title: "Consultation", duration: "90 min", description: "Your journey begins with an intimate conversation about lifestyle, occasions, and personal aesthetic.", image: "/work-consultation.jpeg" },
-  { step: 2, title: "Measurements", duration: "45 min", description: "Over forty individual measurements form the blueprint of your pattern.", image: "/work-measurements.jpeg" },
+  { step: 2, title: "Measurements", duration: "45 min", description: "15+ individual measurements form the blueprint of your pattern.", image: "/work-measurements.jpeg" },
   { step: 3, title: "Pattern Cutting", duration: "2-3 days", description: "Your master pattern is drafted by hand, where science meets intuition.", image: "/work-pattern-cutting.jpeg" },
   { step: 4, title: "First Fitting", duration: "60 min", description: "The basted garment arrives—adjustments are pinned and balance refined.", image: "/work-first-fitting.jpeg" },
   { step: 5, title: "Construction", duration: "4-6 weeks", description: "Hand-padded lapels, pick stitching, and hand-worked buttonholes.", image: "/work-construction.jpeg" },
@@ -33,9 +33,9 @@ const services = [
   process: [
   { step: 1, title: "Style Selection", duration: "45 min", description: "Browse our curated collection of silhouettes from contemporary slim cuts to classic English drape.", image: "/work-style-selection.jpeg" },
   { step: 2, title: "Fabric & Details", duration: "30 min", description: "Choose from hundreds of the world's finest fabrics and personalise every detail.", image: "/work-fabric-details.jpeg" },
-  { step: 3, title: "Measurement", duration: "30 min", description: "Twenty-five key measurements taken and cross-referenced against master patterns.", image: "/work-mtm-measurement.jpeg" },
+  { step: 3, title: "Measurement", duration: "30 min", description: "15+ key measurements taken and cross-referenced against master patterns.", image: "/work-mtm-measurement.jpeg" },
   { step: 4, title: "Construction", duration: "3-4 weeks", description: "Cut and assembled by skilled tailors with hand-finished critical elements.", image: "/work-construction.jpeg" },
-  { step: 5, title: "Fitting", duration: "45 min", description: "Final fitting with minor adjustments made in-house to perfect the silhouette.", image: "/work-fitting-marking.jpeg" }]
+  { step: 5, title: "Fitting", duration: "45 min", description: "Final fitting, with minor adjustments made to perfect the silhouette.", image: "/work-fitting-marking.jpeg" }]
 
 },
 {
@@ -48,7 +48,7 @@ const services = [
   { step: 1, title: "Assessment", duration: "20 min", description: "Each garment is examined with a critical eye to identify the best approach.", image: "/fabric-swatches.jpeg" },
   { step: 2, title: "Fitting & Marking", duration: "30 min", description: "Our tailor pins and marks every adjustment with methodical precision.", image: "/work-fitting-marking.jpeg" },
   { step: 3, title: "Alteration", duration: "1-2 weeks", description: "Alterations executed with surgical precision, respecting original construction.", image: "/work-alteration.jpeg" },
-  { step: 4, title: "Final Review", duration: "15 min", description: "Your altered garment is pressed, inspected, and prepared for collection.", image: "/work-final-review.webp" }]
+  { step: 4, title: "Final Review", duration: "15 min", description: "Your altered garment is pressed, inspected, and prepared for delivery.", image: "/work-final-review.webp" }]
 
 }];
 

@@ -103,7 +103,10 @@
         "facebook": "https://www.facebook.com/profile.php?id=100054995383463",
         "tiktok": "https://www.tiktok.com/@janks.tailoring",
         "pinterest": "https://www.pinterest.com/JanksTailoring/",
-        "google_reviews": "https://www.google.com/search?q=JANKs+Tailoring+Ltd&stick=H4sIAAAAAAAA_-NgU1I1qDBKSjVJMjFPTE4xSLY0TLG0AgqZp5lYGhmkmVgkJhulJqUsYhX2cvTzLlYISczMyS_KzEtX8ClJAQA3caGpPwAAAA&hl=en&mat=CfjY04Q8A3VoElcBa0lj_2-1xkZaWdK2hWEBRfOhXnKMbKoxnvLfRYpcnV7okVUNwXUQtoe2Q0bV3y-0GiDWoL1r5uN23qyWBclJCLvMxWr5ygL-Y2bkOJ7Q52UEStMezJc&authuser=0"
+        "google_reviews": "https://www.google.com/search?q=JANKs+Tailoring+Ltd&stick=H4sIAAAAAAAA_-NgU1I1qDBKSjVJMjFPTE4xSLY0TLG0AgqZp5lYGhmkmVgkJhulJqUsYhX2cvTzLlYISczMyS_KzEtX8ClJAQA3caGpPwAAAA&hl=en&mat=CfjY04Q8A3VoElcBa0lj_2-1xkZaWdK2hWEBRfOhXnKMbKoxnvLfRYpcnV7okVUNwXUQtoe2Q0bV3y-0GiDWoL1r5uN23qyWBclJCLvMxWr5ygL-Y2bkOJ7Q52UEStMezJc&authuser=0",
+        "address": "JANKS TAILORING LTD\n3rd Floor, 86–90 Paul Street\nLondon EC2A 4NE",
+        "address_note": "This is our registered business address, not a shop. Consultations are by appointment only — we travel to you. Every order is delivered.",
+        "purpose": "shop.jankstailoring.com is the official JANKS Tailoring shop for accessories. Bespoke tailoring, bookings and editorial are at jankstailoring.com."
       }
     },
     "widgets": {
@@ -113,7 +116,7 @@
         "popup_enabled": true,
         "popup_eyebrow": "Welcome to JANKS",
         "popup_heading": "15% Off Your First Order",
-        "popup_text": "Ties, cufflinks, and pocket squares — handcrafted to the same standard as our bespoke work.",
+        "popup_text": "Ties, cufflinks, and pocket squares — ready to ship.",
         "popup_code": "WELCOME15",
         "popup_button_label": "Shop Now",
         "popup_button_url": "/collections"

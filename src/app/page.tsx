@@ -9,14 +9,14 @@ import HomeClient from "./HomeClient";
 export const metadata: Metadata = {
   title: { absolute: "JANKS Tailoring | Bespoke Menswear & Garment Construction" },
   description:
-    "Bespoke suits, made-to-measure tailoring, custom shirts and alterations from a London atelier founded in 2016. Book a consultation with JANKS Tailoring.",
+    "Bespoke suits, made-to-measure tailoring, custom shirts and alterations. JANKS Tailoring is a private, appointment-only tailor founded in 2016. We travel to you.",
   alternates: { canonical: "https://jankstailoring.com/" },
   openGraph: {
     type: "website",
     siteName: "JANKS Tailoring",
     title: "JANKS Tailoring | Bespoke Menswear & Garment Construction",
     description:
-      "Bespoke suits, made-to-measure tailoring, custom shirts and alterations from a London atelier founded in 2016.",
+      "Bespoke suits, made-to-measure tailoring, custom shirts and alterations. JANKS Tailoring is a private, appointment-only tailor founded in 2016. We travel to you.",
     url: "https://jankstailoring.com/",
     images: [
       {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "JANKS Tailoring | Bespoke Menswear & Garment Construction",
     description:
-      "Bespoke suits, made-to-measure tailoring, custom shirts and alterations from a London atelier.",
+      "Bespoke suits, made-to-measure tailoring, custom shirts and alterations. A private, appointment-only tailor. We travel to you.",
     images: ["/og-image.jpg"],
   },
 };

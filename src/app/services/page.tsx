@@ -108,7 +108,7 @@ const offerings = [
     price: "From £50",
     meta: "Garments you already own",
     description:
-      "Sleeves shortened, waists taken in, jackets rebalanced. Bring us something that never quite fitted and we'll tell you honestly whether it can be saved.",
+      "Sleeves shortened, waists taken in, jackets rebalanced. Tell us about something that never quite fitted and we'll tell you honestly whether it can be saved.",
     href: "/book",
   },
 ];
@@ -118,7 +118,7 @@ const process = [
   {
     step: "01",
     title: "Consultation",
-    body: "We talk through the occasion, your wardrobe and what you want the garment to do. At our studio, or at your home or office. You're under no obligation to proceed.",
+    body: "We talk through the occasion, your wardrobe and what you want the garment to do. Consultations are by appointment only — we travel to you. You're under no obligation to proceed.",
     image: "/work-consultation.jpeg",
   },
   {
@@ -135,8 +135,8 @@ const process = [
   },
   {
     step: "04",
-    title: "Collection",
-    body: "Collect in person, or have it sent by DHL. Allow four to six weeks from the first measurement.",
+    title: "Delivery",
+    body: "Every order is delivered. Allow four to six weeks from the first measurement.",
     image: "/work-final-fitting.webp",
   },
 ];
@@ -157,7 +157,7 @@ const faqs = [
   },
   {
     q: "Where do fittings take place?",
-    a: "Private fittings can be arranged at your home or your office anywhere in London, as well as at our studio — whichever suits you.",
+    a: "Consultations and fittings are by appointment only — we travel to you, at your home or office. We serve the United Kingdom.",
   },
   {
     q: "Do you deliver outside London?",
@@ -202,8 +202,7 @@ export default function ServicesPage() {
             </h1>
             <p className="text-cream/70 max-w-xl leading-relaxed text-lg">
               Three approaches to the same intention — a garment that fits you,
-              made in London, by people who will tell you the truth about what
-              suits you.
+              by people who will tell you the truth about what suits you.
             </p>
           </motion.div>
         </div>
@@ -406,7 +405,7 @@ export default function ServicesPage() {
               The Process
             </span>
             <h2 className="font-cinzel text-3xl lg:text-5xl text-charcoal dark:text-white leading-[1.1]">
-              From conversation to collection
+              From conversation to delivery
             </h2>
           </motion.div>
 
@@ -520,8 +519,8 @@ export default function ServicesPage() {
               Start with a conversation
             </h2>
             <p className="text-cream/60 max-w-md mx-auto mb-11 leading-relaxed">
-              A conversation first, with nothing committed. Come with an occasion
-              in mind, or just a suit that has never fitted properly.
+              A conversation first, with nothing committed. Start with an occasion
+              in mind, or a suit that has never fitted properly. Book a private consultation — we travel to you.
             </p>
             <Link
               href="/book"

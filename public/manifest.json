@@ -67,7 +67,7 @@
       "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
     },
     {
-      "name": "Book a Fitting",
+      "name": "Book a Consultation",
       "short_name": "Book",
       "url": "/book",
       "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]

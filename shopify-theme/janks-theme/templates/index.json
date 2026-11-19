@@ -31,7 +31,7 @@
         "slide_3"
       ],
       "settings": {
-        "button_label": "Book a Fitting",
+        "button_label": "Book a Consultation",
         "button_url": "https://jankstailoring.com/book"
       }
     },
@@ -40,7 +40,7 @@
       "settings": {
         "eyebrow": "Shop",
         "heading": "Featured Pieces",
-        "subheading": "Handcrafted silk ties, ready to ship.",
+        "subheading": "Ties, ready to ship.",
         "collection": "neckties",
         "limit": 6,
         "link_label": "Shop All",
@@ -100,7 +100,7 @@
     "story": {
       "type": "janks-about-split",
       "settings": {
-        "image_alt": "The JANKS atelier",
+        "image_alt": "Bespoke garment by JANKS Tailoring",
         "eyebrow": "Our Story",
         "heading": "Founded on craft.\nBuilt on fit.",
         "paragraph_1": "Founded by Kwaku Acheampong, JANKS Tailoring brings together traditional British cutting technique and a contemporary eye for silhouette.",
@@ -117,7 +117,7 @@
           "settings": {
             "label": "Suits",
             "sub": "Bespoke & MTM",
-            "url": "/collections"
+            "url": "https://jankstailoring.com/services"
           }
         },
         "tile_2": {
@@ -125,7 +125,7 @@
           "settings": {
             "label": "Shirts",
             "sub": "Dress & Casual",
-            "url": "https://jankstailoring.com/book"
+            "url": "https://jankstailoring.com/services"
           }
         },
         "tile_3": {
@@ -133,14 +133,14 @@
           "settings": {
             "label": "Trousers",
             "sub": "Flat & Pleated",
-            "url": "https://jankstailoring.com/book"
+            "url": "https://jankstailoring.com/services"
           }
         },
         "tile_4": {
           "type": "tile",
           "settings": {
             "label": "Ties",
-            "sub": "Silk & Wool",
+            "sub": "Ties, ready to ship",
             "url": "/collections/neckties"
           }
         },
@@ -148,7 +148,7 @@
           "type": "tile",
           "settings": {
             "label": "Cufflinks",
-            "sub": "Precious Metal",
+            "sub": "Dress cufflinks",
             "url": "/collections/mother-of-pearl-cufflinks-copy-1"
           }
         },
@@ -156,7 +156,7 @@
           "type": "tile",
           "settings": {
             "label": "Pocket Squares",
-            "sub": "Hand-Rolled",
+            "sub": "Ready to ship",
             "url": "/collections/pocket-square"
           }
         }
@@ -172,7 +172,7 @@
       "settings": {
         "eyebrow": "Shop",
         "heading": "Browse the Collection",
-        "subheading": "Every category, made to order or ready to ship.",
+        "subheading": "Suits, shirts and trousers are made to order. Ties, cufflinks and pocket squares are ready to ship.",
         "link_label": "Shop All",
         "link_url": "/collections"
       }
@@ -183,7 +183,7 @@
         "image_alt": "JANKS bespoke portfolio",
         "eyebrow": "Portfolio",
         "heading": "Our Work",
-        "paragraph_1": "Every garment that leaves the JANKS atelier is a testament to the belief that clothing is not merely worn — it is experienced. Our portfolio spans decades of commissions for executives, dignitaries, and discerning individuals who understand that true style begins with fit.",
+        "paragraph_1": "Every garment we make is a testament to the belief that clothing is not merely worn — it is experienced. We tailor for executives, dignitaries, and discerning individuals who understand that true style begins with fit.",
         "paragraph_2": "From the first consultation to the final fitting, each piece is constructed by hand using the finest British and Italian cloth. No shortcuts. No compromises. Only work we are proud to put our name to.",
         "button_label": "View Full Portfolio",
         "button_url": "/pages/gallery"
@@ -264,7 +264,7 @@
         "point_6": {
           "type": "point",
           "settings": {
-            "text": "Based in London. Available for consultation nationwide"
+            "text": "Based in London. We travel to you for consultations across the United Kingdom"
           }
         }
       },
@@ -371,7 +371,7 @@
         "heading_before": "Begin your",
         "heading_accent": "bespoke",
         "heading_after": "journey",
-        "subheading": "Schedule a private consultation at our atelier.",
+        "subheading": "Book a private consultation — we travel to you.",
         "button_label": "Request Consultation"
       }
     },

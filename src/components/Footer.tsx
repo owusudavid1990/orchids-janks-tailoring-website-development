@@ -98,17 +98,16 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 4 — Atelier */}
+          {/* Col 4 — Registered office. Not a shop, and there are no opening hours. */}
           <div>
-            <span className="text-[10px] tracking-[0.25em] uppercase text-cream/30 block mb-5">Atelier</span>
+            <span className="text-[10px] tracking-[0.25em] uppercase text-cream/30 block mb-5">Registered Office</span>
             <address className="not-italic text-[11px] leading-relaxed text-cream/50">
-              3rd Floor<br />
-              86–90 Paul Street<br />
-              London, EC2A 4NE
+              JANKS TAILORING LTD<br />
+              3rd Floor, 86–90 Paul Street<br />
+              London EC2A 4NE
             </address>
             <p className="text-[11px] text-cream/30 mt-4 leading-relaxed">
-              Mon–Fri: 9:00–18:00<br />
-              Sat: 10:00–16:00
+              This is our registered business address, not a shop. Consultations are by appointment only — we travel to you. Every order is delivered.
             </p>
           </div>
 
@@ -122,7 +121,15 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-cream/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="mt-16 pt-8 border-t border-cream/10">
+          <p className="text-[11px] leading-relaxed text-cream/40 max-w-3xl mb-6">
+            jankstailoring.com is the JANKS Tailoring brand, booking and editorial site. Accessories are sold at our official shop,{" "}
+            <a href="https://shop.jankstailoring.com" className="underline underline-offset-2 hover:text-cream transition-colors">
+              shop.jankstailoring.com
+            </a>
+            .
+          </p>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           {/* Registered details on every page — Google Merchant Center looks
               for clear identification of who is behind the store, and it was
               previously only on the policy pages */}
@@ -149,6 +156,7 @@ export function Footer() {
               </Link>
             ))}
           </div>
+        </div>
         </div>
 
       </div>

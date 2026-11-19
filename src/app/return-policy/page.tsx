@@ -13,7 +13,7 @@ const sections = [
     title: "Bespoke & Made-to-Measure Garments",
     content: `Because every bespoke suit, bespoke shirt, made-to-measure garment, and alteration is cut and constructed specifically for you, these are **non-refundable once cutting has started**. However, if there is an issue with craftsmanship, fit based on the measurements you provided, or if the item arrives damaged or incorrect, we will work with you to put it right.
 
-A **70% deposit** is required before work begins on your garment, with the remaining balance due before your garment is released to you.`,
+A **70% deposit** is required before work begins on your garment, with the remaining balance due before your garment is delivered to you.`,
   },
   {
     id: "accessories",
@@ -21,7 +21,7 @@ A **70% deposit** is required before work begins on your garment, with the remai
     title: "Ready-to-Wear Accessories",
     content: `This covers ties, pocket squares, cufflinks, and other items purchased through our online shop.
 
-You may return items within **30 days** of delivery. Returned items must be in their original condition — unworn, unused, with tags attached, and in original packaging — and proof of purchase is required. The customer is responsible for return shipping costs. Returned items are examined for wear and damage before an exchange or refund is approved.`,
+Ready-to-wear accessory returns are accepted within **30 days from delivery** if the item is unused, unworn, with tags and in original packaging. Proof of purchase is required. You are responsible for return shipping costs. Returned items are examined for wear and damage before an exchange or refund is approved. There is no in-person drop-off or collection.`,
   },
   {
     id: "exceptions",
@@ -61,11 +61,14 @@ Made-to-measure and personalised garments are exempt from this cooling-off perio
     id: "contact",
     icon: Mail,
     title: "Start a Return",
-    content: `To start a return, contact us with your order details:
+    content: `To start a return, contact us with your order details. Returns are sent to us. There is no in-person drop-off.
 
-**JANKS Tailoring Ltd**
-3rd Floor, 86-90 Paul Street
-London, EC2A 4NE
+**JANKS TAILORING LTD**
+Company No. 16870658
+Registered office: 3rd Floor, 86-90 Paul Street
+London EC2A 4NE
+
+This is our registered business address, not a shop. Consultations are by appointment only — we travel to you. Every order is delivered.
 
 Email: jankstailoring@gmail.com
 Phone: +44 7828 338172`,
@@ -93,7 +96,7 @@ export default function ReturnPolicyPage() {
               How returns, exchanges, and refunds work for bespoke garments and shop accessories.
             </p>
             <p className="text-cream/30 text-xs mt-6 tracking-wide">
-              Last updated: 16 August 2026
+              Last updated: 19 November 2026
             </p>
           </motion.div>
         </div>

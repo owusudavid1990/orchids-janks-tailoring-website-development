@@ -345,7 +345,7 @@ export async function sendReviewRequest(d: BookingEmailData) {
        <p style="font-size:14px;color:#bbb;line-height:1.7;margin-bottom:28px;">
          Thank you for choosing ${BUSINESS.name}. We hope you're delighted with the result.
          If you have a moment, a short review helps other clients find us — and means a great
-         deal to a small, independent atelier like ours.
+         deal to a small, independent tailoring business like ours.
        </p>
        <div style="margin-bottom:28px;">
          <a href="${GOOGLE_REVIEWS_URL}"
@@ -356,7 +356,7 @@ export async function sendReviewRequest(d: BookingEmailData) {
        </div>
        <p style="font-size:13px;color:#777;line-height:1.6;">
          Thank you again for trusting us with your commission. Reply to this email any time
-         — we're always happy to hear from you, quoting ${d.reference} if it's about this visit.
+         — we're always happy to hear from you, quoting ${d.reference} if it's about this appointment.
        </p>`
     ),
   });

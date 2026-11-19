@@ -34,9 +34,14 @@
           else
             assign fb = 'jt-pocket-square-collection.webp'
         endcase
+        assign tile_url = block.settings.url | default: routes.collections_url
+        assign tile_action = 'Shop'
+        if tile_url contains '/services'
+          assign tile_action = 'View'
+        endif
       -%}
       <div class="jt-reveal" style="--jt-delay: {{ forloop.index0 | times: 0.07 }}s" {{ block.shopify_attributes }}>
-        <a href="{{ block.settings.url | default: routes.collections_url }}" class="jt:group jt:block">
+        <a href="{{ tile_url }}" class="jt:group jt:block">
           <div class="jt:relative jt:aspect-[2/3] jt:overflow-hidden jt:bg-charcoal/5">
             {%- render 'jt-img', image: block.settings.image, fallback: fb, alt: block.settings.label, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:brightness-95 jt:transition-transform jt:duration-700 jt:group-hover:scale-105 jt:group-hover:brightness-100', sizes: '(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 17vw' -%}
             <div class="jt:absolute jt:inset-0 jt:bg-gradient-to-t jt:from-charcoal/60 jt:via-charcoal/10 jt:to-transparent"></div>
@@ -46,7 +51,7 @@
               <p class="jt:mt-0.5 jt:text-[9px] jt:uppercase jt:tracking-[0.1em] jt:text-cream/50">{{ block.settings.sub }}</p>
             </div>
             <div class="jt:absolute jt:inset-x-0 jt:top-1/2 jt:flex jt:-translate-y-1/2 jt:justify-center jt:opacity-0 jt:transition-opacity jt:duration-300 jt:group-hover:opacity-100">
-              <span class="jt:inline-flex jt:items-center jt:gap-1.5 jt:bg-cream jt:px-4 jt:py-2 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal">Shop {% render 'jt-icon', name: 'arrow-right', size: 9 %}</span>
+              <span class="jt:inline-flex jt:items-center jt:gap-1.5 jt:bg-cream jt:px-4 jt:py-2 jt:text-[10px] jt:uppercase jt:tracking-[0.2em] jt:text-charcoal">{{ tile_action }} {% render 'jt-icon', name: 'arrow-right', size: 9 %}</span>
             </div>
           </div>
         </a>

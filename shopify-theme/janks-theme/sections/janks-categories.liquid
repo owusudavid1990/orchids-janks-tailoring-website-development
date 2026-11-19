@@ -37,10 +37,15 @@
                 assign fb = 'jt-pocket-square-collection.webp'
                 assign fb2 = 'jt-pocket-square-collection.webp'
             endcase
+            assign tile_url = block.settings.url | default: routes.collections_url
+            assign tile_action = 'Shop'
+            if tile_url contains '/services'
+              assign tile_action = 'View'
+            endif
           -%}
           <div class="jt-reveal jt:group jt:cursor-pointer" style="--jt-delay: {{ forloop.index0 | times: 0.1 }}s" {{ block.shopify_attributes }}>
             <div class="jt:relative jt:aspect-[4/5] jt:overflow-hidden jt:bg-charcoal">
-              <a href="{{ block.settings.url | default: routes.collections_url }}" aria-label="Shop {{ block.settings.title }}" class="jt:absolute jt:inset-0 jt:z-20"></a>
+              <a href="{{ tile_url }}" aria-label="{{ tile_action }} {{ block.settings.title }}" class="jt:absolute jt:inset-0 jt:z-20"></a>
               {%- render 'jt-img', image: block.settings.image, fallback: fb, alt: block.settings.title, class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover jt:transition-all jt:duration-700 jt:group-hover:scale-105 jt:group-hover:opacity-0', sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw' -%}
               {%- render 'jt-img', image: block.settings.hover_image, fallback: fb2, alt: '', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:scale-105 jt:object-cover jt:opacity-0 jt:transition-all jt:duration-700 jt:group-hover:scale-100 jt:group-hover:opacity-100', sizes: '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw' -%}
               <div class="jt:absolute jt:inset-0 jt:bg-charcoal/40 jt:transition-colors jt:duration-500 jt:group-hover:bg-charcoal/20"></div>
@@ -69,7 +74,7 @@
     { "type": "image_picker", "id": "banner", "label": "Banner background", "info": "Leave empty to use the built-in reference banner." },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop Collection" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Categories" },
-    { "type": "textarea", "id": "text", "label": "Intro", "default": "Browse our curated collection and shop directly from our Shopify store. Each piece reflects our commitment to exceptional craftsmanship." }
+    { "type": "textarea", "id": "text", "label": "Intro", "default": "Ties, cufflinks and pocket squares are ready to ship from the official shop. Suits, shirts and trousers are made to order — we travel to you." }
   ],
   "blocks": [
     {

@@ -53,11 +53,13 @@
         </ul>
       </div>
 
-      {%- comment -%} Col 4 — Atelier {%- endcomment -%}
+      {%- comment -%} Col 4 — Registered office. Not a shop, and there are no opening hours. {%- endcomment -%}
       <div>
-        <span class="{{ col_head }}">Atelier</span>
+        <span class="{{ col_head }}">Registered Office</span>
         <address class="jt:text-[11px] jt:leading-relaxed jt:text-cream/50 jt:not-italic">{{ section.settings.address | newline_to_br }}</address>
-        <p class="jt:mt-4 jt:text-[11px] jt:leading-relaxed jt:text-cream/30">{{ section.settings.hours | newline_to_br }}</p>
+        {%- if section.settings.address_note != blank -%}
+          <p class="jt:mt-4 jt:text-[11px] jt:leading-relaxed jt:text-cream/30">{{ section.settings.address_note }}</p>
+        {%- endif -%}
       </div>
 
     </div>
@@ -66,7 +68,11 @@
       {% render 'jt-payment-badge', dark: true, compact: true %}
     </div>
 
-    <div class="jt:mt-16 jt:flex jt:flex-col jt:items-start jt:justify-between jt:gap-4 jt:border-t jt:border-cream/10 jt:pt-8 jt:sm:flex-row jt:sm:items-center">
+    <div class="jt:mt-16 jt:border-t jt:border-cream/10 jt:pt-8">
+      {%- if section.settings.purpose != blank -%}
+        <p class="jt:mb-6 jt:max-w-3xl jt:text-[11px] jt:leading-relaxed jt:text-cream/40">{{ section.settings.purpose }}</p>
+      {%- endif -%}
+      <div class="jt:flex jt:flex-col jt:items-start jt:justify-between jt:gap-4 jt:sm:flex-row jt:sm:items-center">
       <p class="jt:text-[10px] jt:uppercase jt:leading-relaxed jt:tracking-[0.1em] jt:text-cream/30">
         &copy; {{ 'now' | date: '%Y' }} {{ section.settings.company }} · London
         <br>
@@ -76,6 +82,7 @@
         {%- for block in policy_links -%}
           <a href="{{ block.settings.url | default: '#' }}" class="jt:text-[10px] jt:uppercase jt:tracking-[0.1em] jt:text-cream/30 jt:transition-colors jt:duration-300 jt:hover:text-cream/60" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
         {%- endfor -%}
+      </div>
       </div>
     </div>
 
@@ -102,9 +109,10 @@
     { "type": "text", "id": "email", "label": "Email", "default": "jankstailoring@gmail.com" },
     { "type": "text", "id": "phone", "label": "Phone", "default": "+44 7828 338172" },
     { "type": "url", "id": "message_url", "label": "\"Send a Message\" link" },
-    { "type": "header", "content": "Atelier column" },
-    { "type": "textarea", "id": "address", "label": "Address", "default": "3rd Floor\n86–90 Paul Street\nLondon, EC2A 4NE" },
-    { "type": "textarea", "id": "hours", "label": "Opening hours", "default": "Mon–Fri: 9:00–18:00\nSat: 10:00–16:00" },
+    { "type": "header", "content": "Registered office column" },
+    { "type": "textarea", "id": "address", "label": "Registered office", "default": "JANKS TAILORING LTD\n3rd Floor, 86–90 Paul Street\nLondon EC2A 4NE" },
+    { "type": "textarea", "id": "address_note", "label": "Registered office note", "default": "This is our registered business address, not a shop. Consultations are by appointment only — we travel to you. Every order is delivered." },
+    { "type": "textarea", "id": "purpose", "label": "What this site is", "default": "shop.jankstailoring.com is the official JANKS Tailoring shop for accessories. Bespoke tailoring, bookings and editorial are at jankstailoring.com." },
     { "type": "header", "content": "Bottom bar" },
     { "type": "text", "id": "company", "label": "Company name", "default": "JANKS TAILORING LTD" },
     { "type": "text", "id": "registration", "label": "Registration line", "default": "Registered in England and Wales · Company No. 16870658" }

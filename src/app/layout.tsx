@@ -89,47 +89,39 @@ export const metadata: Metadata = {
   },
 };
 
-// Business identity, verifiable from the site's own footer/contact details —
-// no invented pricing, ratings, or hours. Helps Google understand who's
-// behind the site (directly relevant to the Misrepresentation policy's
-// "provide transparency about your business identity" guidance) and can
-// surface as a knowledge panel / rich result.
+// Business identity for crawlers. ProfessionalService, not Store: JANKS has no
+// shop. Paul Street is the registered office only, there are no opening hours,
+// and consultations cover the United Kingdom because the tailor travels.
 const BUSINESS_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "JANKS Tailoring",
-  "legalName": "JANKS Tailoring Ltd",
+  "legalName": "JANKS TAILORING LTD",
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "Companies House number",
+    "value": "16870658",
+  },
+  "foundingDate": "2016",
   "url": "https://jankstailoring.com",
   "logo": "https://jankstailoring.com/janks-logo.webp",
   "image": "https://jankstailoring.com/og-image.jpg",
   "telephone": "+447828338172",
   "email": "jankstailoring@gmail.com",
-  "description": SITE_DESCRIPTION,
+  "description": "Private, appointment-only tailoring. JANKS Tailoring has no shop. Consultations are by appointment only — we travel to you. Every order is delivered. The address is the registered office, not a place to visit.",
   "address": {
     "@type": "PostalAddress",
+    "name": "Registered office",
     "streetAddress": "3rd Floor, 86-90 Paul Street",
     "addressLocality": "London",
     "postalCode": "EC2A 4NE",
     "addressCountry": "GB",
   },
   "areaServed": {
-    "@type": "City",
-    "name": "London",
+    "@type": "Country",
+    "name": "United Kingdom",
   },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "09:00",
-      "closes": "18:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "10:00",
-      "closes": "16:00",
-    },
-  ],
+  "publicAccess": false,
   "sameAs": [
     "https://www.instagram.com/official_janks.tailoring",
     "https://youtube.com/@jankstailoring",

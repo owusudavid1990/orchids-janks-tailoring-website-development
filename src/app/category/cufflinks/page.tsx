@@ -10,7 +10,7 @@ export const revalidate = 3600; // refresh product data hourly
 
 export const metadata: Metadata = {
   title: "Cufflink Collection | JANKS Tailoring",
-  description: "Refined cufflinks that elevate every shirt, crafted with precision for the discerning gentleman. Shop the JANKS Tailoring cufflink collection.",
+  description: "Dress cufflinks, ready to ship. Shop the JANKS Tailoring cufflink collection.",
   alternates: { canonical: "https://jankstailoring.com/category/cufflinks" },
 };
 
@@ -26,7 +26,7 @@ export default async function CufflinksCollectionPage() {
             <span className="text-[11px] tracking-[0.3em] uppercase text-charcoal/40 block mb-4">Accessories</span>
             <h1 className="font-cinzel text-4xl lg:text-6xl text-charcoal mb-6">Cufflink Collection</h1>
             <p className="text-charcoal/60 text-sm leading-relaxed">
-              Refined cufflinks that elevate every shirt. Crafted with precision and designed for the discerning gentleman.
+              Dress cufflinks, ready to ship.
             </p>
           </FadeIn>
         </div>

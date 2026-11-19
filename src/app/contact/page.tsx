@@ -3,15 +3,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Mail, Phone, MapPin, Clock, Send, Instagram, Youtube } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Instagram, Youtube } from "lucide-react";
 import { FaTiktok, FaPinterest } from "react-icons/fa6";
 import { trackContact } from "@/lib/meta-events";
 
 const socials = [
   { name: "Instagram", handle: "@official_janks.tailoring", url: "https://www.instagram.com/official_janks.tailoring?igsh=azNjdnkzYXU0Mm1h&utm_source=qr", icon: Instagram },
-  { name: "YouTube", handle: "Janks Tailoring", url: "https://youtube.com/@jankstailoring?si=FEwqqKDFy-IdMElm", icon: Youtube },
+  { name: "YouTube", handle: "JANKS Tailoring", url: "https://youtube.com/@jankstailoring?si=FEwqqKDFy-IdMElm", icon: Youtube },
   { name: "TikTok", handle: "@janks.tailoring", url: "https://www.tiktok.com/@janks.tailoring", icon: FaTiktok },
   { name: "Pinterest", handle: "JanksTailoring", url: "https://www.pinterest.com/JanksTailoring/", icon: FaPinterest },
 ];
@@ -45,7 +46,7 @@ export default function ContactPage() {
       <section className="relative h-[45vh] flex items-end overflow-hidden">
         <Image
           src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/66a35657-54dd-40fc-bc1c-b2be802f78da/IMG_1542-1768955980067.jpeg?width=8000&height=8000&resize=contain"
-          alt="Janks Tailoring Atelier"
+          alt="JANKS Tailoring"
           fill
           className="object-cover"
           priority
@@ -114,34 +115,22 @@ export default function ContactPage() {
                     <MapPin size={16} className="text-charcoal dark:text-white" />
                   </div>
                   <div>
-                    <span className="text-[10px] tracking-[0.2em] uppercase text-charcoal/40 dark:text-white/40 block mb-1">Atelier</span>
+                    <span className="text-[10px] tracking-[0.2em] uppercase text-charcoal/40 dark:text-white/40 block mb-1">Registered Office</span>
                     <address className="not-italic text-charcoal dark:text-white leading-relaxed">
-                      3rd Floor, 86-90 Paul Street<br />London, EC2A 4NE
+                      JANKS TAILORING LTD · Company No. 16870658<br />
+                      3rd Floor, 86-90 Paul Street<br />London EC2A 4NE
                     </address>
                   </div>
                 </div>
               </div>
 
-              {/* Hours */}
               <div className="border border-charcoal/10 dark:border-white/10 p-6">
-                <div className="flex items-center gap-2 mb-5">
-                  <Clock size={14} className="text-charcoal/40 dark:text-white/40" />
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-charcoal/40 dark:text-white/40">Opening Hours</span>
-                </div>
-                <div className="space-y-3 text-sm text-charcoal/70 dark:text-white/70">
-                  <div className="flex justify-between">
-                    <span>Monday – Friday</span>
-                    <span className="text-charcoal dark:text-white">9:00 – 18:00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Saturday</span>
-                    <span className="text-charcoal dark:text-white">10:00 – 16:00</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday</span>
-                    <span className="text-charcoal/40 dark:text-white/40">By appointment</span>
-                  </div>
-                </div>
+                <p className="text-sm text-charcoal/70 dark:text-white/70 leading-relaxed">
+                  This is our registered business address, not a shop. Consultations are by appointment only — we travel to you. Every order is delivered.
+                </p>
+                <Link href="/book" className="inline-block mt-4 text-[11px] tracking-[0.2em] uppercase text-charcoal dark:text-white hover:text-gold transition-colors">
+                  Book a private consultation — we travel to you.
+                </Link>
               </div>
 
               {/* Socials */}

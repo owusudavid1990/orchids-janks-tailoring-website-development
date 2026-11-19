@@ -24,13 +24,13 @@ export const articles: Article[] = [
   {
     slug: "behind-the-pattern-bespoke-suit",
     title: "Behind the Pattern: Making a Bespoke Suit from Scratch",
-    category: "Atelier Vlog",
+    category: "From the Atelier",
     readTime: "5 min read",
     author: "Kwaku Acheampong",
     date: "April 2025",
     heroImage: "/suits-collection.webp",
     excerpt:
-      "A rare look inside the atelier — from the first consultation and chalk marks on cloth through to the final fitting. This is what bespoke really means.",
+      "From the first consultation and chalk marks on cloth through to the final fitting. This is what bespoke really means.",
     sections: [
       {
         heading: "What Does Bespoke Actually Mean?",
