@@ -114,6 +114,14 @@
   --navy: #1A2A3A;
   --charcoal: #2D2D2D;
   --cream: #FAF9F7;
+
+  /*
+   * Height of the promotional announcement bar. Stays 0 until the boot
+   * script sets data-promo-banner, so a hidden bar reserves no space.
+   * Header, sticky subnavs and in-flow content all read this one value,
+   * which keeps them aligned with each other when the bar is showing.
+   */
+  --promo-banner-offset: 0px;
   
   --chart-1: #C9A962;
   --chart-2: #1A2A3A;
@@ -180,6 +188,8 @@
     line-height: var(--leading-relaxed);
     font-weight: 300;
     color: var(--charcoal);
+    /* Matches the fixed bar so page content starts below it, same as the nav. */
+    padding-top: var(--promo-banner-offset);
 
     /*
      * Stop the page ever scrolling sideways.
@@ -411,3 +421,99 @@
 .stagger-3 { animation-delay: 0.3s; }
 .stagger-4 { animation-delay: 0.4s; }
 .stagger-5 { animation-delay: 0.5s; }
+
+/*
+ * Promotional announcement bar. Charcoal on cream matches the shop theme's
+ * scheme-4 announcement colours (#2D2D2D / #FAF9F7). Outfit is the site's UI
+ * face, already used by the nav, so the sentence stays readable at this size.
+ * The bar is fixed and display:none until the matching phase attribute is set,
+ * which happens in a blocking script before first paint.
+ */
+html[data-promo-banner] {
+  /* 2.375rem = 38px, the Dawn announcement bar. One line from 340px up; two lines at 320px still fit. */
+  --promo-banner-offset: calc(2.375rem + env(safe-area-inset-top, 0px));
+}
+
+.promo-banner {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 48;
+  box-sizing: border-box;
+  height: var(--promo-banner-offset);
+  align-items: center;
+  justify-content: center;
+  padding: env(safe-area-inset-top, 0px) 0.75rem 0;
+  background: #2d2d2d;
+  color: #faf9f7;
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  text-wrap: balance;
+}
+
+@media (min-width: 40rem) {
+  .promo-banner {
+    letter-spacing: 0.04em;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+html[data-promo-banner="launch"] .promo-banner[data-phase="launch"],
+html[data-promo-banner="midsale"] .promo-banner[data-phase="midsale"],
+html[data-promo-banner="final"] .promo-banner[data-phase="final"] {
+  display: flex;
+}
+
+.promo-banner:hover,
+.promo-banner:visited {
+  color: #faf9f7;
+}
+
+.promo-banner:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.promo-banner:focus-visible {
+  outline: 2px solid #c9a962;
+  outline-offset: -3px;
+}
+
+@media print {
+  .promo-banner {
+    display: none !important;
+  }
+
+  html[data-promo-banner] {
+    --promo-banner-offset: 0px;
+  }
+}
+
+/*
+ * Sticky and fixed elements that sit just under the header use Tailwind's
+ * top-20 / lg:top-32 / lg:top-24. Shift them by the same amount as the nav
+ * so they still clear it. Unlayered so this wins over Tailwind utilities.
+ * top-0 is left alone: drawers and full-bleed sticky columns should still
+ * cover the viewport.
+ */
+html[data-promo-banner] .top-20 {
+  top: calc(5rem + var(--promo-banner-offset));
+}
+
+@media (min-width: 64rem) {
+  html[data-promo-banner] .lg\:top-32 {
+    top: calc(8rem + var(--promo-banner-offset));
+  }
+
+  html[data-promo-banner] .lg\:top-24 {
+    top: calc(6rem + var(--promo-banner-offset));
+  }
+}
