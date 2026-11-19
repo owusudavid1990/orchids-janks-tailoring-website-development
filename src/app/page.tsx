@@ -10,14 +10,14 @@ export const metadata: Metadata = {
   title: { absolute: "JANKS Tailoring | Bespoke Menswear & Garment Construction" },
   description:
     "Bespoke suits, made-to-measure tailoring, custom shirts and alterations. JANKS Tailoring is a private, appointment-only tailor founded in 2016. We travel to you.",
-  alternates: { canonical: "https://jankstailoring.com/" },
+  alternates: { canonical: "https://jankstailoring.com" },
   openGraph: {
     type: "website",
     siteName: "JANKS Tailoring",
     title: "JANKS Tailoring | Bespoke Menswear & Garment Construction",
     description:
       "Bespoke suits, made-to-measure tailoring, custom shirts and alterations. JANKS Tailoring is a private, appointment-only tailor founded in 2016. We travel to you.",
-    url: "https://jankstailoring.com/",
+    url: "https://jankstailoring.com",
     images: [
       {
         url: "/og-image.jpg",

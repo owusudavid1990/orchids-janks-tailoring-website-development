@@ -12,6 +12,20 @@
             "url": "/pages/services"
           }
         },
+        "nav_wedding": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Wedding",
+            "url": "https://jankstailoring.com/wedding-suits"
+          }
+        },
+        "nav_corporate": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Corporate",
+            "url": "https://jankstailoring.com/corporate-tailoring"
+          }
+        },
         "nav_2": {
           "type": "nav_link",
           "settings": {
@@ -85,6 +99,8 @@
       },
       "block_order": [
         "nav_1",
+        "nav_wedding",
+        "nav_corporate",
         "nav_2",
         "nav_fit",
         "nav_4",

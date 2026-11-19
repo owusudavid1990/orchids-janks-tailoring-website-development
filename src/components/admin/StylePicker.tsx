@@ -97,7 +97,7 @@ export function StylePicker({ category, selected, onChange, contextLabel, photos
                   className="shrink-0 relative w-11 h-11 bg-white rounded-sm overflow-hidden border border-black/10 cursor-zoom-in"
                   aria-label={`View larger reference image for ${opt.label}`}
                 >
-                  <Image src={opt.image} alt="" fill sizes="44px" className="object-contain p-0.5" />
+                  <Image src={opt.image} alt={opt.label} fill sizes="44px" className="object-contain p-0.5" />
                 </span>
               ) : (
                 <span

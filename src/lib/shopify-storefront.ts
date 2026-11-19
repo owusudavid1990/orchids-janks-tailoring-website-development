@@ -184,6 +184,24 @@ const CART_QUERY = `
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
+/**
+ * Product HTML from Shopify sometimes contains a second layer of encoding,
+ * so "&" is stored as the characters "&amp;" and the page shows that literally.
+ * Collapse only the extra layer. A single "&amp;" must stay, or the markup breaks.
+ */
+export function normalizeDescriptionHtml(html: string): string {
+  let current = html;
+  for (let i = 0; i < 4; i++) {
+    const next = current
+      .replace(/&amp;amp;/g, "&amp;")
+      .replace(/&amp;#0*38;/g, "&#38;")
+      .replace(/&amp;#x0*26;/gi, "&#x26;");
+    if (next === current) return current;
+    current = next;
+  }
+  return current;
+}
+
 function parseCart(raw: any): ShopifyCart {
   return {
     id: raw.id,
@@ -213,7 +231,7 @@ export async function fetchCollection(collectionGid: string): Promise<ShopifyPro
     id: e.node.id,
     handle: e.node.handle,
     title: e.node.title,
-    descriptionHtml: e.node.descriptionHtml,
+    descriptionHtml: normalizeDescriptionHtml(e.node.descriptionHtml ?? ""),
     images: e.node.images.edges.map((ie: any) => ie.node),
     variants: e.node.variants.edges.map((ve: any) => ve.node),
   }));
@@ -228,7 +246,7 @@ export async function fetchProductByHandle(handle: string): Promise<ShopifyProdu
     id: node.id,
     handle: node.handle,
     title: node.title,
-    descriptionHtml: node.descriptionHtml,
+    descriptionHtml: normalizeDescriptionHtml(node.descriptionHtml ?? ""),
     images: node.images.edges.map((ie: any) => ie.node),
     variants: node.variants.edges.map((ve: any) => ve.node),
   };

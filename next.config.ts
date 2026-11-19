@@ -43,6 +43,7 @@ const nextConfig: NextConfig = {
       ),
       // Merchant Center and old links expect /cart. The shop cart is the checkout page.
       { source: "/cart", destination: "/checkout", permanent: false },
+      { source: "/wedding", destination: "/wedding-suits", permanent: true },
     ];
   },
   async headers() {

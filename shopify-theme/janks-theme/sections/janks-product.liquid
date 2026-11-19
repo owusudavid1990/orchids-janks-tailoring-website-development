@@ -74,7 +74,8 @@
         {%- endunless -%}
 
         {%- if product.description != blank -%}
-          <div class="jt:mb-8 jt:max-w-none jt:text-sm jt:leading-relaxed jt:text-charcoal/70 jt:[&_p]:mb-3 jt:[&_ul]:mb-3 jt:[&_ul]:list-disc jt:[&_ul]:pl-5">{{ product.description }}</div>
+          {%- assign jt_description = product.description | replace: '&amp;amp;amp;', '&amp;' | replace: '&amp;amp;', '&amp;' -%}
+          <div class="jt:mb-8 jt:max-w-none jt:text-sm jt:leading-relaxed jt:text-charcoal/70 jt:[&_p]:mb-3 jt:[&_ul]:mb-3 jt:[&_ul]:list-disc jt:[&_ul]:pl-5">{{ jt_description }}</div>
         {%- endif -%}
 
         {%- assign form_id = 'product-form-' | append: section.id -%}

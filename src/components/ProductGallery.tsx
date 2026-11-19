@@ -69,7 +69,7 @@ export function ProductGallery({ images, productTitle }: Props) {
                 aria-label={`Thumbnail ${i + 1}`}
                 className={`relative flex-shrink-0 w-14 h-14 overflow-hidden border-2 transition-all ${i === imgIndex ? "border-gold" : "border-transparent opacity-60 hover:opacity-100"}`}
               >
-                {img.url && <Image src={img.url} alt="" fill className="object-cover" />}
+                {img.url && <Image src={img.url} alt={`${productTitle}, image ${i + 1}`} fill className="object-cover" />}
               </button>
             ))}
           </div>

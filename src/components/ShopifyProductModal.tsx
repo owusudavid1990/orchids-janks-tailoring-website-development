@@ -99,7 +99,7 @@ export function ShopifyProductModal({ product, onClose }: Props) {
                   onClick={() => setImgIndex(i)}
                   className={`relative flex-shrink-0 w-12 h-12 overflow-hidden border-2 transition-all ${i === imgIndex ? "border-gold" : "border-transparent opacity-60 hover:opacity-100"}`}
                 >
-                  {img.url && <Image src={img.url} alt="" fill className="object-cover" />}
+                  {img.url && <Image src={img.url} alt={`${product.title}, image ${i + 1}`} fill className="object-cover" />}
                 </button>
               ))}
             </div>

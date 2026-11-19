@@ -174,13 +174,27 @@ export default function ServicesPage() {
 
   return (
     <main className="min-h-screen bg-cream dark:bg-black">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.q,
+              acceptedAnswer: { "@type": "Answer", text: faq.a },
+            })),
+          }),
+        }}
+      />
       <Navigation />
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[70vh] flex items-end overflow-hidden">
         <Image
           src={IMAGES.hero}
-          alt=""
+          alt="Bespoke jacket by JANKS Tailoring"
           fill
           priority
           sizes="100vw"
@@ -197,8 +211,8 @@ export default function ServicesPage() {
             <span className="text-[11px] tracking-[0.3em] uppercase text-gold block mb-5">
               Our Expertise
             </span>
-            <h1 className="font-cinzel text-5xl lg:text-8xl text-cream leading-[0.95] mb-8">
-              Services
+            <h1 className="font-cinzel text-4xl lg:text-6xl text-cream leading-[1.05] mb-8 max-w-4xl">
+              Bespoke & Made-to-Measure Tailoring in London
             </h1>
             <p className="text-cream/70 max-w-xl leading-relaxed text-lg">
               Three approaches to the same intention — a garment that fits you,
@@ -341,6 +355,12 @@ export default function ServicesPage() {
             <h2 className="font-cinzel text-3xl lg:text-5xl text-charcoal dark:text-white leading-[1.1] max-w-xl">
               Book Appointment
             </h2>
+            <p className="text-charcoal/60 dark:text-white/50 text-sm mt-6 max-w-xl leading-relaxed">
+              For a wedding, see{" "}
+              <Link href="/wedding-suits" className="underline hover:text-gold">wedding suits</Link>.
+              For work, see{" "}
+              <Link href="/corporate-tailoring" className="underline hover:text-gold">corporate tailoring</Link>.
+            </p>
           </motion.div>
 
           <div className="divide-y divide-charcoal/10 dark:divide-white/10 border-t border-charcoal/10 dark:border-white/10">
@@ -477,16 +497,12 @@ export default function ServicesPage() {
                       {open ? <Minus size={16} /> : <Plus size={16} />}
                     </span>
                   </button>
-                  {open && (
-                    <motion.p
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      transition={{ duration: 0.3 }}
-                      className="text-charcoal/70 dark:text-white/60 text-sm leading-relaxed pb-6 max-w-2xl overflow-hidden"
-                    >
-                      {faq.a}
-                    </motion.p>
-                  )}
+                  <p
+                    hidden={!open}
+                    className="text-charcoal/70 dark:text-white/60 text-sm leading-relaxed pb-6 max-w-2xl"
+                  >
+                    {faq.a}
+                  </p>
                 </div>
               );
             })}
@@ -498,7 +514,7 @@ export default function ServicesPage() {
       <section className="relative py-28 lg:py-40 overflow-hidden">
         <Image
           src="/our-story-bg.png"
-          alt=""
+          alt="Cloth and tailoring by JANKS Tailoring"
           fill
           sizes="100vw"
           className="object-cover"

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Libre_Franklin, Outfit } from "next/font/google";
+import { Cinzel, Libre_Franklin, Outfit } from "next/font/google";
 import "./globals.css";
 import { VisualEditsLoader } from "@/components/VisualEditsLoader";
 import { CartProvider } from "@/lib/cart-context";
@@ -23,6 +23,14 @@ const outfit = Outfit({
   subsets: ["latin", "latin-ext"],
   display: "swap",
   variable: "--font-outfit-loaded",
+});
+// Cinzel is the display face. It was named in CSS but never loaded, so headings
+// fell back to Times New Roman. next/font self-hosts it; no request to Google at runtime.
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-cinzel-loaded",
 });
 
 export const viewport: Viewport = {
@@ -146,7 +154,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-GB" className={`${libreFranklin.variable} ${outfit.variable}`}>
+    <html lang="en-GB" className={`${libreFranklin.variable} ${outfit.variable} ${cinzel.variable}`}>
       <body className="antialiased">
         {/* Business identity structured data */}
         {/* Plain <script> tags (not next/script) so the structured data is present in the

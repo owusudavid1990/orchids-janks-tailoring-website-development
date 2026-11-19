@@ -60,6 +60,8 @@ export function Footer() {
             <ul className="space-y-3">
               {[
                 { label: "Services", href: "/services" },
+                { label: "Wedding", href: "/wedding-suits" },
+                { label: "Corporate", href: "/corporate-tailoring" },
                 { label: "Work", href: "/work" },
                 { label: "Fit Guide", href: "/fit-guide" },
                 { label: "Gallery", href: "/gallery" },

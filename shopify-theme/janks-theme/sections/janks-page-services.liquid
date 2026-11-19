@@ -10,12 +10,12 @@
 
   {%- comment -%} Hero {%- endcomment -%}
   <section class="jt:relative jt:flex jt:min-h-[70vh] jt:items-end jt:overflow-hidden">
-    {%- render 'jt-img', image: section.settings.hero_image, fallback: 'jt-hero-jacquard-lapel-bw.jpg', alt: '', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '100vw', loading: 'eager', priority: 'high', max: 2400 -%}
+    {%- render 'jt-img', image: section.settings.hero_image, fallback: 'jt-hero-jacquard-lapel-bw.jpg', alt: 'Bespoke jacket by JANKS Tailoring', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '100vw', loading: 'eager', priority: 'high', max: 2400 -%}
     <div class="jt:absolute jt:inset-0 jt:bg-gradient-to-t jt:from-black/85 jt:via-black/45 jt:to-black/30"></div>
     <div class="jt:relative jt:mx-auto jt:w-full jt:max-w-7xl jt:px-6 jt:pb-16 jt:lg:px-12 jt:lg:pb-24">
       <div class="jt-reveal">
         <span class="jt:mb-5 jt:block jt:text-[11px] jt:uppercase jt:tracking-[0.3em] jt:text-gold">{{ section.settings.hero_eyebrow }}</span>
-        <h1 class="jt:mb-8 jt:font-cinzel jt:text-5xl jt:leading-[0.95] jt:text-cream jt:lg:text-8xl">{{ section.settings.hero_heading }}</h1>
+        <h1 class="jt:mb-8 jt:max-w-4xl jt:font-cinzel jt:text-4xl jt:leading-[1.05] jt:text-cream jt:lg:text-6xl">{{ section.settings.hero_heading }}</h1>
         <p class="jt:max-w-xl jt:text-lg jt:leading-relaxed jt:text-cream/70">{{ section.settings.hero_text }}</p>
       </div>
     </div>
@@ -155,7 +155,22 @@
     </div>
   </section>
 
-  {%- comment -%} Questions {%- endcomment -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in faqs -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | json }} }
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+  {%- comment -%} Questions — every answer is in the HTML, including those collapsed in the accordion. {%- endcomment -%}
   <section class="jt:border-y jt:border-charcoal/10 jt:bg-charcoal/[0.03] jt:py-24 jt:lg:py-32" data-jt-faq>
     <div class="jt:mx-auto jt:max-w-3xl jt:px-6 jt:lg:px-12">
       <div class="jt-reveal jt:mb-12">
@@ -181,7 +196,7 @@
 
   {%- comment -%} Closing {%- endcomment -%}
   <section class="jt:relative jt:overflow-hidden jt:py-28 jt:lg:py-40">
-    {%- render 'jt-img', image: section.settings.closing_image, fallback: 'jt-our-story-bg.png', alt: '', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '100vw' -%}
+    {%- render 'jt-img', image: section.settings.closing_image, fallback: 'jt-our-story-bg.png', alt: 'Cloth and tailoring by JANKS Tailoring', class: 'jt:absolute jt:inset-0 jt:h-full jt:w-full jt:object-cover', sizes: '100vw' -%}
     <div class="jt:absolute jt:inset-0 jt:bg-charcoal/85"></div>
     <div class="jt:relative jt:mx-auto jt:max-w-3xl jt:px-6 jt:text-center jt:lg:px-12">
       <div class="jt-reveal">
@@ -225,7 +240,7 @@
     { "type": "header", "content": "Hero" },
     { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
     { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow", "default": "Our Expertise" },
-    { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Services" },
+    { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Bespoke & Made-to-Measure Tailoring in London" },
     { "type": "textarea", "id": "hero_text", "label": "Text" },
     { "type": "header", "content": "Buttons" },
     { "type": "text", "id": "approach_button", "label": "Booking button label", "default": "Book a Consultation" },

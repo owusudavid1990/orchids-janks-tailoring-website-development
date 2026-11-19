@@ -57,7 +57,7 @@
        the named family after each is only a fallback if that variable is ever missing. */
     --font-libre: var(--font-libre-loaded, 'Libre Franklin'), -apple-system, BlinkMacSystemFont, sans-serif;
     --font-outfit: var(--font-outfit-loaded, 'Outfit'), -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-cinzel: 'Times New Roman', Times, serif;
+    --font-cinzel: var(--font-cinzel-loaded), "Times New Roman", Times, serif;
     --font-playfair: 'Playfair Display', Georgia, serif;
 
     /* ── Global typography tokens ── */

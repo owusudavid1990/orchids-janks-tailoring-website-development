@@ -6,7 +6,8 @@
 :root {
   --jt-font-libre: 'Libre Franklin', -apple-system, BlinkMacSystemFont, sans-serif;
   --jt-font-outfit: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --jt-font-times: 'Times New Roman', Times, serif;
+  --jt-font-cinzel: 'Cinzel', 'Times New Roman', Times, serif;
+  --jt-font-times: var(--jt-font-cinzel);
   --jt-font-cormorant: 'Cormorant Garamond', Georgia, serif;
   --jt-font-playfair: 'Playfair Display', Georgia, serif;
   --jt-gold: #C9A962;

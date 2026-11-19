@@ -111,7 +111,7 @@ export default function StyleGuidePage() {
       {/* Hero */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-28 bg-charcoal overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <Image src="/hero-suit-1.webp" alt="" fill className="object-cover" />
+          <Image src="/hero-suit-1.webp" alt="Bespoke suit by JANKS Tailoring" fill className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/90 to-charcoal/60" />
         </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">

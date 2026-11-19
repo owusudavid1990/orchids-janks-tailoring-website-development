@@ -376,7 +376,7 @@ export default function HomeClient({ heroVideo = null }: { heroVideo?: string | 
           <div className="absolute inset-0 bg-charcoal/20" />
         </div>
         <div className="relative flex items-center px-8 lg:px-16 py-16 lg:py-20 overflow-hidden">
-          <Image src="/our-story-bg.png" alt="" fill sizes="50vw" className="object-cover object-center" />
+          <Image src="/our-story-bg.png" alt="Cloth and tailoring by JANKS Tailoring" fill sizes="50vw" className="object-cover object-center" />
           <div className="absolute inset-0 bg-charcoal/75" />
           <motion.div
             initial={{ opacity: 0, x: 30 }}
@@ -743,7 +743,7 @@ export default function HomeClient({ heroVideo = null }: { heroVideo?: string | 
       {/* ── CTA: BEGIN YOUR BESPOKE JOURNEY ── */}
       <section className="relative py-16 lg:py-24 bg-charcoal overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/fabric-swatches.jpeg" alt="" fill sizes="100vw" className="object-cover opacity-40" />
+          <Image src="/fabric-swatches.jpeg" alt="Fabric swatches used by JANKS Tailoring" fill sizes="100vw" className="object-cover opacity-40" />
           <div className="absolute inset-0 bg-charcoal/70" />
         </div>
         <div className="relative z-10 max-w-2xl mx-auto px-6 lg:px-12 text-center">

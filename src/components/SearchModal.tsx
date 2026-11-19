@@ -9,6 +9,8 @@ import Image from "next/image";
 const pages = [
   { title: "About", href: "/about", description: "Our story and heritage" },
   { title: "Services", href: "/services", description: "Bespoke tailoring services" },
+  { title: "Wedding Suits", href: "/wedding-suits", description: "Groom and groomsmen" },
+  { title: "Corporate Tailoring", href: "/corporate-tailoring", description: "Tailoring for work" },
   { title: "Shop", href: "/category", description: "Browse our collection" },
   { title: "Work", href: "/work", description: "Our portfolio" },
   { title: "Gallery", href: "/gallery", description: "Bespoke garments and client work" },

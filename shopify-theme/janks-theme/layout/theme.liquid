@@ -283,12 +283,18 @@
     {%- comment -%} JANKS: self-hosted fonts, utility stylesheet compiled from the reference site's Tailwind classes, scoped base layer {%- endcomment -%}
     <link rel="preload" as="font" type="font/woff2" href="{{ 'janks-libre-franklin.woff2' | asset_url }}" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="{{ 'janks-outfit.woff2' | asset_url }}" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="{{ 'janks-cinzel.woff2' | asset_url }}" crossorigin>
     <style>
       @font-face { font-family: 'Libre Franklin'; font-style: normal; font-weight: 300 600; font-display: swap; src: url({{ 'janks-libre-franklin.woff2' | asset_url }}) format('woff2'); }
       @font-face { font-family: 'Outfit'; font-style: normal; font-weight: 300 700; font-display: swap; src: url({{ 'janks-outfit.woff2' | asset_url }}) format('woff2'); }
+      @font-face { font-family: 'Cinzel'; font-style: normal; font-weight: 400 900; font-display: swap; src: url({{ 'janks-cinzel.woff2' | asset_url }}) format('woff2'); }
     </style>
     {{ 'janks-base.css' | asset_url | stylesheet_tag }}
     {{ 'janks-tw.css' | asset_url | stylesheet_tag }}
+    <style>
+      /* The compiled .jt\:font-cinzel utility was resolving to Times New Roman. */
+      .jt\:font-cinzel { font-family: 'Cinzel', 'Times New Roman', Times, serif !important; }
+    </style>
     <script src="{{ 'janks.js' | asset_url }}" defer="defer"></script>
 
     {%- comment -%} Cart drawer styling is part of janks-base.css / the janks-tw utilities {%- endcomment -%}
