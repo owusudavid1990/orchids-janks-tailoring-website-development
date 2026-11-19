@@ -10,6 +10,7 @@ import { DeferredWidgets } from "@/components/DeferredWidgets";
 import { ShopifyCartProvider } from "@/lib/shopify-cart-context";
 import { PWAInstallBanner } from "@/components/PWAInstallBanner";
 import { MetaPixel } from "@/components/MetaPixel";
+import { PromoBanner, promoBannerBootScript } from "@/components/PromoBanner";
 
 // Self-hosted (no request to fonts.googleapis.com, so nothing blocks first paint and
 // no visitor IPs are sent to Google). Same two typefaces the site already used;
@@ -154,8 +155,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-GB" className={`${libreFranklin.variable} ${outfit.variable} ${cinzel.variable}`}>
+    <html lang="en-GB" className={`${libreFranklin.variable} ${outfit.variable} ${cinzel.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Blocking, so the phase is known before first paint. See promo-banner.ts. */}
+        <script
+          id="promo-banner-phase"
+          dangerouslySetInnerHTML={{ __html: promoBannerBootScript() }}
+        />
+      </head>
       <body className="antialiased">
+        <PromoBanner />
         {/* Business identity structured data */}
         {/* Plain <script> tags (not next/script) so the structured data is present in the
             server-rendered HTML that crawlers and validators read, not injected after load. */}

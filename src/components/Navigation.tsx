@@ -90,7 +90,7 @@ export function Navigation() {
   const { openSearch } = useSearch();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
+    <nav className="fixed top-[var(--promo-banner-offset)] left-0 right-0 z-50">
         <div className="bg-cream/90 dark:bg-black/90 backdrop-blur-xl border-b border-charcoal/5 dark:border-white/5">
           <div className="max-w-[1800px] mx-auto">
             {/*
